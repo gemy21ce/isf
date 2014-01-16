@@ -1,0 +1,1 @@
+<?phpclass File extends DataMapper {    var $table = 'files';    var $model = 'file';        function __construct() {        parent::__construct();            }}?>

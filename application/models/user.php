@@ -1,0 +1,1 @@
+<?phpclass User extends DataMapper {    var $table = 'users';    var $model = 'user';    function __construct() {        parent::__construct();    }   }?>

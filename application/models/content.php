@@ -1,0 +1,1 @@
+<?phpclass Content extends DataMapper {    var $table = 'contents';    var $model = 'content';//    var $has_many = array('file');    var $has_one = array('language');    function __construct() {        parent::__construct();    }    }?>
