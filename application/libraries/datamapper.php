@@ -5957,7 +5957,8 @@ class DataMapper implements IteratorAggregate {
 			$r[] = $field;
 		}
 		$key = str_replace($s, $r, $key);
-		return $this->lang->line($key);
+                if($this->lang)
+                    return $this->lang->line($key);
 	}
 
 	// --------------------------------------------------------------------
