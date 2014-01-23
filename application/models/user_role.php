@@ -1,0 +1,1 @@
+<?phpclass User extends DataMapper {    var $table = 'user_role';    var $model = 'role';        var $has_many = array('user');        function __construct() {        parent::__construct();    }   }?>
