@@ -7,15 +7,17 @@
  */
 abstract class AdminGenericController extends CI_Controller {
     
+    var $resourceType = '';
+    
     /**
      * constract the main controler
      * @param boolean $allowValidation
      */
-    function __construct($allowValidation = true) 
+    function __construct($allowValidation = true,$resourceType = '') 
     {
         parent::__construct();
         if($allowValidation) {
-            $this->is_logged_in();
+            $this->resourceType = $resourceType;
         }
     }
     
@@ -23,10 +25,15 @@ abstract class AdminGenericController extends CI_Controller {
      * Check if the user is logged in if yes the system will 
      * containue else the system will redirect you to login page
      */
-    function is_logged_in() 
+    function is_logged_in($userType) 
     {
         $is_logged_in = $this->session->userdata('is_logged_in');
+        
         if (!isset($is_logged_in) || $is_logged_in != true) {
+            redirect(site_url());
+            die ();
+        }
+        if($this->resourceType != $userType){
             redirect(site_url()."home/accessdenaied");
             die ();
         }
