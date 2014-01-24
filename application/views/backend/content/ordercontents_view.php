@@ -30,7 +30,7 @@
 
     <span class="creat-botton-contaner">
 
-        <span class="creat-content-icon"></span><span class="creat-botton"><?= anchor('backend/contentcontroller/contentform', 'create content') ?></span>
+        <span class="creat-content-icon"></span><span class="creat-botton"><?= anchor('admin/contentcontroller/contentform', 'create content') ?></span>
 
         <span class="creat-content-icon"></span><span class="creat-botton"><a href="<?php echo base_url(); ?>backend/contentcontroller/home">Contents</a></span>
 
@@ -38,7 +38,7 @@
 
     <div class="creat-botton-contaner">
 
-        <form action="<?php echo base_url().'en/backend/contentcontroller/saveordercontents'.$parent; ?>" method="post">
+        <form action="<?php echo base_url().'admin/contentcontroller/saveordercontents'.$parent; ?>" method="post">
 
             <ul id="sortable">            
 
