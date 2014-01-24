@@ -171,7 +171,7 @@
         <span class="username">
                 <span class="welcome-name">Welcome:</span> 
                 <span class="user-name"><?php echo $user['username']?></span>
-                <span class="logout"> <?=anchor('admin/login/logout','Logout')?></span>
+                <span class="logout"> <?=anchor('home/logout','Logout')?></span>
         </span>  
     </div>
 
