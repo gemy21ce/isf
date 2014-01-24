@@ -73,7 +73,7 @@
     <?php
 
 
-    echo form_open('backend/login/validate');
+    echo form_open('admin/login/validate');
 
 
     echo form_input('email','email');
