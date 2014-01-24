@@ -97,7 +97,8 @@ endif;
 
             'buttonText': 'Uplaod File',
 
-<?php if (!empty($content)): ?> 'scriptData'  : {'content':<?= $content->id; ?>},<?php endif; ?>
+//<?php if (!empty($content)): ?> 
+            'scriptData'  : {'content':<?= $content->id; ?>},//<?php endif; ?>
 
             onComplete: function(event, queueID, fileObj, reposnse, data) {
 
