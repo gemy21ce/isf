@@ -1,132 +1,132 @@
 a{
-cursor:pointer;
-	}
+    cursor:pointer;
+}
 body {
 
-	background: #fbfbfb;
+    background: #fbfbfb;
 
-	margin: 0;
+    margin: 0;
 
-	padding: 0;
+    padding: 0;
 
-	font-family: arial;
+    font-family: arial;
 
 }
 
 #login_form {
 
-	width: 300px;
+    width: 300px;
 
-	background: #eeeeee;
+    background: #eeeeee;
 
-	border: 1px solid #d8d8d8;
+    border: 1px solid #d8d8d8;
 
-	margin: 0 auto;
+    margin: 0 auto;
 
-	padding: 1em;
+    padding: 1em;
 
-	-moz-border-radius: 10px;
+    -moz-border-radius: 10px;
 
-	-webkit-border-radius: 10px;
+    -webkit-border-radius: 10px;
 
 }
 
 .login-form-logo {
 
-	width: 155px;
+    width: 155px;
 
-	background: url(../image/logo.png) no-repeat;
+    background: url(../image/logo.png) no-repeat;
 
-	margin: 25px;
+    margin: 25px;
 
-	height: 104px;
+    height: 104px;
 
-	float: left;
+    float: left;
 
-margin-left: 75px;
-margin-right: 75px;
+    margin-left: 75px;
+    margin-right: 75px;
 
 }
 
 h1, h2, h3, h4, h5, h6 {
 
-	margin-top: 0;
+    margin-top: 0;
 
-	font-family: arial black, arial;
+    font-family: arial black, arial;
 
-	text-align: center;
+    text-align: center;
 
-	color: #d20025;
+    color: #d20025;
 
 }
 
 form input[type="text"], form input[type="password"], form textarea, form select {
 
-	display: block;
+    display: block;
 
-	margin: 0 0 1em 0;
+    margin: 0 0 1em 0;
 
-	width: 525px;
+    width: 525px;
 
-	border: 5px;
+    border: 5px;
 
-	-moz-border-radius: 1px;
+    -moz-border-radius: 1px;
 
-	-webkit-border-radius: 1px;
+    -webkit-border-radius: 1px;
 
-	padding: 1em;
+    padding: 1em;
 
 }
 
 input[type="submit"], form a {
 
-	border: none;
+    border: none;
 
-	padding: 6px;
+    padding: 6px;
 
-	text-decoration: none;
+    text-decoration: none;
 
-	font-size: 12px;
+    font-size: 12px;
 
-	-moz-border-radius: 5px;
+    -moz-border-radius: 5px;
 
-	-webkit-border-radius: 5px;
+    -webkit-border-radius: 5px;
 
-	background: #d20025;
+    background: #d20025;
 
-	color: white;
+    color: white;
 
-	box-shadow: 0 1px 0 white;
+    box-shadow: 0 1px 0 white;
 
-	-moz-box-shadow: 0 1px 0 white;
+    -moz-box-shadow: 0 1px 0 white;
 
-	-webkit-box-shadow: 0 1px 0 white;
+    -webkit-box-shadow: 0 1px 0 white;
 
-	margin-left: 247px;
+    margin-left: 247px;
 
-	float: right;
+    float: right;
 
 }
 
 input[type=submit]:hover, form a:hover {
 
-	background: #4c4c4c;
+    background: #4c4c4c;
 
-	cursor: pointer;
+    cursor: pointer;
 
 }
 
 #login_form form input[type="text"], #login_form form input[type="password"], #login_form form textarea, #login_form form select {
 
-	width: 298px;
+    width: 275px;
 
 }
 
 #login_form input[type="submit"], form a {
 
-	margin-left: 258px;
+    margin-left: 258px;
 
-	float: none;
+    float: none;
 
 }
 
@@ -134,35 +134,35 @@ input[type=submit]:hover, form a:hover {
 
 .error {
 
-	color: #cd1b1b;
+    color: #cd1b1b;
 
-	font-size: 15px;
+    font-size: 15px;
 
 }
 
 fieldset {
 
-	width: 527px;
+    width: 527px;
 
-	margin: auto;
+    margin: auto;
 
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 
-	display: block;
+    display: block;
 
-	background: #eeeeee;
+    background: #eeeeee;
 
 }
 
 #fieldset {
 
-	width: 499px;
+    width: 499px;
 
 }
 
 h1 {
 
-	text-shadow: 0 1px 0 white;
+    text-shadow: 0 1px 0 white;
 
 }
 
@@ -176,384 +176,415 @@ h1 {
 
 .header {
 
-	width: 100%;
+    width: 100%;
 
-	height: 120px;
+    height: 120px;
 
-	float: left;
-	background:#eee;
+    float: left;
+    background:#eee;
 
 }
 
 .logo-header {
 
-	height: 103px;
+    height: 103px;
 
-	margin: 10px;
+    margin: 10px;
 
-	background: url(../image/logo.png) no-repeat;
+    background: url(../image/logo.png) no-repeat;
 
-	float: left;
+    float: left;
 
-	width: 260px;
+    width: 260px;
 
 }
 
 .username {
 
-	margin-top: 92px;
+    margin-top: 92px;
 
-	font-weight: bold;
+    font-weight: bold;
 
-	float: right;
+    float: right;
 
 }
 
 .menu {
 
-	width: 100%;
+    width: 100%;
 
-	height: 25px;
+    height: 25px;
 
-	float: left;
+    float: left;
 
-	background-color: #d20025;
+    background-color: #d20025;
 
 }
 
 .goto {
 
-	margin-left: 18px;
+    margin-left: 18px;
 
-	float: left;
+    float: left;
 
 }
 
 .contant-contaner {
 
-	float: left;
+    float: left;
 
-	margin: 21px;
+    margin: 21px;
 
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 
-	padding: 15px;
+    padding: 15px;
 
-	width: 94%;
+    width: 94%;
 
-	background: #eeeeee;
+    background: #eeeeee;
 
-	border: 1px solid #d8d8d8;
+    border: 1px solid #d8d8d8;
 
-	-moz-border-radius: 10px;
+    -moz-border-radius: 10px;
 
-	-webkit-border-radius: 10px;
+    -webkit-border-radius: 10px;
 
-	color: #3f783a;
+    color: #3f783a;
 
 }
 
 .contant-contaner a {
 
-	color: #d20025;
+    color: #d20025;
 
-	text-decoration: none;
+    text-decoration: none;
 
-	cursor: pointer;
+    cursor: pointer;
 
 }
 
 .contant-contaner a:hover {
 
-	color: #4c4c4c;
+    color: #4c4c4c;
 
 }
 
 .creat-botton-contaner {
 
-	float: left;
+    float: left;
 
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 
-	width: 100%;
+    width: 100%;
 
 }
 
 .creat-botton {
 
-	float: left;
+    float: left;
 
-	font-size: 18px;
+    font-size: 18px;
 
-	font-weight: bold;
+    font-weight: bold;
 
-	margin-left: 5px;
+    margin-left: 5px;
 
-	margin-right: 40px;
+    margin-right: 40px;
 
-	margin-top: 4px;
+    margin-top: 4px;
 
 }
 
 .creat-user-icon {
 
-	width: 22px;
+    width: 22px;
 
-	height: 26px;
+    height: 26px;
 
-	background: url(../image/creat-user.jpg) no-repeat;
+    background: url(../image/creat-user.jpg) no-repeat;
 
-	float: left;
+    float: left;
 
 }
 
 .creat-content-icon {
 
-	width: 22px;
+    width: 22px;
 
-	height: 26px;
+    height: 26px;
 
-	background: url(../image/creat-content.jpg) no-repeat;
+    background: url(../image/creat-content.jpg) no-repeat;
 
-	float: left;
+    float: left;
 
 }
 
 .creat-category-icon {
 
-	width: 22px;
+    width: 22px;
 
-	height: 26px;
+    height: 26px;
 
-	background: url(../image/creat-category.jpg) no-repeat;
+    background: url(../image/creat-category.jpg) no-repeat;
 
-	float: left;
+    float: left;
 
 }
 
 .creat-offer-icon {
 
-	width: 22px;
+    width: 22px;
 
-	height: 26px;
+    height: 26px;
 
-	background: url(../image/creat-offer.jpg) no-repeat;
+    background: url(../image/creat-offer.jpg) no-repeat;
 
-	float: left;
+    float: left;
 
 }
 
 .creat-product-icon {
 
-	width: 22px;
+    width: 22px;
 
-	height: 26px;
+    height: 26px;
 
-	background: url(../image/creat-product.jpg) no-repeat;
+    background: url(../image/creat-product.jpg) no-repeat;
 
-	float: left;
+    float: left;
 
 }
 
 .welcome-name {
 
-	color: #949391;
+    color: #949391;
 
-	float: left;
+    float: left;
 
 }
 
 .user-name {
 
-	float: left;
+    float: left;
 
-	margin-left: 10px;
+    margin-left: 10px;
 
-	color: #d20025;
+    color: #d20025;
 
 }
 
 .logout {
 
-	background: none repeat scroll 0 0 #d20025;
+    background: none repeat scroll 0 0 #d20025;
 
-	border: medium none;
+    border: medium none;
 
-	border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
 
-	box-shadow: 0 1px 0 white;
+    box-shadow: 0 1px 0 white;
 
-	color: #FFF;
+    color: #FFF;
 
-	font-size: 12px;
+    font-size: 12px;
 
-	margin-left: 10px;
+    margin-left: 10px;
 
-	margin-right: 2em;
+    margin-right: 2em;
 
 }
 
 .logout a {
 
-	background: none repeat scroll 0 0 #d20025;
+    background: none repeat scroll 0 0 #d20025;
 
-	color: #fff;
+    color: #fff;
 
-	text-decoration: none;
+    text-decoration: none;
 
-	padding: 6px;
+    padding: 6px;
 
-	cursor: pointer;
+    cursor: pointer;
 
-	border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
 
 }
 
 .logout a:hover {
 
-	background: none repeat scroll 0 0 #4c4c4c;
+    background: none repeat scroll 0 0 #4c4c4c;
 
-	color: #fff;
+    color: #fff;
 
-	text-decoration: none;
+    text-decoration: none;
 
-	padding: 6px;
+    padding: 6px;
 
-	cursor: pointer;
+    cursor: pointer;
 
-	border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
 
 }
 
 .footer {
 
-	float: right;
+    float: right;
 
-	margin-right: 2em;
+    margin-right: 2em;
 
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 
-	font-size: 14px;
+    font-size: 14px;
 
-	color: #949391;
+    color: #949391;
 
 }
 
 .footer a {
 
-	color: #d20025;
+    color: #d20025;
 
-	text-decoration: none;
+    text-decoration: none;
 
 }
 
 .footer a:hover {
 
-	color: #949391;
+    color: #949391;
 
-	text-decoration: none;
+    text-decoration: none;
 
 }
 
 .home-icon-contaner {
 
-	float: left;
+    float: left;
 
-	margin-left: 57px;
+    margin-left: 57px;
 
-	margin-top: 30px;
+    margin-top: 30px;
 
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 
-	width: 129px;
+    width: 129px;
 
 }
 
 .home-icon-user {
 
-	float: left;
+    float: left;
 
-	width: 129px;
+    width: 129px;
 
-	height: 129px;
+    height: 129px;
 
-	background: url(../image/user.jpg) no-repeat;
+    background: url(../image/user.jpg) no-repeat;
 
 }
 
 .home-icon-Content {
 
-	float: left;
+    float: left;
 
-	width: 129px;
+    width: 129px;
 
-	height: 129px;
+    height: 129px;
 
-	background: url(../image/Content.jpg) no-repeat;
+    background: url(../image/Content.jpg) no-repeat;
 
 }
 
 .home-icon-Category {
 
-	float: left;
+    float: left;
 
-	width: 129px;
+    width: 129px;
 
-	height: 129px;
+    height: 129px;
 
-	background: url(../image/Category.jpg) no-repeat;
+    background: url(../image/Category.jpg) no-repeat;
 
 }
 
 .home-icon-offer {
 
-	float: left;
+    float: left;
 
-	width: 129px;
+    width: 129px;
 
-	height: 129px;
+    height: 129px;
 
-	background: url(../image/offer.jpg) no-repeat;
+    background: url(../image/offer.jpg) no-repeat;
 
 }
 
 .home-icon-Product {
 
-	float: left;
+    float: left;
 
-	width: 129px;
+    width: 129px;
 
-	height: 129px;
+    height: 129px;
 
-	background: url(../image/Product.jpg) no-repeat;
+    background: url(../image/Product.jpg) no-repeat;
 
 }
 
 .home-icon-Configuration {
 
-	float: left;
+    float: left;
 
-	width: 129px;
+    width: 129px;
 
-	height: 129px;
+    height: 129px;
 
-	background: url(../image/Configuration.jpg) no-repeat;
+    background: url(../image/Configuration.jpg) no-repeat;
 
 }
 
 .home-icon-text {
 
-	width: 129px;
+    width: 129px;
 
-	text-align: center;
+    text-align: center;
 
-	float: left;
+    float: left;
 
 }
 
 #sortable{
 
-	width: 100% !important;
+    width: 100% !important;
 
-	}
+}
 
+#navbar {
+    margin: 0;
+    padding: 0;
+    height: 1em; }
+#navbar li {
+    list-style: none;
+    float: left; }
+#navbar li a {
+    display: block;
+    padding: 3px 8px;
+    background-color: #4c4c4c;
+    color: #fff;
+    text-decoration: none; }
+#navbar li ul {
+    display: none;
+    width: 10em; /* Width to help Opera out */
+    background-color: #69f;
+    z-index:300;}
+#navbar li:hover ul {
+    display: block;
+    position: absolute;
+    margin: 0;
+    padding: 0; }
+#navbar li:hover li {
+    float: none; }
+#navbar li:hover li a {
+    background-color: #d20025;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    color: #fff;}
+#navbar li li a:hover {background-color: #4c4c4c;}

@@ -1,36 +1,6 @@
-<style>
-    .header {
-        background:none;
-
-    }
-</style>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
-
-
-<script type="text/javascript">
-    var x = $(window).height();
-    x = (x - 360) / 2;
-    $(function() {
-        $("#login_form").css("margin-top", x);
-    });
-</script>
-
-
-<style>
-
-    .logo-header{
-        height:71px;
-        margin:10px;
-        background:none;
-        float:left;
-        width:260px;
-    }
-</style>
-
 
 <div id="login_form">
     <span class="login-form-logo"></span>
-    <h3>Welcome please login  </h3>
     <?php
     if(isset($errormessage)){
         echo '<b>user name or password error</b>';

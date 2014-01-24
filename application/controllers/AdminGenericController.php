@@ -5,7 +5,7 @@
  * @author Shereif hawary.
  * @since 0.1
  */
-abstract class AdminGernericController extends CI_Controller {
+abstract class AdminGenericController extends CI_Controller {
     
     /**
      * constract the main controler
@@ -27,7 +27,7 @@ abstract class AdminGernericController extends CI_Controller {
     {
         $is_logged_in = $this->session->userdata('is_logged_in');
         if (!isset($is_logged_in) || $is_logged_in != true) {
-            redirect("admin/login/accessdenaied");
+            redirect(site_url()."home/accessdenaied");
             die ();
         }
     }
@@ -44,8 +44,8 @@ abstract class AdminGernericController extends CI_Controller {
         $data['status'] = $status;
         $data['url'] = $redirecturl;
 
-        $data['main_content'] = 'backend/includes/statusPage.php';
-        $this->load->view('backend/includes/template', $data);
+        $data['main_content'] = 'common/includes/statusPage.php';
+        $this->load->view('common/includes/template', $data);
         die();
     }
     

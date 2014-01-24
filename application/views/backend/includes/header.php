@@ -163,44 +163,19 @@
 
 
         <meta http-equiv="Content-Type" content="text/html;charse"/>
-
-
-
     </head>
-
-
-
-
-
-
-
     <body>
-
-
-
     <div class="header">
-
-
-
     <div class="logo-header"></div>
-
-
-
-        <?php $user=$this->session->all_userdata();if(!empty ($user['username'])): ?> <span class="username"><span class="welcome-name">Welcome:</span> <span class="user-name"><?php echo $user['username']?></span><span class="logout"> <?=anchor('admin/login/logout','Logout')?></span></span>  </div>
-
-
-
-        
-
-
+        <?php $user=$this->session->all_userdata();if(!empty ($user['username'])): ?> 
+        <span class="username">
+                <span class="welcome-name">Welcome:</span> 
+                <span class="user-name"><?php echo $user['username']?></span>
+                <span class="logout"> <?=anchor('admin/login/logout','Logout')?></span>
+        </span>  
+    </div>
 
 <div class="menu"><span class="goto"> <ul id="navbar">
-
-
-
-         
-
-
 
 	<li><a >Go To</a><ul>
 
