@@ -77,7 +77,7 @@ endif;
 
             'uploader'  : '<?php echo base_url(); ?>assets/backend/js/jquery/uploadify/uploadify.swf',
 
-            'script'    : '<?= site_url('en/backend/filecontroller/upload') ?>',
+            'script'    : '<?= site_url('admin/filecontroller/upload') ?>',
 
             'cancelImg' : '<?php echo base_url(); ?>assets/backend/js/jquery/uploadify/cancel.png',
 
@@ -132,7 +132,7 @@ endif;
     <?php echo validation_errors('<p class="error">'); ?>
 
     <?php
-    echo form_open('backend/contentcontroller/savecontent');
+    echo form_open('admin/contentcontroller/savecontent');
     ?>
 
     <?php if (isset($parent)): ?> 
@@ -151,7 +151,7 @@ endif;
 
             <?php if ($content->contenttype_id == 1 && $content->parent == NULL): ?> 
 
-                <a href="<?php echo base_url() . 'en/backend/contentcontroller/home/' . $content->id; ?>">Manage Slider</a>
+                <a href="<?php echo base_url() . 'admin/contentcontroller/home/' . $content->id; ?>">Manage Slider</a>
                 <script type="text/javascript">
 
                     $(document).ready(function(){
@@ -166,7 +166,7 @@ endif;
 
             <?php if ($content->contenttype_id == 4 && $content->parent == NULL): ?> 
 
-                <a href="<?php echo base_url() . 'en/backend/contentcontroller/home/' . $content->id; ?>">Manage News</a>
+                <a href="<?php echo base_url() . 'admin/contentcontroller/home/' . $content->id; ?>">Manage News</a>
 
                 <script type="text/javascript">
 
@@ -184,7 +184,7 @@ endif;
 
             <?php if ($content->contenttype_id == 6 && $content->parent == NULL): ?> 
 
-                <a href="<?php echo base_url() . 'en/backend/contentcontroller/home/' . $content->id; ?>">Manage Projects</a>
+                <a href="<?php echo base_url() . 'admin/contentcontroller/home/' . $content->id; ?>">Manage Projects</a>
 
                 <script type="text/javascript">
 
@@ -214,7 +214,7 @@ endif;
 
             <?php if ($content->contenttype_id == 5 && $content->parent == NULL): ?> 
 
-                <a href="<?php echo base_url() . 'en/backend/contentcontroller/home/' . $content->id; ?>">Manage Services</a>
+                <a href="<?php echo base_url() . 'admin/contentcontroller/home/' . $content->id; ?>">Manage Services</a>
 
                 <script type="text/javascript">
 
@@ -231,7 +231,7 @@ endif;
             <?php endif; ?>
             <?php if ($content->contenttype_id == 8 && $content->parent == NULL): ?> 
 
-                <a href="<?php echo base_url() . 'en/backend/contentcontroller/home/' . $content->id; ?>">Manage Clients</a>
+                <a href="<?php echo base_url() . 'admin/contentcontroller/home/' . $content->id; ?>">Manage Clients</a>
 
                 <script type="text/javascript">
 
@@ -449,7 +449,7 @@ endif;
 
 
 
-                            <input type="button" value="remove" onclick="sendAjax('<?php echo base_url() . 'en/backend/filecontroller/delete/' . $file->id; ?>','file_div_<?php echo $file->id; ?>');" />
+                            <input type="button" value="remove" onclick="sendAjax('<?php echo base_url() . 'admin/filecontroller/delete/' . $file->id; ?>','file_div_<?php echo $file->id; ?>');" />
 
                         </div>
 

@@ -186,7 +186,7 @@
 
 
 
-        <?php $user=$this->session->all_userdata();if(!empty ($user['username'])): ?> <span class="username"><span class="welcome-name">Welcome:</span> <span class="user-name"><?php echo $user['username']?></span><span class="logout"> <?=anchor('backend/login/logout','Logout')?></span></span>  </div>
+        <?php $user=$this->session->all_userdata();if(!empty ($user['username'])): ?> <span class="username"><span class="welcome-name">Welcome:</span> <span class="user-name"><?php echo $user['username']?></span><span class="logout"> <?=anchor('admin/login/logout','Logout')?></span></span>  </div>
 
 
 
@@ -206,31 +206,31 @@
 
 
 
-		<li><?=anchor('backend/home/backend','Home')?></li>
+		<li><?=anchor('admin/home/backend','Home')?></li>
 
 
 
-		<li><?=anchor('backend/usermanager/home','Users')?></li>
+		<li><?=anchor('admin/usermanager/home','Users')?></li>
 
 
 
-		<li><?=anchor('backend/contentcontroller/home','Content')?></li>
+		<li><?=anchor('admin/contentcontroller/home','Content')?></li>
 
 
 
-<!--		<li><?=anchor('backend/category/home','Category')?></li>
+<!--		<li><?=anchor('admin/category/home','Category')?></li>
 
 
 
-		<li><?=anchor('backend/offer/home','Offer')?></li>
+		<li><?=anchor('admin/offer/home','Offer')?></li>
 
 
 
-		<li><?=anchor('backend/product/home','Product')?></li>-->
+		<li><?=anchor('admin/product/home','Product')?></li>-->
 
 
 
-		<li><?=anchor('backend/configurationmanager/configurationform','Configuration')?></li>
+		<li><?=anchor('admin/configurationmanager/configurationform','Configuration')?></li>
 
 
 
