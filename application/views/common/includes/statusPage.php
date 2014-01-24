@@ -1,8 +1,8 @@
 <script type="text/javascript">
-<?php if ($url == false) { ?>
+<?php if ($url != false) { ?>
         setTimeout(function() {
             window.location.replace("<?= $url ?>");
-        }, 4000);
+        }, 2000);
 <?php } ?>
 </script>
 <fieldset>

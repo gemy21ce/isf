@@ -46,7 +46,6 @@ abstract class AdminGenericController extends CI_Controller {
 
         $data['main_content'] = 'common/includes/statusPage.php';
         $this->load->view('common/includes/template', $data);
-        die();
     }
     
     /**
@@ -155,7 +154,7 @@ abstract class AdminGenericController extends CI_Controller {
             die();
         }
         
-        json_encode(array(
+        echo json_encode(array(
             "sEcho" => intval($_GET['sEcho']),
             "iTotalRecords" => 10,
             "iTotalDisplayRecords" => $counts,
