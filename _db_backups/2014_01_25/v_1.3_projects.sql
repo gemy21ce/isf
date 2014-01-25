@@ -1,0 +1,6 @@
+CREATE TABLE  `project` (
+`id` INT( 11 ) NOT NULL ,
+`name` VARCHAR( 50 ) NOT NULL ,
+PRIMARY KEY (  `id` )
+) ENGINE = INNODB;
+ALTER TABLE  `project` CHANGE  `id`  `id` INT( 11 ) NOT NULL AUTO_INCREMENT;
