@@ -10,7 +10,10 @@ class Project extends DataMapper {
 
     var $model = 'project';
     
-
+    var $has_many = array(
+        "projectexperimentationlocation",
+        "projectworkingsite"
+    );
     function __construct() {
 
         parent::__construct();        
