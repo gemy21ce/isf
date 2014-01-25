@@ -12,7 +12,14 @@ function checkInputVal($var) {
 <script type="text/javascript">
     function edit_item(element)
     {
-        alert($(element).attr("item_id"));
+        $.fancybox({
+            href: "<?php echo base_url(); ?>admin/categorycontroller/edit_subcategory?cat_id=" + $(element).attr("cat_id")+"&id="+$(element).attr("item_id"),
+            type: "ajax",
+            scrolling: "no",
+            onClosed: function() {
+                loadSubCategory();
+            }
+        });
     }
 
     function delete_item(element)
@@ -37,7 +44,19 @@ function checkInputVal($var) {
                                             success: function($ret) {
                                                 if ($ret === "TRUE") {
                                                     loadSubCategory();
-
+                                                    $.fancybox('subcategory Delete successfully',
+                                                            {
+                                                                'autoDimensions': true,
+                                                                'transitionIn': 'none',
+                                                                'transitionOut': 'none',
+                                                                'onComplete': function(){
+                                                                    setTimeout(function(){
+                                                                        $.fancybox.close();
+                                                                    },3000);
+                                                                    
+                                                                }
+                                                            }
+                                                    );
                                                 } else {
 //                        alert("thank you.");
                                                     $.fancybox('Sorry can\'t delete this subcategory at the moment, please try again later',
@@ -75,6 +94,14 @@ function checkInputVal($var) {
         $(function() {
             loadSubCategory();
         });
+        function loadAddPage(){
+                $.fancybox({
+                    href: "<?=base_url()?>admin/categorycontroller/add_subcategory?cat_id=<?= $_POST["id"] ?>",
+                    type: "ajax",
+                    scrolling: "no"
+                });
+        }
+        
 <?php } else { ?>
         var id =<?= checkInput("id") ?>;
 <?php } ?>

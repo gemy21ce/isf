@@ -12,6 +12,7 @@
                 "sAjaxSource": "<?php echo base_url(); ?>admin/categorycontroller/pages",
                 "fnRowCallback": function(nRow, aData, iDisplayIndex) {
                 $('td:eq(3)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/edit/' + aData[3] + '">Edit</a>');
+                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/delete/' + aData[4] + '"><img src="<?=  base_url()?>assets/backend/image/delete_small.png"/></a>');
                     return nRow;
                 },
                 "fnInitComplete": function(oSettings, json) {
@@ -37,6 +38,7 @@
                 <th width="50%">Description</th>
                 <th width="15%">Code</th>
                 <th width="15%">Edit</th>
+                <th width="15%">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -50,6 +52,7 @@
                 <th width="50%">Description</th>
                 <th width="15%">Code</th>
                 <th width="15%">Edit</th>
+                <th width="15%">Delete</th>
             </tr>
         </tfoot>
     </table>

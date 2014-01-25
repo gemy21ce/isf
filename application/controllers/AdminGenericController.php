@@ -18,6 +18,7 @@ abstract class AdminGenericController extends CI_Controller {
         parent::__construct();
         if($allowValidation) {
             $this->resourceType = $resourceType;
+            $this->is_logged_in($resourceType);
         }
     }
     

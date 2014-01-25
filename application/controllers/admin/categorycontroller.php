@@ -49,13 +49,9 @@ class CategoryController extends AdminGenericController {
 
     function save() {
         $this->load->helper(array('form', 'url'));
-
         $this->load->library('form_validation');
-
         $this->form_validation->set_rules('name', 'name', 'trim|required|min_length[5]|max_length[50]');
-
         $this->form_validation->set_rules('code', 'code', 'trim|required|min_length[2]|max_length[5]');
-
         $this->form_validation->set_rules('description', 'description', 'trim|required|min_length[10]|max_length[500]');
 
         if ($this->form_validation->run() == false) {
@@ -81,6 +77,22 @@ class CategoryController extends AdminGenericController {
             return $this->showGoodStatusPage("New category '" . $this->input->post('name', TRUE) . "' save successfully", base_url() . "admin/categorycontroller/home");
         }
     }
+    
+    function delete($categoryId)
+    {
+        $category = new Category();
+        $category->where("id", $categoryId);
+        $category->get();
+        
+        $category->subcategory->get();
+        foreach($category->subcategory as $subcategory){
+            $subcategory->delete();
+        }
+        $category->delete();
+        
+        $this->showGoodStatusPage("Category delete Successfully", base_url().'admin/categorycontroller/home');
+        
+    }
 
     protected function formatData($modelsResult) {
 
@@ -92,6 +104,7 @@ class CategoryController extends AdminGenericController {
             $item_data[] = $item->name;
             $item_data[] = $item->description;
             $item_data[] = $item->code;
+            $item_data[] = $item->id;
             $item_data[] = $item->id;
 
             $data[] = $item_data;
@@ -111,7 +124,69 @@ class CategoryController extends AdminGenericController {
             $this->load->view("backend/admin/category/ajax/view_subcategoies", $data);
         }
     }
+    function add_subcategory() 
+    {
+        $data['cat_id'] = $this->input->get('cat_id',TRUE);
+        
+        if(isset($data['cat_id']) && $data['cat_id'] != ""){
+            $_POST['category_id'] = $data['cat_id'];
+            $this->load->view('backend/admin/category/ajax/add_subcategory', $data);
+        }
+    }
+    function edit_subcategory() 
+    {
+        $data['cat_id'] = $this->input->get('cat_id',TRUE);
+        $data['id'] = $this->input->get('id',TRUE);
+        
+        if(isset($data['cat_id']) && $data['cat_id'] != ""){
+            $this->load->model("subcategory");
+            $subcategory = new Subcategory();
+            $subcategory->where("id",$data["id"]);
+            $subcategory->get();
+            
+            $_POST['id'] = $subcategory->id;
+            $_POST['name'] = $subcategory->name;
+            $_POST['description'] = $subcategory->description;
+            $_POST['code'] = $subcategory->code;
+            $_POST['category_id'] = $subcategory->category_id;
+            
+            $this->load->view('backend/admin/category/ajax/add_subcategory', $data);
+        }
+    }
     
+    function save_subcategory() {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('name', 'name', 'trim|required|min_length[5]|max_length[50]');
+        $this->form_validation->set_rules('code', 'code', 'trim|required|min_length[2]|max_length[5]');
+        $this->form_validation->set_rules('description', 'description', 'trim|required|min_length[10]|max_length[500]');
+        
+        if ($this->form_validation->run() == false) {
+            foreach($this->form_validation->_field_data as $field)
+            {
+                if($field['error']!=""){
+                    die($field['error']);
+                }
+            }
+            
+        } else {
+            $id = $this->input->post('id', TRUE);
+            
+            $this->load->model("subcategory");
+            $subcategory = new Subcategory();
+            
+            if (isset($id) && $id != "") {
+                $subcategory->id = $id;
+            }
+            $subcategory->category_id = $this->input->post("category_id");
+            $subcategory->name = $this->input->post("name");
+            $subcategory->code = $this->input->post("code");
+            $subcategory->description = $this->input->post("description");
+            $subcategory->save();
+            die("TRUE");
+        }
+        
+    }
     function delete_subcategory() {
         $id = $this->input->get('id', TRUE);
         $cat_id = $this->input->get('cat_id', TRUE);
