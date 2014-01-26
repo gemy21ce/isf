@@ -3,7 +3,8 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
-        <title>Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>ISEF: Login</title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pure-min.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/site.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/base.css" />
