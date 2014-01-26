@@ -1,0 +1,78 @@
+/* --------------------------
+ * SWITCH
+ * --------------------------
+*/
+/*** A fixed width of 6em is used here; changed width as needed. ***/
+.intel-switch {
+  position: relative;
+  min-width: 6em;
+  width: 6em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; }
+
+.intel-switch input[type=checkbox] {
+  display: none; }
+
+.intel-switch label {
+  border: 1px solid #0071c5;
+  cursor: pointer;
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  overflow: hidden;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.intel-switch input[type=checkbox]:checked + label {
+  border: 1px solid #004280; }
+
+.intel-switch input[type=checkbox] + label span:first-child {
+  background: #0071c5;
+  color: white;
+  display: none;
+  padding-left: 0.75em;
+  width: 0%; }
+
+.intel-switch input[type=checkbox]:checked + label span:first-child {
+  display: inline-block;
+  width: 50%; }
+
+.intel-switch input[type=checkbox] + label span:nth-child(2) {
+  background: #edeff0;
+  border-color: #0071c5;
+  border-style: solid;
+  border-width: 1px;
+  bottom: 0;
+  margin: 0;
+  position: absolute;
+  right: 50%;
+  top: 0;
+  -moz-transition: all 0.3s ease-in 0s;
+  -webkit-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+  width: 50%; }
+
+.intel-switch input[type=checkbox]:checked + label span:nth-child(2) {
+  border-color: #004280;
+  right: 0; }
+
+.intel-switch input + label span:last-child {
+  background: white;
+  box-sizing: border-box;
+  color: #53565a;
+  display: inline-block;
+  margin-left: 50%;
+  margin-left: -moz-calc(50% - 0.75em);
+  /*** Fallback for FF ***/
+  padding-right: 0.75em;
+  text-align: right;
+  width: 50%; }
+
+.intel-switch input[type=checkbox]:checked + label span:last-child {
+  display: none; }
+
+@media (max-width: 480px) {
+  .intel-switch {
+    width: 8em; } }

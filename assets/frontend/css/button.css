@@ -1,0 +1,118 @@
+/* --------------------------
+ * BUTTON
+ * --------------------------
+*/
+.intel-btn,
+button {
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: content-box;
+  font-family: "Open Sans", Arial;
+  font-size: 0.9em;
+  font-weight: bold;
+  line-height: 1.65em;
+  margin: 0.75em;
+  min-width: 7em;
+  padding: 0.6em 2.0em;
+  text-align: center;
+  cursor: pointer;
+  outline:none;
+  transition: box-shadow 0.3s, background-color 0.3s; }
+
+.intel-btn:hover,
+button:hover {
+  text-decoration: none; }
+
+/* For buttons with icons, include a span inside the button tag; */
+button span:before,
+.intel-btn span:before {
+  font-size: 0.75em;
+  /* Font size controls size of icon */
+  margin-right: 0.5em; }
+
+/* For buttons with just an icon */
+button.intel-btn-icon-only span,
+.intel-btn.intel-btn-icon-only span:before {
+  margin-right: 0; }
+
+/**** ACTION ****/
+.intel-btn-action,
+button {
+  background-color: #0071c5;
+  border-color: #0055a5;
+  color: white; }
+
+.intel-btn-action:hover,
+button:hover {
+  background: #1891ee;
+  border-color: transparent; }
+
+.intel-btn-action:active,
+button:active {
+  background: #0055a5;
+  border-color: #004280;
+  color: white; }
+
+/**** CANCEL ****/
+.intel-btn-cancel {
+  background-color: #d3d8db;
+  border-color: #b1babf;
+  color: #53565a; }
+
+.intel-btn-cancel:hover {
+  background: #edeff0;
+  border-color: #e1e5e7; }
+
+.intel-btn-cancel:active {
+  background: #b1babf;
+  border-color: #939598;
+  color: #53565a; }
+
+/**** DISABLED ****/
+/* Added the extra intel-btn to increase specifity; disabled should always dominate */
+button.intel-btn-disabled,
+.intel-btn.intel-btn-disabled,
+button.intel-btn-disabled:hover,
+.intel-btn.intel-btn-disabled:hover {
+  background-color: #edeff0;
+  border-color: #d3d8db;
+  color: #b1babf;
+  cursor: default; }
+
+/**** DELETE ****/
+.intel-btn-delete {
+  background-color: #ed1c1a;
+  border-color: #bb1c1a;
+  color: white; }
+
+.intel-btn-delete:hover {
+  background: #ff6450;
+  border-color: transparent; }
+
+.intel-btn-delete:active {
+  background: #bb1c1a;
+  border-color: #931c1a;
+  color: white; }
+
+/**** APPROVE ****/
+.intel-btn-approve {
+  background-color: #a6ce39;
+  border-color: #62b00a;
+  color: white; }
+
+.intel-btn-approve:hover {
+  background: #b4dc39;
+  border-color: transparent; }
+
+.intel-btn-approve:active {
+  background: #62b00a;
+  border-color: #36781a;
+  color: white; }
+
+@media (max-width: 480px) {
+  button,
+  .intel-btn {
+    display: block; }
+
+

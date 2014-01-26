@@ -1,0 +1,56 @@
+/* --------------------------
+ * PROGRESS BAR
+ * --------------------------
+*/
+.intel-progress-bar {
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 1em;
+  white-space: nowrap; }
+
+.intel-progress-bar li {
+  display: inline-block;
+  margin-right: 1.5em;
+  position: relative;
+  width: 3.0em; }
+
+.intel-progress-bar li span {
+  background-color: #e1e5e7;
+  border-radius: 100%;
+  color: #53565a;
+  display: inline-block;
+  font-weight: bold;
+  height: 1.5em;
+  text-align: center;
+  width: 1.5em; }
+
+.intel-progress-bar li span:before {
+  background-color: #e1e5e7;
+  bottom: 0.75em;
+  content: "";
+  display: block;
+  height: 0.33em;
+  left: -3.3333em;
+  position: absolute;
+  width: 4.5em;
+  z-index: -5; }
+
+.intel-progress-bar li:first-child span:before {
+  display: none; }
+
+/*** Active ***/
+.intel-progress-bar li.active span {
+  background-color: #a6ce39;
+  color: white; }
+
+.intel-progress-bar li.active span:before {
+  background-color: #a6ce39; }
+
+/*** Button ***/
+.intel-progress-bar li.intel-progress-btn span {
+  background-color: #0071c5; }
+
+.intel-progress-bar li.intel-progress-btn span a {
+  color: white; }

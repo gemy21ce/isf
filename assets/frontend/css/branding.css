@@ -1,0 +1,144 @@
+/* --------------------------
+ * BRANDING
+ * --------------------------
+*/
+.pure-table span {
+  display: inline-block;
+  margin: 0.25em;
+  min-height: 2.0em;
+  padding: 0.25em; }
+
+.intel-logo-background {
+  background-color: #004280; }
+
+.intel-logo-background img {
+  height: 5em; }
+
+/*** Blue ***/
+.intel-sp-pale-blue {
+  background-color: #7ed3f7;
+  color: white; }
+
+.intel-sp-light-blue {
+  background-color: #00aeef;
+  color: white; }
+
+.intel-sp-medium-blue {
+  background-color: #1891ee;
+  color: white; }
+
+.intel-sp-blue {
+  background-color: #0071c5;
+  color: white; }
+
+.intel-sp-medium-dark-blue {
+  background-color: #0055a5;
+  color: white; }
+
+.intel-sp-dark-blue {
+  background-color: #004280;
+  color: white; }
+
+/*** Yellow ***/
+.intel-sp-yellow {
+  background-color: #ffda00;
+  color: black; }
+
+.intel-sp-dark-yellow {
+  background-color: #fdb813;
+  color: black; }
+
+/*** Orange ***/
+.intel-sp-orange {
+  background-color: #fdb813;
+  color: black; }
+
+.intel-sp-orange2 {
+  background-color: #f37021;
+  color: black; }
+
+/*** GREEN ***/
+.intel-sp-pale-green {
+  background-color: #d7df23;
+  color: white; }
+
+.intel-sp-light-green {
+  background-color: #b4dc39;
+  color: white; }
+
+.intel-sp-green {
+  background-color: #a6ce39;
+  color: white; }
+
+.intel-sp-medium-dark-green {
+  background-color: #62b00a;
+  color: white; }
+
+.intel-sp-dark-green {
+  background-color: #36781a;
+  color: white; }
+
+/*** RED ***/
+.intel-sp-light-red {
+  background-color: #ff8c8c;
+  color: white; }
+
+.intel-sp-medium-red {
+  background-color: #ff6450;
+  color: white; }
+
+.intel-sp-red {
+  background-color: #ed1c1a;
+  color: white; }
+
+.intel-sp-medium-dark-red {
+  background-color: #bb1c1a;
+  color: white; }
+
+.intel-sp-dark-red {
+  background-color: #931c1a;
+  color: white; }
+
+/*** GREY ***/
+.intel-sp-dark-gray {
+  background-color: #53565a;
+  color: white; }
+
+.intel-sp-gray {
+  background-color: #939598;
+  color: white; }
+
+.intel-sp-light-gray {
+  background-color: #b1babf;
+  color: white; }
+
+.intel-sp-gray4 {
+  background-color: #d3d8db;
+  color: black; }
+
+.intel-sp-gray3 {
+  background-color: #e1e5e7;
+  color: black; }
+
+.intel-sp-gray2 {
+  background-color: #edeff0;
+  color: black; }
+
+.intel-sp-gray1 {
+  background-color: #f7f8f9;
+  color: black; }
+
+/*** Misc ***/
+.intel-sp-black {
+  background-color: black;
+  color: white; }
+
+.intel-sp-white {
+  background-color: white;
+  border: solid 1px #0071c5;
+  color: #0071c5; }
+
+.intel-sp-code-comment {
+  background-color: #339900;
+  border: solid 1px #d3d8db;
+  color: #53565a; }

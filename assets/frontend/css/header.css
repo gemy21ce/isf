@@ -1,0 +1,429 @@
+/* --------------------------
+ * HEADER
+ * --------------------------
+*/
+/*** HEADER COMMON ***/
+.intel-hdr {
+  background-color: #0071c5;
+  color: white;
+  font-size: 14px;
+  line-height: 1.0em;
+  min-height: 4.0em;
+  padding: 0; }
+
+/*** HEADER INFOBAR ***/
+.intel-hdr-infobar {
+  position: relative;
+  display: inline-block;
+  font-size: 0.85em;
+  line-height: 1.25em;
+  margin: 1.5em 0; }
+
+.intel-hdr-infobar .intel-hdr-help,
+.intel-hdr-infobar .intel-hdr-user,
+.intel-hdr-infobar .intel-hdr-ww {
+  display: inline-block;
+  margin-bottom: 0.03em;
+  margin-top: 0.03em;
+  padding: 0.25em; }
+
+.intel-hdr-infobar .intel-hdr-ww,
+.intel-hdr-infobar .intel-hdr-user {
+  border-right: 0.15em solid white; }
+
+.intel-hdr-infobar .intel-hdr-help {
+  color: #fdb813;
+  padding-right: 0.8em; }
+
+.intel-hdr-infobar .intel-hdr-help .icon-b_help {
+  color: white; }
+
+.intel-hdr-infobar .intel-btn-action {
+  color: white;
+  border-width: 0;
+  font-size: 1em;
+  margin: 0.25em 0.5em 0.25em 0;
+  min-width: 0;
+  padding: 0.25em 0.5em 0.25em 0.25em; }
+
+.intel-hdr-box-info,
+.intel-hdr-box-info-left,
+.intel-hdr-box-info-right {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #00aeef; }
+
+.intel-hdr-box-info .intel-hdr-infobar {
+  margin: 0; }
+
+/* Design 3 */
+.intel-hdr-box-info-left {
+  position: relative; }
+
+.intel-hdr-box-info-left:after {
+  border-color: #00aeef #0071c5 #0071c5 #00aeef;
+  border-style: solid;
+  border-width: 1.25em;
+  content: ' ';
+  height: 0;
+  right: -2.25em;
+  position: absolute;
+  bottom: 0;
+  width: 0; }
+
+.intel-hdr-box-info-left .intel-hdr-infobar {
+  margin: 0 0 0 1.5em; }
+
+.intel-hdr-box-info-left + .intel-hdr-box-title > .intel-hdr-title {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
+
+/* Design 4 */
+.intel-hdr-box-info-right {
+  float: right;
+  text-align: right;
+  position: relative; }
+
+.intel-hdr-box-info-right:before {
+  border-color: #00aeef #00aeef #0071c5 #0071c5;
+  border-style: solid;
+  border-width: 1.25em;
+  content: ' ';
+  height: 0;
+  left: -2.0em;
+  position: absolute;
+  bottom: 0;
+  width: 0; }
+
+.intel-hdr-box-info-right .intel-hdr-infobar {
+  margin: 0 1.0em 0 1.0em; }
+
+.intel-hdr-box-info-right + .intel-hdr-box-title > .intel-hdr-title {
+  margin-top: 0;
+  margin-bottom: 0.5em; }
+
+/**** HEADER LOGO ****/
+.intel-hdr-logo {
+  display: inline-block;
+  height: 2.5em;
+  vertical-align: middle;
+  padding: 0.5em; 
+  }
+.intel-hdr-box-logo {
+  display: inline-block;
+  vertical-align: middle;
+  float: right; }
+
+.intel-hdr-box-logo .intel-hdr-logo {
+  height: 3.5em;
+  margin: 0.5em 0; }
+.intel-hdr-logo{
+	height: 84px !important;
+    margin:14px 5px -60px 0px !important;
+	}
+/*** HEADER PEEL IMG ***/
+.intel-hdr-peel-left-btm,
+.intel-hdr-peel-left-btm-drk,
+.intel-hdr-peel-left-top,
+.intel-hdr-peel-left-top-wht,
+.intel-hdr-peel-right-btm,
+.intel-hdr-peel-right-btm-drk,
+.intel-hdr-peel-right-top,
+.intel-hdr-peel-right-top-wht {
+  display: inline-block;
+  height: 100%;
+  padding: 0;
+  width: 3.5em; }
+
+/*** Standard Color ***/
+.intel-hdr-peel-left-btm {
+  margin: 0 -1.25em 0 0;
+  vertical-align: bottom; }
+
+.intel-hdr-peel-left-top {
+  margin: 0 -1.25em 0 0;
+  vertical-align: top; }
+
+.intel-hdr-peel-right-btm {
+  margin: 0 0 0 -1.25em;
+  vertical-align: bottom; }
+
+.intel-hdr-peel-right-top {
+  margin: 0 0 0 -1.25em;
+  vertical-align: top; }
+
+/*** Alternate Color ***/
+.intel-hdr-peel-left-btm-drk {
+  margin: 0 -1.25em 0 0;
+  vertical-align: bottom; }
+
+.intel-hdr-peel-left-top-wht {
+  margin: 0 -1.25em 0 0;
+  vertical-align: top; }
+
+.intel-hdr-peel-right-btm-drk {
+  margin: 0 0 0 -1.25em;
+  vertical-align: bottom; }
+
+.intel-hdr-peel-right-top-wht {
+  margin: 0 0 0 -1.25em;
+  vertical-align: top; }
+
+/*** HEADER TITLE ***/
+.intel-hdr-title {
+  display: inline-block;
+  font-size: 1.5em;
+  font-family: "Open Sans", Arial;
+  line-height: 1.25em;
+  margin: 0.75em 0 0.75em 0;
+  padding: 0 0.75em 0 0.75em; }
+
+.intel-hdr-box-title {
+  display: block;
+  vertical-align: bottom; }
+
+.intel-hdr-box-title .intel-hdr-title {
+  display: inline-block;
+  width: 100%; }
+
+.intel-hdr-subtitle {
+  font-size: 1em;
+  margin-top: 0.75em;
+  padding: 0 1.2em; }
+
+.intel-hdr-subtitle + .intel-hdr-title {
+  margin-top: 0; }
+
+/*** WRAP ***/
+.intel-hdr-box-wrap {
+  display: inline-block; }
+
+/*** HEADER MENU ***/
+.intel-hdr-menu {
+  display: inline-block; }
+
+.intel-hdr-menu.intel-right {
+  float: right; }
+
+.intel-hdr-btn-menu {
+  background-color: #0071c5;
+  border-color: #0055a5;
+  border-style: solid;
+  border-width: 1px;
+  -webkit-box-shadow: inset 0 1px 0 0 #1891ee;
+  box-shadow: inset 0 1px 0 0 #1891ee;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  line-height: 1em;
+  margin: 0.25em;
+  padding: 0.5em 0.5em;
+  text-align: center; }
+
+.intel-hdr-btn-menu:hover {
+  background-color: #1891ee;
+  border-color: transparent;
+  -webkit-box-shadow: inset 0 1px 0 0 #00aeef;
+  box-shadow: inset 0 1px 0 0 #00aeef;
+  text-decoration: none; }
+
+.intel-hdr-btn-menu:active {
+  background-color: #0055a5;
+  border-color: #004280;
+  -webkit-box-shadow: inset 0 1px 0 0 #1891ee;
+  box-shadow: inset 0 1px 0 0 #1891ee;
+  color: white; }
+
+/*** HEADER NEXT + BACK BUTTON ***/
+/*** Default + Simple***/
+.intel-hdr-btn-back,
+.intel-hdr-btn-next,
+.intel-hdr-btn-back-simple,
+.intel-hdr-btn-next-simple {
+  color: white;
+  font-weight: bold;
+  position: relative; }
+
+.intel-hdr-btn-back:hover,
+.intel-hdr-btn-next:hover,
+.intel-hdr-btn-back-simple:hover,
+.intel-hdr-btn-next-simple:hover {
+  text-decoration: none; }
+
+/*** Simple ***/
+.intel-hdr-btn-back-simple,
+.intel-hdr-btn-next-simple {
+  margin: 1em 0.65em 1em 0.65em;
+  padding: 0.5em 0; }
+
+/*** Default ***/
+.intel-hdr-btn-back {
+  padding: 0.5em 0.5em 0.5em 0; }
+
+.intel-hdr-btn-next {
+  padding: 0.5em 0 0.5em 0.5em; }
+
+.intel-hdr-btn-back,
+.intel-hdr-btn-next {
+  background-color: #0071c5;
+  border-color: #0055a5;
+  border-style: solid;
+  border-width: 1px;
+  -webkit-box-shadow: inset 0 1px 0 0 #1891ee;
+  box-shadow: inset 0 1px 0 0 #1891ee;
+  color: white;
+  margin: 1em 1.5em; }
+
+.intel-hdr-btn-back:hover,
+.intel-hdr-btn-next:hover {
+  background-color: #1891ee;
+  border-color: transparent;
+  -webkit-box-shadow: inset 0 1px 0 0 #00aeef;
+  box-shadow: inset 0 1px 0 0 #00aeef;
+  text-decoration: none; }
+
+.intel-hdr-btn-back:active,
+.intel-hdr-btn-next:active {
+  background-color: #0055a5;
+  border-color: #004280;
+  -webkit-box-shadow: inset 0 1px 0 0 #1891ee;
+  box-shadow: inset 0 1px 0 0 #1891ee;
+  color: white; }
+
+.intel-hdr-btn-back:after,
+.intel-hdr-btn-next:after,
+.intel-hdr-btn-back:before,
+.intel-hdr-btn-next:before {
+  border-style: solid;
+  border-width: 1em;
+  content: '';
+  height: 0;
+  position: absolute;
+  top: 0;
+  width: 0; }
+
+/* Before */
+.intel-hdr-btn-next:before {
+  /* triangle border */
+  border-color: transparent transparent transparent #0055a5;
+  right: -2.05em; }
+
+.intel-hdr-btn-next:hover:before {
+  border-color: transparent transparent transparent #1891ee; }
+
+.intel-hdr-btn-next:active:before {
+  border-color: transparent transparent transparent #004280; }
+
+.intel-hdr-btn-back:before {
+  /* border of triangle */
+  border-color: transparent #0055a5 transparent transparent;
+  left: -2.075em; }
+
+.intel-hdr-btn-back:hover:before {
+  border-color: transparent #1891ee transparent transparent; }
+
+.intel-hdr-btn-back:active:before {
+  border-color: transparent #004280 transparent transparent; }
+
+/* After */
+.intel-hdr-btn-next:after {
+  /* triangle body */
+  border-color: transparent transparent transparent #0071c5;
+  right: -2em; }
+
+.intel-hdr-btn-next:hover:after {
+  border-color: transparent transparent transparent #1891ee; }
+
+.intel-hdr-btn-next:active:after {
+  border-color: transparent transparent transparent #0055a5; }
+
+.intel-hdr-btn-back:after {
+  /* body of trianlge */
+  border-color: transparent #0071c5 transparent transparent;
+  left: -2em; }
+
+.intel-hdr-btn-back:hover:after {
+  border-color: transparent #1891ee transparent transparent; }
+
+.intel-hdr-btn-back:active:after {
+  border-color: transparent #0055a5 transparent transparent; }
+
+/*** Left Image Border ***/
+.intel-border-left-img {
+  margin-left: 1em; }
+
+.intel-border-left-img:before {
+  background: url("../images/circuit_549x549.png") -55px -238px;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1em; }
+.social-icon{
+	width:112px;
+	float:right;
+	height:25px;
+	}
+.social-icon a{
+	width:24px;
+	float:right;
+	height:25px;
+	margin-left:4px;
+	margin-top:37px;
+	}
+
+/* --------------------------
+ * RESPONSIVE HEADER
+ * --------------------------
+*/
+/*** Header Title ***/
+.intel-hdr-title-1CD,
+.intel-hdr-title-2A,
+.intel-hdr-title-2CD {
+  display: inline-block;
+  letter-spacing: normal;
+  text-rendering: auto;
+  word-spacing: normal; }
+
+@media screen and (min-width: 481px) {
+  .intel-mobile {
+    display: none; }
+
+  .intel-hdr-title-1CD {
+    width: 33.3333%; }
+
+  .intel-hdr-title-2A {
+    width: 50%; }
+
+  .intel-hdr-title-2CD {
+    width: 50%; } }
+@media screen and (max-width: 480px) {
+  .intel-desktop {
+    display: none; }
+
+  .intel-hdr-logo {
+    padding: 0.25em;
+    margin: 0.6em 0.5em 0.6em 0.5em;
+    vertical-align: top; }
+
+  /*** Header Title ***/
+  .intel-hdr-title-1CD {
+    width: 50%;
+    text-align: center; }
+
+  .intel-hdr-title-2A {
+    width: 66.6666%; }
+
+  .intel-hdr-title-2B {
+    padding: 0; }
+
+  .intel-hdr-title-2CD {
+    width: 50%;
+    text-align: center; }
+
+  .intel-hdr-subtitle {
+    display: none; }
+   .social-icon{
+	   display: none;
+	   }

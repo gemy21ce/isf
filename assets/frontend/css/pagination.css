@@ -1,0 +1,110 @@
+/* --------------------------
+ * PAGINATION
+ * --------------------------
+*/
+.intel-pagination {
+  display: block;
+  font-size: 0;
+  margin: 0;
+  padding: 20px; }
+
+ul.intel-pagination {
+  list-style: none; }
+
+ul.intel-pagination li {
+  display: inline-block; }
+
+.intel-pagination a {
+  border: 1px solid transparent;
+  color: #0071c5;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 0.75em; }
+
+.intel-pagination a.active {
+  color: #53565a; }
+
+/*** PAGINATION Boxed ***/
+.intel-pagination-boxed {
+  display: block;
+  font-size: 0;
+  margin: 0;
+  padding: 20px; }
+
+ul.intel-pagination-boxed {
+  list-style: none; }
+
+ul.intel-pagination-boxed li {
+  /*display: inline-block;*/
+  float: left; }
+
+.intel-pagination-boxed a {
+  background-color: #edeff0;
+  border-color: #d3d8db;
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
+  color: #0071c5;
+  /*display:inline-block;*/
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.65em;
+  margin: 0;
+  padding: 0 0.75em; }
+
+/* First and last buttons */
+ul.intel-pagination-boxed li:first-child a,
+ul.intel-pagination-boxed li:last-child a,
+.intel-pagination-boxed > a:first-child,
+.intel-pagination-boxed > a:last-child,
+.intel-pagination-boxed > a:first-child:hover,
+.intel-pagination-boxed > a:last-child:hover {
+  background-color: white;
+  border-color: #d3d8db;
+  border-style: solid;
+  border-width: 1px 1px 1px 0px;
+  color: #0071c5;
+  font-weight: bold; }
+
+.intel-pagination-boxed > a:first-child,
+.intel-pagination-boxed > a:first-child:hover,
+ul.intel-pagination-boxed li:first-child a,
+ul.intel-pagination-boxed li:first-child a:hover {
+  border-width: 1px; }
+
+.intel-pagination-boxed a:hover {
+  background-color: white; }
+
+.intel-pagination-boxed a.active {
+  background-color: white;
+  border-color: #d3d8db;
+  border-style: solid;
+  border-width: 1px 1px 1px 0px;
+  color: #53565a;
+  position: relative; }
+
+.intel-pagination-boxed a.active:before,
+.intel-pagination-boxed a.active:after {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0.33em;
+  content: "";
+  height: 0;
+  left: 45%;
+  left: -webkit-calc(50% - 0.33em);
+  left: -moz-calc(50% - 0.33em);
+  left: calc(50% - 0.33em);
+  position: absolute;
+  width: 0; }
+
+.intel-pagination-boxed a.active:before {
+  border-bottom-color: #d3d8db;
+  bottom: 0; }
+
+.intel-pagination-boxed a.active:after {
+  border-bottom-color: white;
+  bottom: -1px; }
+
+@media (max-width: 480px) {
+  .intel-pagination-boxed a {
+    font-size: 16px; } }

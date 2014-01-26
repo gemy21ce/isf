@@ -1,0 +1,97 @@
+/* --------------------------
+ * DROPDOWN & SLIDING MENUS
+ * --------------------------
+*/
+/*** DropDown ***/
+.intel-select {
+  background-color: white;
+  border: 1px solid #d3d8db;
+  color: #53565a;
+  display: inline-block;
+  margin: 0.5em 1em 0.5em 0.5em;
+  padding: 0.5em;
+  position: relative; }
+
+.intel-select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 0 0 0;
+  padding: 0 1.75em 0 0;
+  text-indent: 0.01px;
+  text-overflow: ''; }
+
+.intel-select select:active,
+.intel-select select:focus {
+  outline: 0; }
+
+.intel-select:before {
+  border-left: 1px solid #d3d8db;
+  bottom: 0;
+  color: white;
+  right: 1.75em;
+  top: 0;
+  content: '.';
+  z-index: 100; }
+
+.intel-select:after {
+  background-color: white;
+  bottom: 0.4em;
+  color: #0071c5;
+  content: '^';
+  height: 0.5em;
+  font-weight: bold;
+  right: 0.5em;
+  pointer-events: none;
+  position: absolute;
+  -webkit-transform: rotate(180deg) scale(1.5, 1);
+  -moz-transform: rotate(180deg) scale(1.5, 1);
+  -ms-transform: rotate(180deg) scale(1.5, 1);
+  transform: rotate(180deg) scale(1.5, 1);
+  width: 0;
+  z-index: 10; }
+
+.intel-select:after,
+.intel-select:before {
+  font-weight: bold;
+  pointer-events: none;
+  position: absolute;
+  width: 0; }
+
+.intel-select select option {
+  color: #53565a;
+  font-size: 14px; }
+
+/*** DROPDOWNS@MOBILE ***/
+@media (max-width: 480px) {
+  .intel-select {
+    margin-left: 0;
+    width: 85%; }
+
+  .intel-select:after,
+  .intel-select:before {
+    -ms-transform: scale(0, 0); }
+
+  .intel-select select {
+    width: 100%; } }
+/*** IE9 and IE10 fallback rule sets go here ***/
+@media screen and (min-width: 0 \0) {
+  .intel-select {
+    border: none; }
+
+  .intel-select:after {
+    display: none; }
+
+  .intel-select select, select {
+    border: 1px solid #d3d8db;
+    height: 2.25em;
+    padding: 0; }
+
+  .intel-select:before {
+    border-left: none; } }
+/*** SLIDING MENU ***/

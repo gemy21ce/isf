@@ -1,0 +1,118 @@
+/* --------------------------
+ * FORMS
+ * --------------------------
+*/
+/*** GLOBAL ***/
+.intel-form fieldset {
+  border: 0;
+  font-family: "Open Sans", Arial;
+  margin: 0;
+  padding: 0.35em 0 0.75em; }
+
+.intel-form legend {
+  border-bottom: 1px solid #d3d8db;
+  color: #53565a;
+  display: block;
+  font-size: 1.25em;
+  margin-top: 1.0em;
+  padding: 0.3em 0;
+  width: 100%; }
+
+.intel-form label {
+  color: #53565a;
+  font-weight: bold;
+  margin: 0.75em 0 0 0; }
+
+.intel-form input {
+  border: 1px solid #d3d8db;
+  color: #53565a;
+  font-size: 14px;
+  padding: 0.5em; }
+
+.intel-form a,
+.intel-form button,
+.intel-form input,
+.intel-form select {
+  font-family: "Open Sans", Arial; }
+
+/*** HTML5 Placeholder styles ***/
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+  color: #939598; }
+
+.intel-form hr {
+  color: #00aeef;
+  min-height: 1px; }
+
+/*** COMPACT ***/
+.intel-form.intel-compact input {
+  margin: 0.5em; }
+
+.intel-form.intel-compact label {
+  display: inline-block; }
+
+/*** GROUPED ***/
+.intel-form.pure-form input[type=text],
+.intel-form.pure-form input[type=password],
+.intel-form.pure-form input[type=email],
+.intel-form.pure-form input[type=url],
+.intel-form.pure-form input[type=date],
+.intel-form.pure-form input[type=month],
+.intel-form.pure-form input[type=time],
+.intel-form.pure-form input[type=datetime],
+.intel-form.pure-form input[type=datetime-local],
+.intel-form.pure-form input[type=week],
+.intel-form.pure-form input[type=number],
+.intel-form.pure-form input[type=search],
+.intel-form.pure-form input[type=tel],
+.intel-form.pure-form input[type=color],
+.intel-form.pure-form select,
+.intel-form.pure-form textarea {
+  border: 1px solid #d3d8db;
+  box-shadow: none;
+  font-family: "Open Sans", Arial;
+  font-size: 14px; }
+
+/*** FROMS@MOBILE ***/
+@media (max-width: 480px) {
+  .intel-form {
+    padding: 0.5em; }
+
+  .intel-form input {
+    width: 85%; }
+
+  .intel-form .intel-btn {
+    margin-left: 0;
+    margin-right: 0; }
+
+  /*** Multi-colum Controls ***/
+  .intel-form.pure-form-stacked .pure-u-1-2,
+  .intel-form.pure-form-stacked .pure-u-1-3,
+  .intel-form.pure-form-stacked .pure-u-2-3,
+  .intel-form.pure-form-stacked .pure-u-1-4,
+  .intel-form.pure-form-stacked .pure-u-3-4,
+  .intel-form.pure-form-stacked .pure-u-1-5,
+  .intel-form.pure-form-stacked .pure-u-2-5,
+  .intel-form.pure-form-stacked .pure-u-3-5,
+  .intel-form.pure-form-stacked .pure-u-1-6,
+  .intel-form.pure-form-stacked .pure-u-5-6,
+  .intel-form.pure-form-stacked .pure-u-1-8,
+  .intel-form.pure-form-stacked .pure-u-3-8,
+  .intel-form.pure-form-stacked .pure-u-5-8,
+  .intel-form.pure-form-stacked .pure-u-1-12,
+  .intel-form.pure-form-stacked .pure-u-5-12,
+  .intel-form.pure-form-stacked .pure-u-7-12,
+  .intel-form.pure-form-stacked .pure-u-1-24,
+  .intel-form.pure-form-stacked .pure-u-5-24,
+  .intel-form.pure-form-stacked .pure-u-7-24,
+  .intel-form.pure-form-stacked .pure-u-11-24,
+  .intel-form.pure-form-stacked .pure-u-13-24,
+  .intel-form.pure-form-stacked .pure-u-17-24,
+  .intel-form.pure-form-stacked .pure-u-19-24 {
+    width: 100%; }
+
+  /*** Grouped Inputs ***/
+  .intel-form .pure-group input {
+    width: 90%; } }

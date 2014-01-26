@@ -1,0 +1,244 @@
+/* --------------------------
+ * BASE MLAF v0.6
+ * --------------------------
+*/
+body {
+  color: #53565a;
+  font-family: "Open Sans", Arial;
+  font-size: 14px;
+  line-height: 1.65em;
+  margin: 0 auto;
+  position: relative;}
+
+a {
+  color: #0071c5;
+  display: inline-block;
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline; }
+
+hr {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  color: #d3d8db;
+  margin: 0 0 1.3em 0; }
+
+h2 + hr {
+  margin-top: -0.75em; }
+
+body h1,
+body h2,
+body h3 {
+  font-family: "Open Sans", Arial;
+  font-weight: 200; }
+
+body h1 {
+  font-size: 3em;
+  line-height: 50px;
+  margin: 0.25em 0; }
+
+body h2 {
+  font-size: 1.5em; }
+
+body h3 {
+  font-size: 1.2em; }
+
+/*** FONTS ***/
+.intel-font-open-sans {
+  font-weight: 400; }
+
+.intel-font-open-sans-bold {
+  font-weight: 700; }
+
+.intel-font-open-sans-light {
+  font-weight: 300; }
+
+/*** Alignment ***/
+.intel-center {
+  text-align: center; }
+
+.intel-right {
+  text-align: right; }
+
+/*** BOX ***/
+.intel-box {
+  padding: 1.3em; }
+
+.intel-vbox {
+  padding: 1.3em 0; }
+
+.intel-hbox {
+  padding: 0 1.3em; }
+
+.intel-indent {
+  padding: 0 0 1.3em 1.3em; }
+
+.intel-wrap {
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  position: relative; }
+
+/*** Intel Layout boxes ***/
+.intel-u-1,
+.intel-u-1-2,
+.intel-u-1-3,
+.intel-u-1-4,
+.intel-u-2-3,
+.intel-u-3-4,
+.intel-u-fixed-mobile {
+  display: inline-block;
+  letter-spacing: normal;
+  text-rendering: auto;
+  vertical-align: top; }
+
+.intel-u-1 {
+  width: 100%; }
+
+.intel-u-1-2 {
+  width: 50%; }
+
+.intel-u-1-3 {
+  width: 33.33333%; }
+
+.intel-u-1-4 {
+  width: 25%; }
+
+.intel-u-2-3 {
+  width: 66.6666%; }
+
+.intel-u-3-4 {
+  width: 75%; }
+
+.intel-u-fixed-mobile {
+  width: 480px; }
+
+/*** CONTENT ***/
+.intel-content {
+  padding: 1.0em; }
+
+/*** FOOTER ***/
+.intel-footer {
+  padding: 1.3em; }
+ .Footer{
+	 width:100%;
+	 height:50px;
+	 border-top:3px solid #0071c5;
+	 float:left;
+	 background:#FFF;
+	 margin-top:15px;
+	 position:fixed;
+	 bottom:0px;
+	 }
+.footer-company-logo{
+	float:right;
+	display:block;
+	}
+.footer-company-logo a{
+	float:right;
+	margin-top:5px;
+	margin-right:5px;
+	}
+.footer-company-logo a img{
+	height:40px;
+	}
+.footer-text{
+	float:left;
+	font-size:14px;
+	margin-left:10px;
+	line-height:18px;
+	margin-top:5px;
+	}
+.footer-text span{
+	font-size:12px;
+	}
+/*** BASE@MOBILE ***/
+@media (min-width: 480px) {
+	.footer-company-logo{
+	display:block!important;
+	}
+.footer-text{
+	font-size:14px!important;
+	}
+.footer-text span{
+	font-size:12px !important;
+	}
+.Footer{display:block!important;
+	 }}
+/*** BASE@MOBILE ***/
+@media (max-width: 480px) {
+  body {
+    font-
+	size: 14px; }
+
+  .intel-content {
+    padding: 0; }
+
+  .intel-desktop {
+    display: none; }
+
+  .intel-tablet {
+    display: none; }
+
+  .intel-indent {
+    padding: 0 0 0.5em 0.5em; }
+
+  /*** CONTAINERS ***/
+  .intel-u-fixed-mobile {
+    width: 100%; }
+	.footer-company-logo{
+	display:none;
+	}
+.footer-text{
+	font-size:10px;
+	}
+.footer-text span{
+	font-size:8px;
+	}
+.Footer{display:none;
+	 }
+	 }
+@media (max-width: 320px) {
+  .intel-box {
+    padding: 0; } }
+.login-form{
+	width:185px;
+	height:350px;
+	border: 3px solid #d3d8db;
+	border-radius: 5px;
+	background:#fff;
+	margin:0 auto;
+	padding:50px;
+	}
+.intel-checkbox a{
+	color:#0071c5;
+	}
+.intel-checkbox a:hover{
+	color:#0071c5;
+	text-decoration:underline;
+	}
+.login-fotter-logo{
+	border-top:1px solid #d3d8db;
+	margin-top:10px;
+	}
+.login-fotter-logo a{
+	margin:0px 2px;
+	}
+.login-logo{
+	width:100px;
+	height:117px;
+	margin-top:-110px;
+	margin-left:42px;
+	}
+.footer-company-logo{
+	display:none;
+	}
+.footer-text{
+	font-size:10px;
+	}
+.footer-text span{
+	font-size:8px;
+	}
+.Footer{display:none;
+	 }}

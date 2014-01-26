@@ -1,0 +1,107 @@
+/* --------------------------
+ * BREADCRUMBS
+ * --------------------------
+*/
+.intel-breadcrumb {
+  display: block;
+  font-size: 0;
+  /* Needed for spacing issue of contained children */
+  line-height: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.intel-breadcrumb li {
+  background-color: #edeff0;
+  border-color: #d3d8db;
+  border-style: solid;
+  border-width: 1px 0 1px 1px;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.65em;
+  margin: 0;
+  padding: 0.1em 0.5em 0.1em 1.5em;
+  position: relative; }
+
+.intel-breadcrumb li:first-child {
+  padding-left: 0.5em;
+  border-left-color: #d3d8db; }
+
+.intel-breadcrumb li:last-child {
+  border-width: 1px; }
+
+.intel-breadcrumb li:hover {
+  background-color: white; }
+
+.intel-breadcrumb li:after,
+.intel-breadcrumb li:before {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0.99em;
+  content: '';
+  height: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+  z-index: 1; }
+
+.intel-breadcrumb li:before {
+  border-left-color: #d3d8db;
+  right: -1.9em; }
+
+.intel-breadcrumb li:after {
+  border-left-color: #edeff0;
+  right: -1.8em;
+  /*** Fallback for IE8 ***/
+  right: -webkit-calc(-1.9em + 1px);
+  right: -moz-calc(-1.9em + 1px);
+  right: calc(-1.9em + 1px); }
+
+.intel-breadcrumb li:hover:after {
+  border-left-color: white; }
+
+.intel-breadcrumb li.active {
+  background-color: white; }
+
+.intel-breadcrumb li.active:after,
+.intel-breadcrumb li.active:before {
+  display: none; }
+
+.intel-breadcrumb li a {
+  color: #0071c5; }
+
+.intel-breadcrumb li.active a {
+  color: #53565a;
+  text-decoration: none;
+  cursor: text; }
+
+/*** BREADCRUMB - Minimal ***/
+.intel-breadcrumb-min {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.intel-breadcrumb-min li {
+  display: inline-block;
+  padding: 0.1em 0.5em 0.1em 0em;
+  position: relative; }
+
+.intel-breadcrumb-min li:first-child {
+  padding-left: 0.5em; }
+
+.intel-breadcrumb-min li:after {
+  content: '>';
+  color: #53565a;
+  font-weight: bold;
+  margin-left: 0.5em; }
+
+.intel-breadcrumb-min li.active:after,
+.intel-breadcrumb-min li.active:before {
+  display: none; }
+
+.intel-breadcrumb-min li a {
+  color: #0071c5; }
+
+.intel-breadcrumb-min li.active a {
+  color: #53565a; }
