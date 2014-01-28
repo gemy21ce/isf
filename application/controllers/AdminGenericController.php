@@ -20,6 +20,8 @@ abstract class AdminGenericController extends CI_Controller {
             $this->resourceType = $resourceType;
             $this->is_logged_in($resourceType);
         }
+        date_default_timezone_set('Africa/Cairo');
+        $this->load->helper('date');
     }
     
     /**

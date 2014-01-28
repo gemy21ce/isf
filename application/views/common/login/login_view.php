@@ -54,12 +54,12 @@
     <body>
         <div class="login-form" id="login-form">
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
-            <form action="home/login" method="post" class="intel-form pure-form-stacked">
+            <form action="<?php echo base_url(); ?>home/login" method="post" class="intel-form pure-form-stacked">
                 <label for="email">البريد الاليكتروني</label>
-                <input id="email" type="email" placeholder="البريد الاليكتروني"/>
+                <input id="email" name="email" type="email" placeholder="البريد الاليكتروني"/>
 
                 <label for="password">كلمة المرور</label>
-                <input id="password" type="password" placeholder="كلمة المرور"/>
+                <input id="password" name="password" type="password" placeholder="كلمة المرور"/>
                 <?php if (isset($errormessage)) { ?>
                 <div id="errorDiv" class="intel-checkbox">
                         <a style="color:red;font-size: 12px;line-height: 0em;">خطأ في اسم البريد الاليكتروني أو كلمة السر</a>

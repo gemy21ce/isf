@@ -10,13 +10,13 @@ $(document).ready( function() {
 function initMasterLookAndFeel() {
 	try {	
 		/*** HEADER ***/
-		$(".intel-hdr").each( function() {
+		/**$(".intel-hdr").each( function() {
 			if (!($(this).attr('id'))) {
 				$(this).attr("id", "hdr"+ IUtility.guid()); 				
 			}
 			var tmpHeader = new IHeader("#" + $(this).attr("id"), null, null, null, null, null, null);
 			tmpHeader.init();
-		});	
+		}); **/	
 			
 		/*** TABLE ***/
 		$(".intel-table").each( function() {
@@ -196,8 +196,8 @@ var IHeader = function ( newContext, fnSearch, fnHelp, fnMenu, fnBack, fnNext, u
 					    return Math.floor((((this - firstDay) / 86400000))/7 + 1);
 					};	
 			
-					var dt = new Date();
-					$(this.context + " .intel-hdr-ww").text("WW" + dt.getWeek() + ", " + dt.getFullYear());	
+//					var dt = new Date();
+//					$(this.context + " .intel-hdr-ww").text("WW" + dt.getWeek() + ", " + dt.getFullYear());	
 				}				
 			}
 			catch (e) {
