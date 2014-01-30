@@ -7,18 +7,18 @@
  */
 abstract class AdminGenericController extends CI_Controller {
     
-    var $resourceType = '';
+    var $resourceType = array();
     
     /**
      * constract the main controler
      * @param boolean $allowValidation
      */
-    function __construct($allowValidation = true,$resourceType = '') 
+    function __construct($allowValidation = true,$resourceType = array()) 
     {
         parent::__construct();
         if($allowValidation) {
             $this->resourceType = $resourceType;
-            $this->is_logged_in($resourceType);
+//            $this->is_logged_in($resourceType);
         }
         date_default_timezone_set('Africa/Cairo');
         $this->load->helper('date');
@@ -36,7 +36,7 @@ abstract class AdminGenericController extends CI_Controller {
             redirect(site_url());
             die ();
         }
-        if($this->resourceType != $userType){
+        if(!in_array($userType,$this->resourceType)){
             redirect(site_url()."home/accessdenaied");
             die ();
         }

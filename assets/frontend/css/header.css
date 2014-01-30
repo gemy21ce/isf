@@ -21,14 +21,14 @@
 
 .intel-hdr-infobar .intel-hdr-help,
 .intel-hdr-infobar .intel-hdr-user,
-.intel-hdr-infobar .intel-hdr-ww {
+.intel-hdr-infobar .intel-hdr-ww,.intel-hdr-logout {
   display: inline-block;
   margin-bottom: 0.03em;
   margin-top: 0.03em;
   padding: 0.25em; }
 
 .intel-hdr-infobar .intel-hdr-ww,
-.intel-hdr-infobar .intel-hdr-user {
+.intel-hdr-infobar .intel-hdr-user,.intel-hdr-logout {
   border-right: 0.15em solid white; }
 
 .intel-hdr-infobar .intel-hdr-help {

@@ -40,8 +40,8 @@
                     <div class="intel-hdr-box-info-left">
                         <div class="intel-hdr-infobar">
                             <span class="intel-hdr-ww"><?php echo date("M d Y") ?></span>
-                            <span class="intel-hdr-user">Hello 
-                                <?php $user = $this->session->all_userdata(); ?>!
+                            <span class="intel-hdr-user"> 
+                                <?php $user = $this->session->all_userdata(); ?>
                             </span>
                             <script type="text/javascript">
                                 $(function() {
@@ -54,6 +54,9 @@
                                     });
                                 });
                             </script>
+                            <span class="intel-hdr-logout"><a href="<?php echo base_url(); ?>home/logout" style="color: white;" >
+                                                             Logout !
+                                                        </a></span>
                             <!--                            <a href="javascript:void(0);" class="intel-hdr-help">
                                                             <span class="icon-b_help"> </span>
                                                             Help
@@ -87,10 +90,10 @@
                 <a href="javascript:void(0);" class="intel-hdr-btn-next-simple ">Next <span class="icon-a_right"> </span></a>
             </div>	
         </header>
-        <div class="intel-tab" id="tab656864e7-cf97-c7d5-0f10-3f47c721042c" init="true">
+        <div class="intel-tab" id="tabs" init="true">
             <ul>
-                <li><a href="javascript:void(0);" tab="#tab1" class="active">Admin</a></li>
-                <li><a href="javascript:void(0);" tab="#tab2">Judges</a></li>
+                <li><a href="<?= base_url(); ?>admin/usermanager/home" tab="#admins" class="active">Admin</a></li>
+                <li><a href="<?= base_url(); ?>admin/usermanager/judges" tab="#judges">Judges</a></li>
                 <li><a href="javascript:void(0);" tab="#tab3">Teams</a></li>
                 <li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>
                 <li><a href="javascript:void(0);" tab="#tab5">More...</a></li>
