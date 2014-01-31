@@ -1,10 +1,10 @@
 <article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4c">
     <section class="active" id="teams">
         <span class="Content-body">
-            <h2 id="Admin"><?= $this->session->userdata('name') ?></h2>
+            <h2 id="Admin">Projects</h2>
             <hr/>
             <div class="contant-contaner">
-                <link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
+                <!--<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />-->
                 <style type="text/css">
                     table.display td{
                         text-align: center;
@@ -39,12 +39,12 @@
 
                 <span class="creat-botton-contaner">
                     <span class="creat-content-icon"></span>
-                    <span class="creat-botton">
+<!--                    <span class="creat-botton">
                         <a href="<?php echo base_url(); ?>admin/projectcontroller/add">Add Project</a>
-                    </span>
+                    </span>-->
 
                 </span>
-                <table cellpadding="0" cellspacing="0" border="0" class="display"  id="tableData">
+                <table cellpadding="0" cellspacing="0" border="0" class="intel-table"  id="tableData">
                     <thead>
                         <tr>
                             <th width="20%">Project name</th>
@@ -75,7 +75,7 @@
                         </tr>
                     </tfoot>
                 </table>
-
+                <?= anchor(base_url()."admin/projectcontroller/add", 'Add New Admin','class="intel-btn intel-btn-action"') ?>
             </div>
         </span>
     </section>
