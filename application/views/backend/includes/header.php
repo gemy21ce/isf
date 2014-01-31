@@ -94,7 +94,7 @@
             <ul>
                 <li><a href="<?= base_url(); ?>admin/usermanager/home" tab="#admins" class="active">Admin</a></li>
                 <li><a href="<?= base_url(); ?>admin/usermanager/judges" tab="#judges">Judges</a></li>
-                <li><a href="javascript:void(0);" tab="#tab3">Teams</a></li>
+                <li><a href="<?= base_url(); ?>admin/projectcontroller/home" tab="#teams">Teams</a></li>
                 <li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>
                 <li><a href="javascript:void(0);" tab="#tab5">More...</a></li>
             </ul>
