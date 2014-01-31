@@ -28,6 +28,16 @@ function checkInputVal($var) {
         <?php if (isset($errors)) echo "<p class='error' >" . $errors['name']['error'] . "</p>"; ?>
         <input type="text" id="name" name="name" value="<?= checkInput("name") ?>" />
     </p>
+    
+    <p>    
+        <label>Number of students <span class="error">*</span>:</label>
+        <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['category_id']['error'] . "</p>"; ?>
+        <select id="category_id" name="category_id">
+            <?php for($i=1; $i<4 ; $i++) {?>
+            <option value="<?=$i?>" <?=  checkInputVal("num_of_students")?$_POST['num_of_students']==$i?"selected":"":""?>><?=$i?></option>
+            <?php } ?>
+        </select>
+    </p>
     <p>    
         <label>Team leader name<span class="error">*</span>:</label>
         <?php if (isset($errors)) echo "<p class='error' >" . $errors['team_leader_name']['error'] . "</p>"; ?>
@@ -98,14 +108,14 @@ function checkInputVal($var) {
     </p>
     
     <p>    
-        <label>adult_sponsor_email:</label>
+        <label>Adult sponsor email:</label>
         <?php if (isset($errors)) echo "<p class='error' >" . $errors['adult_sponsor_email']['error'] . "</p>"; ?>
         <input type="text" id="adult_sponsor_email" name="adult_sponsor_email" value="<?= checkInput("adult_sponsor_email") ?>" />
     </p>
     
     
     <p>    
-        <label>continuation_project:</label>
+        <label>Continuation project:</label>
         <input type="checkbox" id="continuation_project" name="continuation_project" value="1" checked="<?= checkInputVal("adult_sponsor_email")?"true":"false" ?>" />
     </p>
     
@@ -116,12 +126,59 @@ function checkInputVal($var) {
         <input type="text" id="start_date" name="start_date" value="<?= checkInput("start_date") ?>" />
     </p>
     <p>    
-        <label>Start date<span class="error">*</span>:</label>
+        <label>End date:</label>
         <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['end_date']['error'] . "</p>"; ?>
         <input type="text" id="end_date" name="end_date" value="<?= checkInput("end_date") ?>" />
     </p>
     
-
+    <p>    
+        <label>Category <span class="error">*</span>:</label>
+        <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['category_id']['error'] . "</p>"; ?>
+        <select id="category_id" name="category_id">
+            <?php foreach($categories as $category) {?>
+            <option value="<?=$category->id?>" <?=  checkInputVal("category_id")?$_POST['category_id']==$category->id?"selected":"":""?>><?=$category->name?></option>
+            <?php } ?>
+        </select>
+    </p>
+    
+    <p>    
+        <label>Sub Category:</label>
+        <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['sub_category_id']['error'] . "</p>"; ?>
+        <span id="sub_category_div">
+            <select id="sub_category_id" name="sub_category_id">
+                <?php foreach($subcategories as $subcategory) {?>
+                <option value="<?=$subcategory->id?>" <?=  checkInputVal("sub_category_id")?$_POST['sub_category_id']==$category->id?"selected":"":""?>><?=$subcategory->name?></option>
+                <?php } ?>
+            </select>
+        </span>
+    </p>
+    
+    <p>
+        <label>Project description <span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['description']['error'] . "</p>"; ?>
+        <textarea id="description" name="description" ><?= checkInput("description") ?></textarea>
+    </p>
+    <p>
+        <label>Project plan <span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['plan']['error'] . "</p>"; ?>
+        <textarea id="plan" name="plan" ><?= checkInput("plan") ?></textarea>
+    </p>
+    <p>
+        <label>Per-research results <span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['per_researchs_results']['error'] . "</p>"; ?>
+        <textarea id="per_researchs_results" name="per_researchs_results" ><?= checkInput("per_researchs_results") ?></textarea>
+    </p>
+    <p>
+        <label>Assumptions <span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['assumptions']['error'] . "</p>"; ?>
+        <textarea id="assumptions" name="assumptions" ><?= checkInput("assumptions") ?></textarea>
+    </p>
+    <p>
+        <label>Research resources <span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['research_resources']['error'] . "</p>"; ?>
+        <textarea id="research_resources" name="research_resources" ><?= checkInput("research_resources") ?></textarea>
+    </p>
+    
     <?php
     echo form_submit('submit', 'save');
 

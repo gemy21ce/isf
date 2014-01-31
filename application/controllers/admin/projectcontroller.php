@@ -50,6 +50,15 @@ class ProjectController extends AdminGenericController
     
     public function add()
     {
+        $this->load->model("category");
+        $this->load->model("subcategory");
+        $categories = new Category();
+        $categories->get();
+        
+        $subcategories = new Subcategory();
+        $subcategories->get();
+        $data['categories'] = $categories;
+        $data['subcategories'] = $subcategories;
         $data['main_content'] = 'backend/admin/projects/project_form';
         $this->load->view('backend/includes/template', $data);
     }
