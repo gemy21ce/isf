@@ -7,11 +7,11 @@ ALTER TABLE  `project` ADD INDEX (  `sub_category_id` ) ;
 ALTER TABLE  `project` ADD INDEX (  `category_id` ) ;
 
 
-ALTER TABLE  `project` ADD FOREIGN KEY (  `sub_category_id` ) REFERENCES  `isf`.`sub_category` (
+ALTER TABLE  `project` ADD FOREIGN KEY (  `sub_category_id` ) REFERENCES  `sub_category` (
 `id`
 ) ON DELETE SET NULL ON UPDATE SET NULL ;
 
-ALTER TABLE  `project` ADD FOREIGN KEY (  `category_id` ) REFERENCES  `isf`.`category` (
+ALTER TABLE  `project` ADD FOREIGN KEY (  `category_id` ) REFERENCES  `category` (
 `id`
 ) ON DELETE SET NULL ON UPDATE SET NULL ;
 

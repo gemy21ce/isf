@@ -46,10 +46,18 @@ function checkInputVal($var) {
     <span class="Content-body">
         <h2>Project information</h2>
         <hr/>
-
+        <style>
+            input[type="text"]{
+                width:300px;
+            }
+            textarea{
+                width: 300px;
+                height: 60px;
+            }
+        </style>
 
         <?php
-        echo form_open('admin/projectcontroller/save',array("class"=>"intel-form pure-form-stacked","id"=>"project_form"));
+        echo form_open('admin/projectcontroller/save',array("class"=>"intel-form pure-form-stacked","id"=>"project_form","style"=>"padding-left: 25px;"));
         ?>
 
         <?php if (checkInputVal("id")) { ?>

@@ -41,13 +41,13 @@ ALTER TABLE  `exhibition` CHANGE  `id`  `id` INT( 11 ) NOT NULL AUTO_INCREMENT ;
 ALTER TABLE  `project` ADD  `exhibition_id` INT NULL ,
 ADD INDEX (  `exhibition_id` ) ;
 
-ALTER TABLE  `project` ADD FOREIGN KEY (  `exhibition_id` ) REFERENCES  `isf`.`exhibition` (
+ALTER TABLE  `project` ADD FOREIGN KEY (  `exhibition_id` ) REFERENCES  `exhibition` (
 `id`
 ) ON DELETE SET NULL ON UPDATE SET NULL ;
 
 
 
 
-INSERT INTO `isf`.`exhibition` (`id`, `name`) VALUES (NULL, 'اسوان'), (NULL, 'الاقصر'), (NULL, 'قنا'), (NULL, 'المنيا'), (NULL, 'سوهاج'), (NULL, 'الفيوم'), (NULL, 'الاسماعيلية'), (NULL, 'الاسكندرية'), (NULL, 'القليوبية'), (NULL, 'الشرقية'), (NULL, 'الغربية'), (NULL, 'الدقهلية'), (NULL, 'كفر الشيخ'), (NULL, 'الجامعه الامريكية'), (NULL, 'مدرسة المتفوقين'), (NULL, 'القاهرة'), (NULL, 'الجيزة'), (NULL, 'MSA جامعه'), (NULL, 'مكتبة الاسكندرية');
+INSERT INTO `exhibition` (`id`, `name`) VALUES (NULL, 'اسوان'), (NULL, 'الاقصر'), (NULL, 'قنا'), (NULL, 'المنيا'), (NULL, 'سوهاج'), (NULL, 'الفيوم'), (NULL, 'الاسماعيلية'), (NULL, 'الاسكندرية'), (NULL, 'القليوبية'), (NULL, 'الشرقية'), (NULL, 'الغربية'), (NULL, 'الدقهلية'), (NULL, 'كفر الشيخ'), (NULL, 'الجامعه الامريكية'), (NULL, 'مدرسة المتفوقين'), (NULL, 'القاهرة'), (NULL, 'الجيزة'), (NULL, 'MSA جامعه'), (NULL, 'مكتبة الاسكندرية');
 
 ALTER TABLE  `project` ADD  `submission_date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;

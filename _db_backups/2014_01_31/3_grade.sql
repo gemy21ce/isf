@@ -41,7 +41,7 @@ INSERT INTO `grade` (`id`, `name`) VALUES
 (2, 'الصف الاول الاعدادي');
 
 
-INSERT INTO `isf`.`grade` (`id`, `name`) VALUES (NULL, 'الصف الثاني الاعدادي'), (NULL, 'الصف الثالث الاعدادي'), (NULL, 'الصف الاول الثانوي'), (NULL, 'الصف الثاني الثانوي'), (NULL, 'الصف الثالث الثانوي'), (NULL, 'الصف الرابع الثانوي - خاص بالتعليم الفني'), (NULL, 'الصف الخامس الثانوي - خاص بالتعليم الفني');
+INSERT INTO `grade` (`id`, `name`) VALUES (NULL, 'الصف الثاني الاعدادي'), (NULL, 'الصف الثالث الاعدادي'), (NULL, 'الصف الاول الثانوي'), (NULL, 'الصف الثاني الثانوي'), (NULL, 'الصف الثالث الثانوي'), (NULL, 'الصف الرابع الثانوي - خاص بالتعليم الفني'), (NULL, 'الصف الخامس الثانوي - خاص بالتعليم الفني');
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
@@ -52,6 +52,6 @@ ALTER TABLE  `project` CHANGE  `grade`  `grade_id` INT( 11 ) NULL DEFAULT NULL ;
 ALTER TABLE  `project` ADD INDEX (  `grade_id` ) ;
 
 
-ALTER TABLE  `project` ADD FOREIGN KEY (  `grade_id` ) REFERENCES  `isf`.`grade` (
+ALTER TABLE  `project` ADD FOREIGN KEY (  `grade_id` ) REFERENCES  `grade` (
 `id`
 ) ON DELETE SET NULL ON UPDATE SET NULL ;
