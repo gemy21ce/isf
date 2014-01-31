@@ -8,7 +8,7 @@ include_once dirname(__FILE__) . '/../AdminGenericController.php';
 class CategoryController extends AdminGenericController {
 
     function __construct() {
-        parent::__construct();
+        parent::__construct(true, array("admin"));
         $this->load->model("category");
     }
 
@@ -25,6 +25,24 @@ class CategoryController extends AdminGenericController {
         $orderCal = "id";
 
         return $this->prepareTable($aColumns, $searchBy, $model, $orderCal);
+    }
+    
+    protected function formatData($modelsResult) {
+
+        $data = array();
+
+        foreach ($modelsResult as $item) {
+            $item_data = array();
+
+            $item_data[] = $item->name;
+            $item_data[] = $item->description;
+            $item_data[] = $item->code;
+            $item_data[] = $item->id;
+            $item_data[] = $item->id;
+
+            $data[] = $item_data;
+        }
+        return $data;
     }
 
     function add() {
@@ -94,23 +112,7 @@ class CategoryController extends AdminGenericController {
         
     }
 
-    protected function formatData($modelsResult) {
-
-        $data = array();
-
-        foreach ($modelsResult as $item) {
-            $item_data = array();
-
-            $item_data[] = $item->name;
-            $item_data[] = $item->description;
-            $item_data[] = $item->code;
-            $item_data[] = $item->id;
-            $item_data[] = $item->id;
-
-            $data[] = $item_data;
-        }
-        return $data;
-    }
+    
 
     function load_subcategories() {
         $id = $this->input->get('id', TRUE);

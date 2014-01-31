@@ -18,7 +18,7 @@ abstract class AdminGenericController extends CI_Controller {
         parent::__construct();
         if($allowValidation) {
             $this->resourceType = $resourceType;
-//            $this->is_logged_in($resourceType);
+            $this->is_logged_in();
         }
         date_default_timezone_set('Africa/Cairo');
         $this->load->helper('date');
@@ -28,7 +28,7 @@ abstract class AdminGenericController extends CI_Controller {
      * Check if the user is logged in if yes the system will 
      * containue else the system will redirect you to login page
      */
-    function is_logged_in($userType) 
+    function is_logged_in() 
     {
         $is_logged_in = $this->session->userdata('is_logged_in');
         
@@ -36,6 +36,8 @@ abstract class AdminGenericController extends CI_Controller {
             redirect(site_url());
             die ();
         }
+        
+        $userType = $this->session->userdata('usertype');
         if(!in_array($userType,$this->resourceType)){
             redirect(site_url()."home/accessdenaied");
             die ();
