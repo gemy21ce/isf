@@ -75,7 +75,7 @@
                         </tr>
                     </tfoot>
                 </table>
-                <?= anchor(base_url()."admin/projectcontroller/add", 'Add New Admin','class="intel-btn intel-btn-action"') ?>
+                <?= anchor(base_url()."admin/projectcontroller/add", 'Add Project','class="intel-btn intel-btn-action"') ?>
             </div>
         </span>
     </section>
