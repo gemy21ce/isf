@@ -1,7 +1,7 @@
 <article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4c">
     <section class="active" id="teams">
         <span class="Content-body">
-            <h2 id="Admin">Projects</h2>
+            <h2 id="Admin">Teams Projects</h2>
             <hr/>
             <div class="contant-contaner">
                 <!--<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />-->
