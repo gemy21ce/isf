@@ -9,6 +9,72 @@ function checkInputVal($var) {
 }
 ?>
 
+<script type="text/javascript">
+    $(function(){
+        $("#tabs").find("a.active").removeClass("active");
+        $("a[tab='#teams']").addClass("active");
+                   
+        $("#category_id").change(function(){        
+            $("#sub_category_div").load("<?= base_url(); ?>admin/projectcontroller/loadSubCategories/"+$(this).val());
+        });
+        
+        
+        $( "#start_date" ).datepicker({
+            showOn: "button",
+            buttonImage: "<?= base_url(); ?>assets/backend/image/calendar.gif",
+            buttonImageOnly: true,
+            dateFormat:"yy/mm/dd"
+        });
+        $( "#end_date" ).datepicker({
+            showOn: "button",
+            buttonImage: "<?= base_url(); ?>assets/backend/image/calendar.gif",
+            buttonImageOnly: true,
+            dateFormat:"yy/mm/dd"
+        });
+    });
+</script>
+
+<style>
+    
+fieldset {
+
+    width: 527px;
+
+    margin: auto;
+
+    margin-bottom: 1em;
+
+    display: block;
+
+    background: #eeeeee;
+
+}
+
+h1 {
+
+    text-shadow: 0 1px 0 white;
+
+}
+
+.error {
+
+    color: #cd1b1b;
+
+    font-size: 15px;
+
+}
+
+form input[type="text"], form select , form textArea{
+
+    width: 298px;
+    float: right;
+
+}
+p{
+    padding: 10px;
+    margin: 5px;
+}
+</style>
 <h1>Category</h1>
 
 <fieldset>
@@ -31,8 +97,8 @@ function checkInputVal($var) {
     
     <p>    
         <label>Number of students <span class="error">*</span>:</label>
-        <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['category_id']['error'] . "</p>"; ?>
-        <select id="category_id" name="category_id">
+        <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['num_of_students']['error'] . "</p>"; ?>
+        <select id="num_of_students" name="num_of_students">
             <?php for($i=1; $i<4 ; $i++) {?>
             <option value="<?=$i?>" <?=  checkInputVal("num_of_students")?$_POST['num_of_students']==$i?"selected":"":""?>><?=$i?></option>
             <?php } ?>
@@ -52,8 +118,22 @@ function checkInputVal($var) {
     
     <p>    
         <label>Grade<span class="error">*</span>:</label>
-        <?php if (isset($errors)) echo "<p class='error' >" . $errors['grade']['error'] . "</p>"; ?>
-        <input type="text" id="grade" name="grade" value="<?= checkInput("grade") ?>" />
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['grade_id']['error'] . "</p>"; ?>
+        <select id="grade_id" name="grade_id">
+            <?php foreach($grades as $grade) {?>
+            <option value="<?=$grade->id?>" <?=  checkInputVal("grade_id")?$_POST['grade_id']==$grade->id?"selected":"":""?>><?=$grade->name?></option>
+            <?php } ?>
+        </select>
+    </p>
+    
+    <p>    
+        <label>Exhibition<span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['grade_id']['error'] . "</p>"; ?>
+        <select id="exhibition_id" name="exhibition_id">
+            <?php foreach($exhibitions as $exhibition) {?>
+            <option value="<?=$exhibition->id?>" <?=  checkInputVal("exhibition_id")?$_POST['exhibition_id']==$exhibition->id?"selected":"":""?>><?=$exhibition->name?></option>
+            <?php } ?>
+        </select>
     </p>
     
     <p>    
@@ -62,6 +142,27 @@ function checkInputVal($var) {
         <input type="text" id="phone" name="phone" value="<?= checkInput("phone") ?>" />
     </p>
     
+    <p>    
+        <label>Category <span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['category_id']['error'] . "</p>"; ?>
+        <select id="category_id" name="category_id">
+            <?php foreach($categories as $category) {?>
+            <option value="<?=$category->id?>" <?=  checkInputVal("category_id")?$_POST['category_id']==$category->id?"selected":"":""?>><?=$category->name?></option>
+            <?php } ?>
+        </select>
+    </p>
+    
+    <p>    
+        <label>Sub Category:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['sub_category_id']['error'] . "</p>"; ?>
+        <span id="sub_category_div">
+            <select id="sub_category_id" name="sub_category_id">
+                <?php foreach($subcategories as $subcategory) {?>
+                <option value="<?=$subcategory->id?>" <?=  checkInputVal("sub_category_id")?$_POST['sub_category_id']==$category->id?"selected":"":""?>><?=$subcategory->name?></option>
+                <?php } ?>
+            </select>
+        </span>
+    </p>
     
     <p>    
         <label>Second team member name :</label>
@@ -116,7 +217,8 @@ function checkInputVal($var) {
     
     <p>    
         <label>Continuation project:</label>
-        <input type="checkbox" id="continuation_project" name="continuation_project" value="1" checked="<?= checkInputVal("adult_sponsor_email")?"true":"false" ?>" />
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['continuation_project']['error'] . "</p>"; ?>
+        <input type="checkbox" id="continuation_project" name="continuation_project" value="1" <?= checkInputVal("adult_sponsor_email")?'checked="true"':"" ?> />
     </p>
     
     
@@ -131,27 +233,7 @@ function checkInputVal($var) {
         <input type="text" id="end_date" name="end_date" value="<?= checkInput("end_date") ?>" />
     </p>
     
-    <p>    
-        <label>Category <span class="error">*</span>:</label>
-        <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['category_id']['error'] . "</p>"; ?>
-        <select id="category_id" name="category_id">
-            <?php foreach($categories as $category) {?>
-            <option value="<?=$category->id?>" <?=  checkInputVal("category_id")?$_POST['category_id']==$category->id?"selected":"":""?>><?=$category->name?></option>
-            <?php } ?>
-        </select>
-    </p>
     
-    <p>    
-        <label>Sub Category:</label>
-        <?php if (isset($erhome_viewrors)) echo "<p class='error' >" . $errors['sub_category_id']['error'] . "</p>"; ?>
-        <span id="sub_category_div">
-            <select id="sub_category_id" name="sub_category_id">
-                <?php foreach($subcategories as $subcategory) {?>
-                <option value="<?=$subcategory->id?>" <?=  checkInputVal("sub_category_id")?$_POST['sub_category_id']==$category->id?"selected":"":""?>><?=$subcategory->name?></option>
-                <?php } ?>
-            </select>
-        </span>
-    </p>
     
     <p>
         <label>Project description <span class="error">*</span>:</label>
@@ -178,10 +260,11 @@ function checkInputVal($var) {
         <?php if (isset($errors)) echo "<p class='error' >" . $errors['research_resources']['error'] . "</p>"; ?>
         <textarea id="research_resources" name="research_resources" ><?= checkInput("research_resources") ?></textarea>
     </p>
-    
+    <p style="height: 30px;">
+        <input type="submit" value="save" style="float: right"/> 
+    </p>
+    <p></p>
     <?php
-    echo form_submit('submit', 'save');
-
     echo form_close();
     ?>
 

@@ -10,7 +10,10 @@ class Subcategory extends DataMapper {
 
     var $model = 'subcategory';
     
-    var $has_one = array("category");
+    var $has_one = array(
+        "category",
+        "project"
+        );
 
 
 

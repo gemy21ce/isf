@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <title>Administration - Intel ISEF Egypt</title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pure-min.css" />
@@ -23,7 +24,10 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/tab.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/table.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/title_bar.css" />	
+        
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/ui/css/ui-lightness/jquery-ui-1.10.4.css" />
         <script src="<?php echo base_url(); ?>assets/frontend/js/jquery-1.10.1.js"></script>		
+        <script src="<?php echo base_url(); ?>assets/backend/js/jquery/ui/js/jquery-ui_1.10.4.js"></script>		
         <!--[if lt IE 9]>		
                 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/fallback.css" />
                 <script src="<?php echo base_url(); ?>assets/frontend/js/modernizr.js"></script>

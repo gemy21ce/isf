@@ -2,20 +2,17 @@
 
 
 
-class Category extends DataMapper {
+class Grade extends DataMapper {
 
 
 
-    var $table = 'category';
+    var $table = 'grade';
 
-    var $model = 'category';
+    var $model = 'grade';
     
     var $has_many = array(
-        "subcategory",
         "project"
-        );
-
-
+    );
     function __construct() {
 
         parent::__construct();        
