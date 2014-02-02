@@ -1,10 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>ISEF: Login</title>
+        <link href="<?php echo base_url(); ?>assets/frontend/images/isef_favicon_32.ico" rel="icon" type="image/x-icon"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pure-min.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/site.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/base.css" />

@@ -6,7 +6,7 @@ class ProjectController extends AdminGenericController {
 
     public function __construct() {
 
-        parent::__construct(true, array("admin"));
+        parent::__construct(true, array("admin","super_admin"));
         $this->load->model("project");
     }
 
