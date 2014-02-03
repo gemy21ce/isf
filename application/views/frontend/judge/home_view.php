@@ -1,0 +1,55 @@
+<script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript">
+    $('#tableData').ready(function() {
+        $('#tableData').dataTable({
+            "aaSorting": [],
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "<?php echo base_url(); ?>judge/home/projects",
+            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+                $('td:eq(3)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
+                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[7] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                return nRow;
+            },
+            "fnInitComplete": function(oSettings, json) {
+
+            }
+        });
+    });
+</script>
+<div class="intel-tab" id="tabs" init="true">
+    <ul>
+        <li><a href="<?= base_url(); ?>judge/home" tab="#admins" class="active">المشاريع</a></li>
+        <!--<li><a href="<?= base_url(); ?>admin/usermanager/judges" tab="#judges">Judges</a></li>-->
+        <!--<li><a href="<?= base_url(); ?>admin/projectcontroller/home" tab="#teams">Projects</a></li>-->
+        <!--<li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>-->
+        <!--<li><a href="javascript:void(0);" tab="#tab5">More...</a></li>-->
+    </ul>
+    <hr class="intel-tab-divider">
+</div>
+<article class="intel-tab-content">
+    <section class="active" id="tab1">
+        <span class="Content-body">
+            <h2 id="Admin">المشاريع</h2>
+        </span>
+        <hr/>
+        <div class="contant-contaner">
+            <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
+                <thead>
+                    <tr class="">
+                        <th style="cursor: pointer;" class="">اسم المشروع</th>
+                        <th style="cursor: pointer;" class="">عرض</th>
+                        <th style="cursor: pointer;" class="">تحكيم</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" class="dataTables_empty">جاري تحميل البيانات</td>
+                    </tr>
+                </tbody>
+                <tfoot></tfoot>
+
+            </table>
+        </div>
+    </section>
+</article>

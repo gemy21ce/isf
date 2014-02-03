@@ -12,7 +12,8 @@ class Project extends DataMapper {
     
     var $has_many = array(
         "projectexperimentationlocation",
-        "projectworkingsite"
+        "projectworkingsite",
+        "projectEvaluation"
     );
     
     var $has_one = array(

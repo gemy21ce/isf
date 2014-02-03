@@ -42,7 +42,6 @@
 <!--                    <span class="creat-botton">
                         <a href="<?php echo base_url(); ?>admin/projectcontroller/add">Add Project</a>
                     </span>-->
-
                 </span>
                 <table cellpadding="0" cellspacing="0" border="0" class="intel-table"  id="tableData">
                     <thead>
