@@ -18,9 +18,8 @@
     });
 </script>
 <div class="intel-tab" id="tabs" init="true">
-    <ul>
+    <ul style="margin-top: 10px;">
         <li><a href="<?= base_url(); ?>judge/home" tab="#admins" class="active">المشاريع</a></li>
-        <!--<li><a href="<?= base_url(); ?>admin/usermanager/judges" tab="#judges">Judges</a></li>-->
         <!--<li><a href="<?= base_url(); ?>admin/projectcontroller/home" tab="#teams">Projects</a></li>-->
         <!--<li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>-->
         <!--<li><a href="javascript:void(0);" tab="#tab5">More...</a></li>-->
@@ -28,28 +27,29 @@
     <hr class="intel-tab-divider">
 </div>
 <article class="intel-tab-content">
-    <section class="active" id="tab1">
+    <section class="active" id="teams">
         <span class="Content-body">
             <h2 id="Admin">المشاريع</h2>
-        </span>
-        <hr/>
-        <div class="contant-contaner">
-            <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
-                <thead>
-                    <tr class="">
-                        <th style="cursor: pointer;" class="">اسم المشروع</th>
-                        <th style="cursor: pointer;" class="">عرض</th>
-                        <th style="cursor: pointer;" class="">تحكيم</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="5" class="dataTables_empty">جاري تحميل البيانات</td>
-                    </tr>
-                </tbody>
-                <tfoot></tfoot>
 
-            </table>
-        </div>
+            <hr/>
+            <div class="contant-contaner">
+                <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
+                    <thead>
+                        <tr class="">
+                            <th style="cursor: pointer;" class="">اسم المشروع</th>
+                            <th style="cursor: pointer;" class="">عرض</th>
+                            <th style="cursor: pointer;" class="">تحكيم</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="dataTables_empty">جاري تحميل البيانات</td>
+                        </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+
+                </table>
+            </div>
+        </span>
     </section>
 </article>
