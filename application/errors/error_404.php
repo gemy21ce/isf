@@ -1,62 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>404 Page Not Found</title>
-<style type="text/css">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Not Found - Intel ISEF Egypt </title>
+        <link href="<?php echo base_url(); ?>assets/frontend/images/isef_favicon_32.ico" rel="icon" type="image/x-icon"/>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pure-min.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/site.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/base.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/accordion.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/breadcrumb.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/button.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/dropdown_slidingmenus.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/font.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/form.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/header.css" />	
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/icon.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/listview.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pagination.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/progress_bar.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/radiobuttons_checkboxes.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/switch.css" />	
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/tab.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/table.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/title_bar.css" />	
+        <script src="<?php echo base_url(); ?>assets/frontend/js/jquery-1.10.1.js"></script>
+        <script src="<?php echo base_url(); ?>assets/ajax.submit.js"></script>
+        <script src="<?php echo base_url(); ?>assets/jquery.validate.min.js"></script>
+        <!--[if lt IE 9]>		
+                <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/fallback.css" />
+                <script src="<?php echo base_url(); ?>assets/frontend/js/modernizr.js"></script>
+                <script src="<?php echo base_url(); ?>assets/frontend/js/respond.min.js"></script>
+                <script src="<?php echo base_url(); ?>assets/frontend/js/PIE.js"></script>			
+        <![endif]-->
+        <script src="<?php echo base_url(); ?>assets/frontend/js/master.js"></script>
+        <script>
+            $(document).ready(function() {
+                var x = $(window).height();
 
-::selection{ background-color: #E13300; color: white; }
-::moz-selection{ background-color: #E13300; color: white; }
-::webkit-selection{ background-color: #E13300; color: white; }
+                x = (x - 380) / 2;
 
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
-}
+                $(function() {
+                    $("#login-form").css("margin-top", x);
+                });
+                $("form").validate({
+                    rules: {
+                        password: {
+                            required: true,
+                            minlength: 6
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        }
+                    },
+                    messages: {
+                        password: "يجب ألايقل طول الكلمة عن 6 أحرف",
+                        email: "البريد الاليكتروني غير صحيح"
+                    }
+                });
+            });
 
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
-}
+        </script>
+        <style>
+            body{
+                background:#edeff0; 
+            }
+        </style>
+    </head>
 
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
-}
-
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
-}
-
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	-webkit-box-shadow: 0 0 8px #D0D0D0;
-}
-
-p {
-	margin: 12px 15px 12px 15px;
-}
-</style>
-</head>
-<body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-	</div>
-</body>
+    <body>
+        <div class="login-form" id="login-form">
+            <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
+            <div class="intel-checkbox" style="margin-top: 120px;margin-bottom: 120px;font-size: x-large;text-align: center;color: black;">error 404 - page not found</div>
+            <div class="login-fotter-logo"><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
+        </div>
+    </body>
 </html>

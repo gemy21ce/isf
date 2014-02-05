@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>ISEF: Login</title>
+        <title>Login - Intel ISEF Egypt </title>
         <link href="<?php echo base_url(); ?>assets/frontend/images/isef_favicon_32.ico" rel="icon" type="image/x-icon"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pure-min.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/site.css" />
