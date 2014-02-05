@@ -12,7 +12,8 @@ class Subcategory extends DataMapper {
     
     var $has_one = array(
         "category",
-        "project"
+        "project",
+        "judge"
         );
 
 

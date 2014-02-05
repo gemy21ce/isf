@@ -79,11 +79,11 @@
                 <div class="intel-hdr-box-logo intel-right intel-desktop">
                     <a href="<?php echo base_url(); ?>"><img class="intel-hdr-logo" src="<?php echo base_url(); ?>assets/frontend/images/iesf.png"   alt="ISEF Logo"/></a>
                 </div>
-                <div class="social-icon"> <a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/mail-icon.png" width="24" height="25" /></a>
-                    <a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/youtube-icon.png" width="24" height="25" /></a>
-                    <a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/twitter-icon.png" width="24" height="25" /></a>
-                    <a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/facebook-icon.png" width="24" height="25" /></a>
-                </div>																
+                <div class="social-icon"> <a href="mailto:info@isef-eg.com"><img src="<?= base_url() ?>assets/frontend/images/mail-icon.png" width="24" height="25" /></a>
+                    <a href="http://www.youtube.com/isefeg"><img src="<?= base_url() ?>assets/frontend/images/youtube-icon.png" width="24" height="25" /></a>
+                    <a href="http://twitter.com/isefeg"><img src="<?= base_url() ?>assets/frontend/images/twitter-icon.png" width="24" height="25" /></a>
+                    <a href="http://www.facebook.com/isef.eg"><img src="<?= base_url() ?>assets/frontend/images/facebook-icon.png" width="24" height="25" /></a>
+                </div>
             </div>
             <div class="intel-u-1-4 intel-mobile">
                 <!--<a href="javascript:void(0);" class="intel-hdr-btn-menu intel-left"><span class="icon-menu"> </span></a>-->

@@ -11,12 +11,8 @@ class Judge extends DataMapper {
     var $has_many = array("projectEvaluation");
     
     var $has_one = array(
-        "category" => array(
-            'class' => 'category',
-            'cascade_delete' => false),
-        "subcategory" => array(
-            'class' => 'subcategory',
-            'cascade_delete' => false)
+        "category",
+        "subcategory"
     );
 
     function __construct() {

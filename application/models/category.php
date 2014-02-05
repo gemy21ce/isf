@@ -12,7 +12,8 @@ class Category extends DataMapper {
     
     var $has_many = array(
         "subcategory",
-        "project"
+        "project",
+        "judge"
         );
 
 
