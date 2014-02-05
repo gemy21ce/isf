@@ -36,6 +36,7 @@
                 <script src="<?= base_url() ?>assets/frontend/js/PIE.js"></script>			
         <![endif]-->
         <script src="<?= base_url() ?>assets/frontend/js/master.js"></script>
+        <script src="<?= base_url() ?>assets/ajax.submit.js"></script>
 
     </head>
     <body>
