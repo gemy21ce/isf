@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/table.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/title_bar.css" />	
         <script src="<?php echo base_url(); ?>assets/frontend/js/jquery-1.10.1.js"></script>		
+        <script src="<?php echo base_url(); ?>assets/ajax.submit.js"></script>
+        <script src="<?php echo base_url(); ?>assets/jquery.validate.min.js"></script>
         <!--[if lt IE 9]>		
                 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/fallback.css" />
                 <script src="<?php echo base_url(); ?>assets/frontend/js/modernizr.js"></script>
@@ -41,6 +43,21 @@
 
                 $(function() {
                     $("#login-form").css("margin-top", x);
+                });
+                $("form").validate({
+                    rules: {
+                        password: {
+                            required:true,
+                            minlength: 6
+                        },
+                        password2: {
+                            equalTo: "#password"
+                        }
+                    },
+                    messages:{
+                        password: "يجب ألايقل طول الكلمة عن 6 أحرف",
+                        password2:  "من فضلك أكد كلمة المرور جيدا"
+                    }
                 });
             });
 
@@ -58,11 +75,11 @@
             <form action="<?php echo base_url(); ?>home/changepassword" method="post" class="intel-form pure-form-stacked">
                 <input value="<?= $id ?>" name="id" type="hidden"/>
                 <label for="password">كلمة المرور</label>
-                <input id="password" name="password" type="password" placeholder="كلمة المرور"/>
-                
+                <input id="password" name="password" value="" type="password" placeholder="كلمة المرور"/>
+
 
                 <label for="password">تأكيد كلمة المرور</label>
-                <input id="password2" name="password2" type="password" placeholder="تأكيد كلمة المرور"/>
+                <input id="password2" name="password2" value="" type="password" placeholder="تأكيد كلمة المرور"/>
                 <div class="intel-checkbox">
                 </div>
                 <!--                <div class="intel-checkbox">

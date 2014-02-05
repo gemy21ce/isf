@@ -25,7 +25,9 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/tab.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/table.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/title_bar.css" />	
-        <script src="<?php echo base_url(); ?>assets/frontend/js/jquery-1.10.1.js"></script>		
+        <script src="<?php echo base_url(); ?>assets/frontend/js/jquery-1.10.1.js"></script>
+        <script src="<?php echo base_url(); ?>assets/ajax.submit.js"></script>
+        <script src="<?php echo base_url(); ?>assets/jquery.validate.min.js"></script>
         <!--[if lt IE 9]>		
                 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/fallback.css" />
                 <script src="<?php echo base_url(); ?>assets/frontend/js/modernizr.js"></script>
@@ -42,12 +44,29 @@
                 $(function() {
                     $("#login-form").css("margin-top", x);
                 });
+                $("form").validate({
+                    rules: {
+                        email: {
+                            required:true,
+                            email:true
+                        }
+                    },
+                    messages:{
+                        email:  "البريد الاليكتروني غير صحيح"
+                    }
+                });
             });
 
         </script>
         <style>
             body{
                 background:#edeff0; 
+            }
+            input.error{
+                border-color:red;
+            }
+            label.error{
+                color: red;
             }
         </style>
     </head>
