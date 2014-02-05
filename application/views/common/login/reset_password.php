@@ -55,41 +55,27 @@
     <body>
         <div class="login-form" id="login-form">
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
-            <form action="<?php echo base_url(); ?>home/login" method="post" class="intel-form pure-form-stacked">
-                <label for="email">البريد الاليكتروني</label>
-                <input id="email" name="email" type="email" placeholder="البريد الاليكتروني"/>
-
+            <form action="<?php echo base_url(); ?>home/changepassword" method="post" class="intel-form pure-form-stacked">
+                <input value="<?= $id ?>" name="id" type="hidden"/>
                 <label for="password">كلمة المرور</label>
                 <input id="password" name="password" type="password" placeholder="كلمة المرور"/>
-                <?php if (isset($errormessage)) { ?>
-                <div id="errorDiv" class="intel-checkbox">
-                        <a style="color:red;font-size: 12px;line-height: 0em;">خطأ في اسم البريد الاليكتروني أو كلمة السر</a>
-                    </div>
-                <style>
-                    input#password, input#email{
-                        border-color:red;
-                    }
-                </style>
-                <script type="text/javascript">
-                    $(function(){
-                        $("input#password, input#email").keyup(function(){
-                            $("#errorDiv").hide();
-                            $(this).css("border-color","#d3d8db");
-                        });
-                    });
-                </script>
-                <?php } ?>
+                
+
+                <label for="password">تأكيد كلمة المرور</label>
+                <input id="password2" name="password2" type="password" placeholder="تأكيد كلمة المرور"/>
                 <div class="intel-checkbox">
-                    <a href="<?= base_url() ?>home/forgetpassword">نسيت كلمة المرور</a> </div>
+                </div>
                 <!--                <div class="intel-checkbox">
                                 <input type="checkbox" id="Check_Box_1Key"/>
                                     <label  for="Check_Box_1Key">Remember Me</label>
                                 </div>-->
                 <button type="submit" class="intel-btn intel-btn-action">
-                    تسجيل الدخول
+                    حفظ 
                 </button>
             </form>
-            <div class="login-fotter-logo"><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
+            <div style="margin-top: 40px;" class="login-fotter-logo">
+                <a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a>
+            </div>
         </div>
     </body>
 </html>

@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>ISEF: Login</title>
+        <title>Forget Password - Intel ISEF Egypt </title>
         <link href="<?php echo base_url(); ?>assets/frontend/images/isef_favicon_32.ico" rel="icon" type="image/x-icon"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pure-min.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/site.css" />
@@ -53,43 +53,10 @@
     </head>
 
     <body>
-        <div class="login-form" id="login-form">
+        <div class="login-form" style="height: 250px" id="login-form">
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
-            <form action="<?php echo base_url(); ?>home/login" method="post" class="intel-form pure-form-stacked">
-                <label for="email">البريد الاليكتروني</label>
-                <input id="email" name="email" type="email" placeholder="البريد الاليكتروني"/>
-
-                <label for="password">كلمة المرور</label>
-                <input id="password" name="password" type="password" placeholder="كلمة المرور"/>
-                <?php if (isset($errormessage)) { ?>
-                <div id="errorDiv" class="intel-checkbox">
-                        <a style="color:red;font-size: 12px;line-height: 0em;">خطأ في اسم البريد الاليكتروني أو كلمة السر</a>
-                    </div>
-                <style>
-                    input#password, input#email{
-                        border-color:red;
-                    }
-                </style>
-                <script type="text/javascript">
-                    $(function(){
-                        $("input#password, input#email").keyup(function(){
-                            $("#errorDiv").hide();
-                            $(this).css("border-color","#d3d8db");
-                        });
-                    });
-                </script>
-                <?php } ?>
-                <div class="intel-checkbox">
-                    <a href="<?= base_url() ?>home/forgetpassword">نسيت كلمة المرور</a> </div>
-                <!--                <div class="intel-checkbox">
-                                <input type="checkbox" id="Check_Box_1Key"/>
-                                    <label  for="Check_Box_1Key">Remember Me</label>
-                                </div>-->
-                <button type="submit" class="intel-btn intel-btn-action">
-                    تسجيل الدخول
-                </button>
-            </form>
-            <div class="login-fotter-logo"><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
+            <div style="margin-top: 50px;text-align: center;font-size: large;color: red;">يوجد خطأ في الرابط</div>
+            <div style="margin-top: 80px;" class="login-fotter-logo"><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
         </div>
     </body>
 </html>

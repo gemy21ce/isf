@@ -7,8 +7,8 @@
             "bServerSide": true,
             "sAjaxSource": "<?php echo base_url(); ?>judge/home/projects",
             "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-                $('td:eq(3)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
-                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[7] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+//                $('td:eq(3)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
+//                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[7] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
                 return nRow;
             },
             "fnInitComplete": function(oSettings, json) {
@@ -20,7 +20,7 @@
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
         <li><a href="<?= base_url(); ?>judge/home" tab="#admins" class="active">المشاريع</a></li>
-        <!--<li><a href="<?= base_url(); ?>admin/projectcontroller/home" tab="#teams">Projects</a></li>-->
+        <li><a href="<?= base_url(); ?>judge/sched" tab="#sched">جدول التحكيم</a></li>
         <!--<li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>-->
         <!--<li><a href="javascript:void(0);" tab="#tab5">More...</a></li>-->
     </ul>
