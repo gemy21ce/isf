@@ -56,21 +56,7 @@
         <div class="login-form" style="height: 250px" id="login-form">
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
             <div style="margin-top: 50px;text-align: center;font-size: large;">تم ارسال رابط الي بريدك الاليكتروني, برجاء اتباع التعليميات المرسلة</div>
-            <div style="margin-top: 80px;" class="login-fotter-logo"><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="#"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
+            <div style="margin-top: 80px;" class="login-fotter-logo"><a href="http://www.intel.com/content/www/xr/en/homepage.html"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="http://www.misrelkheir.org/"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
         </div>
     </body>
 </html>
-
-<!--<div id="login_form">
-    <span class="login-form-logo"></span>
-<?php
-if (isset($errormessage)) {
-    echo '<b>user name or password error</b>';
-}
-echo form_open('home/login');
-echo form_input('email', 'email');
-echo form_password('password', 'password');
-echo form_submit('submit', 'login');
-echo form_close();
-?>
-</div>-->
