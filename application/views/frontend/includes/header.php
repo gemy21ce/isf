@@ -29,7 +29,7 @@
         
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/js/jquery/ui/css/ui-lightness/jquery-ui-1.10.4.css" />
         <script src="<?= base_url() ?>assets/frontend/js/jquery-1.10.1.js"></script>		
-        <script src="<?= base_url() ?>assets/backend/js/jquery/ui/js/jquery-ui_1.10.4.js"></script>		
+        <script src="<?= base_url() ?>assets/backend/js/jquery/ui/js/jquery-ui_1.10.4.js"></script>	
         <!--[if lt IE 9]>		
                 <link rel="stylesheet" href="<?= base_url() ?>assets/frontend/css/fallback.css" />
                 <script src="<?= base_url() ?>assets/frontend/js/modernizr.js"></script>
@@ -37,6 +37,8 @@
                 <script src="<?= base_url() ?>assets/frontend/js/PIE.js"></script>			
         <![endif]-->
         <script src="<?= base_url() ?>assets/frontend/js/master.js"></script>
+        <script src="<?= base_url() ?>assets/frontend/js/master.js"></script>
+        <script src="<?= base_url() ?>assets/ajax.submit.js"></script>
 
     </head>
     <body>

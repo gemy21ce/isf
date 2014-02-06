@@ -6,7 +6,7 @@ class Schedule extends DataMapper {
 
 
 
-    var $table = 'judging_schedule';
+    var $table = 'schedule';
 
     var $model = 'schedule';
     

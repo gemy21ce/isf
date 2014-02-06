@@ -73,14 +73,16 @@
     <body>
         <div class="login-form" id="login-form">
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
-            <div class="intel-checkbox" style="margin-top: 120px;margin-bottom: 120px;font-size: x-large;text-align: center;color: black;">error 404 - page not found</div>
+            <div class="intel-checkbox" style="margin-top: 120px;margin-bottom: 120px;font-size: x-large;text-align: center;color: black;">error 401 - page not found</div>
             <div class="login-fotter-logo"><a href="http://www.intel.com/content/www/xr/en/homepage.html"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="http://www.misrelkheir.org/"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
         </div>
         <div style="display: none;">
-            <p>Severity: <?php echo $severity; ?></p>
-            <p>Message:  <?php echo $message; ?></p>
-            <p>Filename: <?php echo $filepath; ?></p>
-            <p>Line Number: <?php echo $line; ?></p>
+            <span style="display: none;">
+                <p>Severity: <?php echo $severity; ?></p>
+                <p>Message:  <?php echo $message; ?></p>
+                <p>Filename: <?php echo $filepath; ?></p>
+                <p>Line Number: <?php echo $line; ?></p>
+            </span>
         </div>
     </body>
 </html>
