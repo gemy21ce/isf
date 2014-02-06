@@ -234,4 +234,131 @@ class ProjectController extends AdminGenericController {
         
     }
 
+    public function import_form() {
+        $data['main_content'] = 'backend/admin/projects/import';
+        $this->load->view('backend/includes/template', $data);
+    }
+
+    public function import() {
+        
+        if ($_FILES["projectFile"]["size"] > 0) {
+//            echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+            $this->load->model("grade");
+            $this->load->model("category");
+            $this->load->model("exhibition");
+            //get the csv file
+            $file = $_FILES["projectFile"]["tmp_name"];
+
+            $newFile = "./csv_uploads/csv_" . time() . ".csv";
+
+//            die($file . "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            copy($file, $newFile);
+            
+            chmod($newFile, 777);
+
+            $handle = fopen($newFile, "r");
+
+            $data = fgetcsv($handle, 50000, ",", '"');
+            $counter = 0;
+            //loop through the csv file and insert into database
+            mb_internal_encoding("UTF-8");
+            
+            do {
+                if (is_array($data) && $counter++ > 0) {
+                    $project = new Project();
+
+                    $projectType = explode("-", trim($data[1]));
+                    $projectType = trim($projectType[0]);
+
+                            
+                    if ("طالب واحد" == $projectType) {
+                        
+                        $project->team_leader_name_ar = $data[2];
+                        $project->team_leader_name = $data[3] . " " . $data[4] . " " . $data[5];
+                        $project->team_leader_email = $data[6];
+                        $project->phone = $data[7];
+                        $project->school_ar = $data[10];
+                        $project->school = $data[11];
+                        $grade = new Grade();
+                        $grade->like("name", trim($data[12]));
+                        $grade->get();
+                        if ($grade->id) {
+                            $project->grade_id = $grade->id;
+                        }
+
+                        $time = strtotime($data[13]);
+                        $newformat = date('Y-m-d', $time);
+                        $project->team_leader_birthday = $newformat;
+
+
+                        if (substr(trim($data[14]), 0, strlen($data[14]) - 2) == "ذكر") {
+                            $project->team_leader_gender = 1;
+                        } else {
+                            $project->team_leader_gender = 2;
+                        }
+
+                        $project->num_of_students = 1;
+                    } else if (mb_strpos($data[1], "طالبين- مشروع جماعي")) {
+                        $project->num_of_students = 2;
+                    } else if (mb_strpos($data[1], "ثلاثة طلاب- مشروع جماعي")) {
+                        $project->num_of_students = 3;
+                    }
+
+                    $project->adult_sponsor_name_ar = $data[78];
+                    $project->adult_sponsor_name = $data[79];
+                    $project->adult_sponsor_email = $data[80];
+                    $project->adult_sponsor_phone = $data[81];
+                    $project->adult_sponsor_gov = $data[82];
+                    $project->adult_sponsor_profession = $data[83];
+                    $project->adult_sponsor_specialist = $data[84];
+                    $project->adult_sponsor_work_location = $data[85];
+                    $project->adult_sponsor_educational_administration = $data[86];
+                    $time = strtotime($data[87]);
+                    $newformat = date('Y-m-d', $time);
+                    $project->adult_sponsor_birthday = $newformat;
+
+//                    die(substr(trim($data[88]), 0, strlen($data[88])) . "XXX" . "ذكر");
+                    if (substr(trim($data[88]), 0, strlen($data[88])) == "ذكر") {
+                        $project->adult_sponsor_gender = 1;
+                    } else {
+                        $project->adult_sponsor_gender = 2;
+                    }
+                    $project->name = $data[89];
+
+                    $projectType = explode(":", $data[90]);
+                    $projectCode = trim(str_replace(")", "", $projectType[0]));
+                    $category = new Category();
+                    $category->like("code", $projectCode);
+                    $category->get();
+                    if ($category->id) {
+                        $project->category_id = $category->id;
+                    }
+
+                    $project->description = $data[91];
+                    $project->per_researchs_results = $data[92];
+                    $project->assumptions = $data[93];
+                    $project->plan = $data[94];
+                    $project->research_resources = $data[95];
+                    $exhibition = new Exhibition();
+                    $exhibition->like("name", trim($data[97]));
+                    $exhibition->get();
+                    if ($exhibition->id) {
+                        $project->exhibition_id = $exhibition->id;
+                    }
+                    $time = strtotime($data[98]);
+                    $project->submission_date = date('Y-m-d', $time);
+
+                    $project->save();
+                }
+            } while ($data = fgetcsv($handle, 50000, ",", '"'));
+            //
+            //redirect
+           
+            return $this->showGoodStatusPage("Projects imported successfully", base_url() . "admin/projectcontroller/home");
+        
+        } else {
+            return $this->showBadStatusPage("no file to import");
+        }
+    }
+
 }
