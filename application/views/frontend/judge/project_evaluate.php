@@ -1,20 +1,99 @@
+<script src="<?php echo base_url(); ?>assets/jquery.validate.min.js"></script>
 <script type="text/javascript">
     $(function() {
         $("#projectEvaluation").css("marginLeft", $("#projectEvaluation").outerWidth() / 2);
-        $(".scoreDiv input").change(function(){
+        $(".scoreDiv input").change(function() {
             adjustTotal();
-        }).keyup(function(){
+        }).keyup(function() {
             adjustTotal();
         });
-        var adjustTotal = function(){
-            var eval_q_1 = isNaN( parseInt($("input[name='eval_q_1']").val()))?0: parseInt($("input[name='eval_q_1']").val());
-            var eval_q_2 = isNaN( parseInt($("input[name='eval_q_2']").val()))?0: parseInt($("input[name='eval_q_2']").val());
-            var eval_q_3 = isNaN( parseInt($("input[name='eval_q_3']").val()))?0: parseInt($("input[name='eval_q_3']").val());
-            var eval_q_4 = isNaN( parseInt($("input[name='eval_q_4']").val()))?0: parseInt($("input[name='eval_q_4']").val());
-            var eval_q_5 = isNaN( parseInt($("input[name='eval_q_5']").val()))?0: parseInt($("input[name='eval_q_5']").val());
-            var eval_q_6 = isNaN( parseInt($("input[name='eval_q_6']").val()))?0: parseInt($("input[name='eval_q_6']").val());
-            $("input[name='eval_total']").val(eval_q_1+eval_q_2+eval_q_3+eval_q_4+eval_q_5+eval_q_6);
-        }
+        var adjustTotal = function() {
+            var eval_q_1 = isNaN(parseInt($("input[name='eval_q_1']").val())) ? 0 : parseInt($("input[name='eval_q_1']").val());
+            var eval_q_2 = isNaN(parseInt($("input[name='eval_q_2']").val())) ? 0 : parseInt($("input[name='eval_q_2']").val());
+            var eval_q_3 = isNaN(parseInt($("input[name='eval_q_3']").val())) ? 0 : parseInt($("input[name='eval_q_3']").val());
+            var eval_q_4 = isNaN(parseInt($("input[name='eval_q_4']").val())) ? 0 : parseInt($("input[name='eval_q_4']").val());
+            var eval_q_5 = isNaN(parseInt($("input[name='eval_q_5']").val())) ? 0 : parseInt($("input[name='eval_q_5']").val());
+            var eval_q_6 = isNaN(parseInt($("input[name='eval_q_6']").val())) ? 0 : parseInt($("input[name='eval_q_6']").val());
+            $("input[name='eval_total']").val(eval_q_1 + eval_q_2 + eval_q_3 + eval_q_4 + eval_q_5 + eval_q_6);
+        };
+        $("form").validate({
+            rules: {
+                eval_q_1: {
+                    min: 0,
+                    max: 10,
+                    digits: true
+                },
+                eval_q_2: {
+                    min: 0,
+                    max: 15,
+                    digits: true
+                },
+                eval_q_3: {
+                    min: 0,
+                    max: 20,
+                    digits: true
+                },
+                eval_q_4: {
+                    min: 0,
+                    max: 20,
+                    digits: true
+                },
+                eval_q_5: {
+                    min: 0,
+                    max: 10,
+                    digits: true
+                },
+                eval_q_6: {
+                    min: 0,
+                    max: 25,
+                    digits: true
+                },
+                eval_total: {
+                    required: true,
+                    min: 0,
+                    max: 100,
+                    digits: true
+                }
+            },
+            messages:{
+                eval_q_1: {
+                    min: "يجب ألا يقل عن 0",
+                    max: "يجب ألا يزيد عن 10",
+                    digits: "هذا الحقل يتطلب أرقام فقط"
+                },
+                eval_q_2: {
+                    min: "يجب ألا يقل عن 0",
+                    max: "يجب ألا يزيد عن 15",
+                    digits: "هذا الحقل يتطلب أرقام فقط"
+                },
+                eval_q_3: {
+                    min: "يجب ألا يقل عن 0",
+                    max: "يجب ألا يزيد عن 20",
+                    digits: "هذا الحقل يتطلب أرقام فقط"
+                },
+                eval_q_4: {
+                    min: "يجب ألا يقل عن 0",
+                    max: "يجب ألا يزيد عن 20",
+                    digits: "هذا الحقل يتطلب أرقام فقط"
+                },
+                eval_q_5: {
+                    min: "يجب ألا يقل عن 0",
+                    max: "يجب ألا يزيد عن 10",
+                    digits: "هذا الحقل يتطلب أرقام فقط"
+                },
+                eval_q_6: {
+                    min: "يجب ألا يقل عن 0",
+                    max: "يجب ألا يزيد عن 25",
+                    digits: "هذا الحقل يتطلب أرقام فقط"
+                },
+                eval_total: {
+                    required: "يجب ادخال الدرجة الكلية",
+                    min: "يجب ألا يقل عن 0",
+                    max: "يجب ألا يزيد عن 100",
+                    digits: "هذا الحقل يتطلب أرقام فقط"
+                }
+            }
+        });
     });
 </script>
 <style>
@@ -50,7 +129,7 @@
                 <hr class="intel-tab-divider">
                 <div id="projectEvaluation" style="direction: rtl;width: 48em;">
                     <fieldset>
-                        <form method="post" action="<?= base_url()."judge/home/evaluation" ?>" class="intel-form pure-form-aligned" >
+                        <form method="post" action="<?= base_url() . "judge/home/evaluation" ?>" class="intel-form pure-form-aligned" >
                             <input type="hidden" name="projectId" value="<?= $project->id ?>"/>
                             <legend style="margin-bottom: 15px;">تقييم المشروع</legend>
                             <div class="pure-control-group scoreDiv">
@@ -115,8 +194,8 @@
                                 <input type="number" max="100.00" min="0" placeholder="0 - 100" step="1" name="eval_total" />
                             </div>
                             <button type="submit" class="intel-btn intel-btn-action">
-									احفظ التقييم
-								</button>
+                                احفظ التقييم
+                            </button>
                         </form>
                     </fieldset>
                 </div>
