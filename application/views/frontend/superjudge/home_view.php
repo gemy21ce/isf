@@ -2,18 +2,6 @@
 <script type="text/javascript">
     $('#tableData').ready(function() {
         $('#tableData').dataTable({
-            "aaSorting": [],
-            "bProcessing": true,
-            "bServerSide": true,
-            "sAjaxSource": "<?php echo base_url(); ?>judge/home/projects",
-            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-//                $('td:eq(3)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
-//                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[7] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
-                return nRow;
-            },
-            "fnInitComplete": function(oSettings, json) {
-
-            }
         });
     });
 </script>
@@ -38,13 +26,18 @@
                         <tr class="">
                             <th style="cursor: pointer;" class="">اسم المشروع</th>
                             <th style="cursor: pointer;" class="">عرض</th>
-                            <th style="cursor: pointer;" class="">تحكيم</th>
+                            <!--<th style="cursor: pointer;" class="">تحكيم</th>-->
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td colspan="5" class="dataTables_empty">جاري تحميل البيانات</td>
-                        </tr>
+                         <?php foreach ($projects as $project) { ?>
+                            <tr>
+                                <td><?= $project->name ?></td>
+                                <td>
+                                    <a href="<?= base_url() ?>judgeshead/home/showproject/<?= $project->id ?>">عرض المشروع</a>
+                                </td>
+                            </tr>
+                        <? } ?>
                     </tbody>
                     <tfoot></tfoot>
 
