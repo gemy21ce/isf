@@ -167,7 +167,7 @@ var JUI = function (options) {
                 } else if (settings.label.background_color) {
                     jloading.setAttribute("style", "background: " + settings.label.background_color + ";margin: 0 auto;color: white;padding: 10px 25px;text-align: center;display: none;position: absolute;left: 48%;margin-left: -50px;");
                 } else {
-                    jloading.setAttribute("style", "background: #C53727;margin: 0 auto;color: white;padding: 10px 25px;text-align: center;display: none;position: absolute;left: 48%;margin-left: -50px;");
+                    jloading.setAttribute("style", "background: #004280;margin: 0 auto;color: white;padding: 10px 25px;text-align: center;display: none;position: absolute;left: 48%;margin-left: -50px;");
                 }
                 //placing the loading message
                 if (loadingMessage) {

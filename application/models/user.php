@@ -1,1 +1,1 @@
-<?phpclass User extends DataMapper {    var $table = 'users';    var $model = 'user';        var $has_one = array('role');    function __construct() {        parent::__construct();    }   }?>
+<?phpclass User extends DataMapper {    var $table = 'users';    var $model = 'user';        var $has_one = array('role','judge');    function __construct() {        parent::__construct();    }   }?>

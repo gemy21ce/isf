@@ -1,22 +1,23 @@
 <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
 <script type="text/javascript">
+    var projects = [];
     $('#tableData').ready(function() {
+        $("#projects").find("span").each(function() {
+            projects.push($(this).text());
+            $(".proEv#proj-" + $(this).text()).removeClass("proEv");
+        });
+        $(".proEv").removeAttr("href").text("---");
         $('#tableData').dataTable({
-            "aaSorting": [],
-            "bProcessing": true,
-            "bServerSide": true,
-            "sAjaxSource": "<?php echo base_url(); ?>judge/home/projects",
-            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-//                $('td:eq(3)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
-//                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[7] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
-                return nRow;
-            },
-            "fnInitComplete": function(oSettings, json) {
-
-            }
         });
     });
 </script>
+<div style="display: none;" id="projects">
+    <?php
+    foreach ($evalprojects as $ev) {
+        echo '<span>' . $ev->project_id . "</span>";
+    }
+    ?>
+</div>
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
         <li><a href="<?= base_url(); ?>judge/home" tab="#admins" class="active">المشاريع</a></li>
@@ -42,9 +43,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td colspan="5" class="dataTables_empty">جاري تحميل البيانات</td>
-                        </tr>
+                        <?php foreach ($projects as $project) { ?>
+                            <tr>
+                                <td><?= $project->name ?></td>
+                                <td>
+                                    <a href="<?= base_url() ?>judge/home/showproject/<?= $project->id ?>">عرض المشروع</a>
+                                </td>
+                                <td>
+                                    <a class="proEv" id="proj-<?= $project->id ?>" href="<?= base_url() . "judge/home/evaluateproject/" . $project->id ?>">قيم المشروع</a>
+                                </td>
+                            </tr>
+                        <? } ?>
                     </tbody>
                     <tfoot></tfoot>
 

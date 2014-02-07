@@ -11,6 +11,7 @@ class Judge extends DataMapper {
     var $has_many = array("projectEvaluation","schedule");
     
     var $has_one = array(
+        "user",
         "category",
         "subcategory"
     );
