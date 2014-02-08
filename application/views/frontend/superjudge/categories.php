@@ -28,7 +28,7 @@
         <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >المشاريع</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">المحكمين</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges" class="active">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/scores" tab="#judges">النتائج</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
@@ -79,7 +79,7 @@
                 </table>
                 <?php
                 if (isset($error))
-                    echo anchor(base_url() . 'judgeshead/home/generateschedule', '   جدول التحكيم', 'class="gener intel-btn intel-btn-action"');
+                    echo anchor(base_url() . 'judgeshead/home/generateschedule', 'انشأ جدول التحكيم', 'class="gener intel-btn intel-btn-action"');
                 else
                     echo anchor(base_url() . 'judgeshead/home/generateschedule', 'أعد انشاء جدول التحكيم', 'class="gener intel-btn intel-btn-action"');
                 ?>

@@ -1,7 +1,7 @@
 <script src="<?php echo base_url(); ?>assets/jquery.validate.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        $("#projectEvaluation").css("marginLeft", $("#projectEvaluation").outerWidth() / 2);
+        $("#projectEvaluation").css("marginLeft", Math.max(0, (($("#contant-contaner").width() - $("#projectEvaluation").outerWidth()) / 2)));
         $(".scoreDiv input").change(function() {
             adjustTotal();
         }).keyup(function() {
@@ -113,8 +113,8 @@
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
         <li><a href="<?= base_url(); ?>judge/home" tab="#admins" class="active">المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judge/sched" tab="#sched">جدول التحكيم</a></li>
-        <!--<li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>-->
+        <li><a href="<?= base_url(); ?>judge/home/schedule" tab="#sched">جدول التحكيم</a></li>
+        <li><a href="<?= base_url(); ?>judge/home/evalresults" tab="#results">نتائج التحكيم</a></li>
         <!--<li><a href="javascript:void(0);" tab="#tab5">More...</a></li>-->
     </ul>
     <hr class="intel-tab-divider">
@@ -124,7 +124,7 @@
         <span class="Content-body">
             <h2 id="Admin"><?= $project->name ?></h2>
             <hr/>
-            <div class="contant-contaner">
+            <div id="contant-contaner" class="contant-contaner">
                 <div>project data goes here</div>
                 <hr class="intel-tab-divider">
                 <div id="projectEvaluation" style="direction: rtl;width: 48em;">

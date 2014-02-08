@@ -8,7 +8,7 @@
     <ul style="margin-top: 10px;">
         <li><a href="<?= base_url(); ?>judge/home" tab="#admins">المشاريع</a></li>
         <li><a href="<?= base_url(); ?>judge/home/schedule" class="active" tab="#sched">جدول التحكيم</a></li>
-        <!--<li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>-->
+        <li><a href="<?= base_url(); ?>judge/home/evalresults" tab="#results">نتائج التحكيم</a></li>
         <!--<li><a href="javascript:void(0);" tab="#tab5">More...</a></li>-->
     </ul>
     <hr class="intel-tab-divider">
@@ -24,7 +24,7 @@
                     <thead>
                         <tr class="">
                             <th style="cursor: pointer;" class="">الفريق</th>
-                            <th style="cursor: pointer;" class="">رقم المنفذ</th>
+                            <th style="cursor: pointer;" class="">رقم المقابلة</th>
                         </tr>
                     </thead>
                     <tbody>

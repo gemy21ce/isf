@@ -9,7 +9,7 @@
         <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >المشاريع</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">المحكمين</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges" class="active">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/scores" tab="#judges">النتائج</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
@@ -25,7 +25,7 @@
                         <tr class="">
                             <th style="cursor: pointer;" class="">المحكم</th>
                             <th style="cursor: pointer;" class="">الفريق</th>
-                            <th style="cursor: pointer;" class="">رقم المنفذ</th>
+                            <th style="cursor: pointer;" class="">رقم المقابلة</th>
                         </tr>
                     </thead>
                     <tbody>
