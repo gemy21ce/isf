@@ -8,7 +8,7 @@ include_once dirname(__FILE__) . '/../AdminGenericController.php';
 class CategoryController extends AdminGenericController {
 
     function __construct() {
-        parent::__construct(true, array("admin"));
+        parent::__construct(true, array("admin", "super_admin"));
         $this->load->model("category");
     }
 

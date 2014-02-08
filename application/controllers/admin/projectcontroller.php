@@ -6,7 +6,7 @@ class ProjectController extends AdminGenericController {
 
     public function __construct() {
 
-        parent::__construct(true, array("admin","super_admin"));
+        parent::__construct(true, array("admin", "super_admin"));
         $this->load->model("project");
     }
 
@@ -17,7 +17,7 @@ class ProjectController extends AdminGenericController {
 
     function pages() {
 
-        $aColumns = array("id", "name", "team_leader_name", "school", "adult_sponsor_name");
+        $aColumns = array("id", "name", "adult_sponsor_name","adult_sponsor_educational_administration","adult_sponsor_gov");
         $searchBy = array();
         $model = new Project();
         $orderCal = "id";
@@ -33,12 +33,11 @@ class ProjectController extends AdminGenericController {
             $item_data = array();
 
             $item_data[] = $item->name;
-            $item_data[] = $item->team_leader_name;
-            $item_data[] = $item->school;
             $item_data[] = $item->adult_sponsor_name;
-
-            $item_data[] = date('Y-m-d ', strtotime($item->start_date));
-            $item_data[] = date('Y-m-d ', strtotime($item->end_date));
+            $item_data[] = $item->adult_sponsor_educational_administration;
+            $item_data[] = $item->adult_sponsor_gov;
+            $item_data[] = $item->category->get()->name;
+            
             $item_data[] = $item->id;
             $item_data[] = $item->id;
 
@@ -46,81 +45,79 @@ class ProjectController extends AdminGenericController {
         }
         return $data;
     }
-    
-    public function edit($project_id)
-    {
+
+    public function edit($project_id) {
         $project = new Project();
-        $project->where("id",$project_id);
+        $project->where("id", $project_id);
         $project->get();
-        
-        if($project->id) {
-            $_POST['id'] = $project->id ;
-            $_POST['name'] = $project->name ;
-            $_POST['team_leader_name'] = $project->team_leader_name ;
-            $_POST['team_leader_email'] = $project->team_leader_email ;
+
+        if ($project->id) {
+            $_POST['id'] = $project->id;
+            $_POST['name'] = $project->name;
+            $_POST['team_leader_name'] = $project->team_leader_name;
+            $_POST['team_leader_email'] = $project->team_leader_email;
             $_POST['grade_id'] = $project->grade_id;
-            $_POST['phone'] = $project->phone ;
-            $_POST['team_member_1_name'] = $project->team_member_1_name ;
-            $_POST['team_member_2_name'] = $project->team_member_2_name ;
-            $_POST['school'] = $project->school ;
-            $_POST['school_phone'] = $project-> school_phone;
-            $_POST['school_address'] = $project->school_address ;
-            $_POST['adult_sponsor_name'] = $project->adult_sponsor_name ;
-            $_POST['adult_sponsor_phone'] = $project->adult_sponsor_phone ;
-            $_POST['adult_sponsor_email'] = $project->adult_sponsor_email ;
-            $_POST['continuation_project'] = $project->continuation_project ;
-            $_POST['start_date'] = str_replace("-", "/", $project->start_date );
-            $_POST['end_date'] = str_replace("-", "/", $project->end_date );
+            $_POST['phone'] = $project->phone;
+            $_POST['team_member_1_name'] = $project->team_member_1_name;
+            $_POST['team_member_2_name'] = $project->team_member_2_name;
+            $_POST['school'] = $project->school;
+            $_POST['school_phone'] = $project->school_phone;
+            $_POST['school_address'] = $project->school_address;
+            $_POST['adult_sponsor_name'] = $project->adult_sponsor_name;
+            $_POST['adult_sponsor_phone'] = $project->adult_sponsor_phone;
+            $_POST['adult_sponsor_email'] = $project->adult_sponsor_email;
+            $_POST['continuation_project'] = $project->continuation_project;
+            $_POST['start_date'] = str_replace("-", "/", $project->start_date);
+            $_POST['end_date'] = str_replace("-", "/", $project->end_date);
             $_POST['category_id'] = $project->category_id;
             $_POST['sub_category_id'] = $project->sub_category_id;
-            $_POST['plan'] = $project->plan ;
-            $_POST['description'] = $project->description ;
-            $_POST['per_researchs_results'] = $project-> per_researchs_results;
-            $_POST['assumptions'] = $project->assumptions ;
-            $_POST['research_resources'] = $project->research_resources ;
-            $_POST['num_of_students'] = $project->num_of_students ;
-            $_POST['exhibition_id'] = $project->exhibition_id ;
+            $_POST['plan'] = $project->plan;
+            $_POST['description'] = $project->description;
+            $_POST['per_researchs_results'] = $project->per_researchs_results;
+            $_POST['assumptions'] = $project->assumptions;
+            $_POST['research_resources'] = $project->research_resources;
+            $_POST['num_of_students'] = $project->num_of_students;
+            $_POST['exhibition_id'] = $project->exhibition_id;
             return $this->add();
         }
     }
-    
-    public function delete($project_id)
-    {
+
+    public function delete($project_id) {
         $project = new Project();
-        $project->where("id",$project_id);
+        $project->where("id", $project_id);
         $project->get();
-        if($project->id) {
+        if ($project->id) {
             $project->delete();
-            $this->showGoodStatusPage("Project $project->name delete successfully", base_url()."admin/projectcontroller/home");
-        } else { 
-        $this->showBadStatusPage("No Project to delete");
+            $this->showGoodStatusPage("Project $project->name delete successfully", base_url() . "admin/projectcontroller/home");
+        } else {
+            $this->showBadStatusPage("No Project to delete");
         }
     }
-    
-    public function add($errors=NULL) {
+
+    public function add($errors = NULL) {
         $this->load->model("category");
         $this->load->model("subcategory");
         $this->load->model("exhibition");
         $this->load->model("grade");
-        
+
         $category_id = $this->input->post('category_id', TRUE);
-        
+
         $categories = new Category();
         $categories->get();
 
         $subcategories = new Subcategory();
-        if (!isset($category_id) || $category_id=="") {
+        if (!isset($category_id) || $category_id == "") {
             $subcategories->where("category_id = 1");
         } else {
             $subcategories->where("category_id", $category_id);
         }
-        
+
         $exhibitions = new Exhibition();
         $exhibitions->get();
-        
+
         $grades = new Grade();
         $grades->get();
-        
+
         $subcategories->get();
         $data['categories'] = $categories;
         $data['subcategories'] = $subcategories;
@@ -137,16 +134,16 @@ class ProjectController extends AdminGenericController {
         $subcategories->where("category_id", $categoryId);
         $subcategories->get();
         $data['subcategories'] = $subcategories;
-        
+
         $this->load->view('backend/admin/projects/ajax/subcategories', $data);
     }
 
     public function save() {
         $this->load->library('form_validation');
-        
-        
+
+
         // validating inputs
-        
+
         $this->form_validation->set_rules('name', 'name', 'trim|required');
         $this->form_validation->set_rules('team_leader_name', 'team_leader_name', 'trim|required');
         $this->form_validation->set_rules('team_member_1_name', 'Second team member name', 'trim');
@@ -154,24 +151,24 @@ class ProjectController extends AdminGenericController {
         $this->form_validation->set_rules('school', 'school', 'trim|required');
         $this->form_validation->set_rules('school_address', 'School address', 'trim|required');
         $this->form_validation->set_rules('adult_sponsor_name', 'adult sponsor name', 'trim|required');
-        
+
         $this->form_validation->set_rules('team_leader_email', 'team leader email', 'trim|required|valid_email');
         $this->form_validation->set_rules('adult_sponsor_email', 'adult sponsor email', 'trim|valid_email');
-        
+
         $this->form_validation->set_rules('phone', 'phone', 'trim|required|numeric');
         $this->form_validation->set_rules('school_phone', 'school phone', 'trim|required|numeric');
         $this->form_validation->set_rules('adult_sponsor_phone', 'adult sponsor phone', 'trim|numeric');
-        
+
         $this->form_validation->set_rules('grade_id', 'grade', 'trim|required|is_natural_no_zero');
         $this->form_validation->set_rules('exhibition_id', 'exhibition', 'trim|required|is_natural_no_zero');
         $this->form_validation->set_rules('category_id', 'category', 'trim|required|is_natural_no_zero');
         $this->form_validation->set_rules('sub_category_id', 'subcategory', 'trim|is_natural_no_zero');
-        
+
         $this->form_validation->set_rules('continuation_project', 'continuation project', 'trim');
-        
+
         $this->form_validation->set_rules('start_date', 'start date', 'trim|required');
         $this->form_validation->set_rules('end_date', 'end date', 'trim');
-        
+
         $this->form_validation->set_rules('description', 'description', 'trim|required');
         $this->form_validation->set_rules('plan', 'plan', 'trim|required');
         $this->form_validation->set_rules('per_researchs_results', 'per-research results', 'trim|required');
@@ -188,16 +185,16 @@ class ProjectController extends AdminGenericController {
             return $this->add($this->form_validation->_field_data);
         } else {
             $project = new Project();
-            
+
             $id = $this->input->post('id', TRUE);
-            
+
             $message = "Project saved successfully";
-            
-            if($id != "") {
-                $project->id=$id;
+
+            if ($id != "") {
+                $project->id = $id;
                 $message = "Project updated successfully";
             }
-            
+
             $project->name = $this->input->post('name', TRUE);
             $project->team_leader_name = $this->input->post('team_leader_name', TRUE);
             $project->team_leader_email = $this->input->post('team_leader_email', TRUE);
@@ -212,11 +209,11 @@ class ProjectController extends AdminGenericController {
             $project->adult_sponsor_phone = $this->input->post('adult_sponsor_phone', TRUE);
             $project->adult_sponsor_email = $this->input->post('adult_sponsor_email', TRUE);
             $project->continuation_project = $this->input->post('continuation_project', TRUE);
-            
-            
-            $project->start_date =  str_replace("/","-",$this->input->post('start_date', TRUE)) ;
-            $project->end_date = str_replace("/","-",$this->input->post('end_date', TRUE)) ;
-            
+
+
+            $project->start_date = str_replace("/", "-", $this->input->post('start_date', TRUE));
+            $project->end_date = str_replace("/", "-", $this->input->post('end_date', TRUE));
+
             $project->category_id = $this->input->post('category_id', TRUE);
             $project->sub_category_id = $this->input->post('sub_category_id', TRUE);
             $project->plan = $this->input->post('plan', TRUE);
@@ -226,12 +223,11 @@ class ProjectController extends AdminGenericController {
             $project->research_resources = $this->input->post('research_resources', TRUE);
             $project->num_of_students = $this->input->post('num_of_students', TRUE);
             $project->exhibition_id = $this->input->post('exhibition_id', TRUE);
-            
+
             $project->save();
-            
-            $this->showGoodStatusPage($message, base_url()."admin/projectcontroller/home");
+
+            $this->showGoodStatusPage($message, base_url() . "admin/projectcontroller/home");
         }
-        
     }
 
     public function import_form() {
@@ -239,8 +235,50 @@ class ProjectController extends AdminGenericController {
         $this->load->view('backend/includes/template', $data);
     }
 
+    private function createStudent($data) {
+        if(sizeof($data) == 12) {
+            $data1 = array_slice($data, 0,7);
+            $data2 =array_slice($data, 7);
+            $data3 = array();
+            $data3 = array_merge($data3, $data1);
+            array_push($data3, "");
+            $data3 = array_merge($data3, $data2);
+            $data = $data3;
+        }
+        $this->load->model("student");
+        $student = new Student();
+        $student->name_ar = $data[0];
+        $student->name = $data[1] . " " . $data[2] . " " . $data[3];
+        $student->email = $data[4];
+        $student->phone = $data[5];
+        $student->gov = $data[6];
+        $student->educational_administration = $data[7];
+        $student->school_ar = $data[8];
+        $student->school = $data[9];
+        $gradeName= trim(substr(trim($data[10]), 0, strlen($data[10]) - 2));
+        $grade = new Grade();
+        $grade->like("name", $gradeName);
+        $grade->get();
+        if ($grade->id) {
+            $student->grade_id = $grade->id;
+        }
+
+        $time = strtotime($data[11]);
+        $newformat = date('Y-m-d', $time);
+        $student->birthday = $newformat;
+
+
+        if (substr(trim($data[12]), 0, strlen($data[12]) - 2) == "ذكر") {
+            $student->gender = 1;
+        } else {
+            $student->gender = 2;
+        }
+        $student->save();
+        return $student->id;
+    }
+
     public function import() {
-        
+
         if ($_FILES["projectFile"]["size"] > 0) {
 //            echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
             $this->load->model("grade");
@@ -253,7 +291,7 @@ class ProjectController extends AdminGenericController {
 
 //            die($file . "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
             copy($file, $newFile);
-            
+
             chmod($newFile, 777);
 
             $handle = fopen($newFile, "r");
@@ -262,45 +300,26 @@ class ProjectController extends AdminGenericController {
             $counter = 0;
             //loop through the csv file and insert into database
             mb_internal_encoding("UTF-8");
-            
+
             do {
                 if (is_array($data) && $counter++ > 0) {
                     $project = new Project();
-
+//                    $project;
                     $projectType = explode("-", trim($data[1]));
                     $projectType = trim($projectType[0]);
-
-                            
+                    
                     if ("طالب واحد" == $projectType) {
-                        
-                        $project->team_leader_name_ar = $data[2];
-                        $project->team_leader_name = $data[3] . " " . $data[4] . " " . $data[5];
-                        $project->team_leader_email = $data[6];
-                        $project->phone = $data[7];
-                        $project->school_ar = $data[10];
-                        $project->school = $data[11];
-                        $grade = new Grade();
-                        $grade->like("name", trim($data[12]));
-                        $grade->get();
-                        if ($grade->id) {
-                            $project->grade_id = $grade->id;
-                        }
-
-                        $time = strtotime($data[13]);
-                        $newformat = date('Y-m-d', $time);
-                        $project->team_leader_birthday = $newformat;
-
-
-                        if (substr(trim($data[14]), 0, strlen($data[14]) - 2) == "ذكر") {
-                            $project->team_leader_gender = 1;
-                        } else {
-                            $project->team_leader_gender = 2;
-                        }
-
+                        $project->student_1_id = $this->createStudent(array_slice($data, 2,13));
                         $project->num_of_students = 1;
-                    } else if (mb_strpos($data[1], "طالبين- مشروع جماعي")) {
+                        
+                    } else if ($projectType == "طالبين") {
+                        $project->student_1_id = $this->createStudent(array_slice($data, 15,13));
+                        $project->student_2_id = $this->createStudent(array_slice($data, 28,12));
                         $project->num_of_students = 2;
-                    } else if (mb_strpos($data[1], "ثلاثة طلاب- مشروع جماعي")) {
+                    } else if ($projectType== "ثلاثة طلاب") {
+                        $project->student_1_id = $this->createStudent(array_slice($data, 40,13));
+                        $project->student_2_id = $this->createStudent(array_slice($data, 53,12));
+                        $project->student_3_id = $this->createStudent(array_slice($data, 65,13));
                         $project->num_of_students = 3;
                     }
 
@@ -326,7 +345,8 @@ class ProjectController extends AdminGenericController {
                     $project->name = $data[89];
 
                     $projectType = explode(":", $data[90]);
-                    $projectCode = trim(str_replace(")", "", $projectType[0]));
+                    $projectCode = trim(str_replace(")", "", $projectType[1]));
+                    
                     $category = new Category();
                     $category->like("code", $projectCode);
                     $category->get();
@@ -347,15 +367,15 @@ class ProjectController extends AdminGenericController {
                     }
                     $time = strtotime($data[98]);
                     $project->submission_date = date('Y-m-d', $time);
-
+//                    var_dump($project);
+//                    die();
                     $project->save();
                 }
             } while ($data = fgetcsv($handle, 50000, ",", '"'));
             //
             //redirect
-           
+
             return $this->showGoodStatusPage("Projects imported successfully", base_url() . "admin/projectcontroller/home");
-        
         } else {
             return $this->showBadStatusPage("no file to import");
         }
