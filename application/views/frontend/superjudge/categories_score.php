@@ -2,7 +2,7 @@
 <?php if (!isset($error)) { ?>
     <script type="text/javascript">
         $('#tableData').ready(function() {
-            $('#tableData').dataTable();
+    //            $('#tableData').dataTable();
         });
     </script>
 <?php } ?>
@@ -24,7 +24,7 @@
 
             <hr/>
             <div class="contant-contaner">
-<!--                <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
+                <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
                     <thead>
                         <tr class="">
                             <th style="cursor: pointer;" class="">القائمة</th>
@@ -32,36 +32,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                <?php
-                if (isset($error)) {
-                    ?>
-                                        <tr>
-                                            <td colspan="2"><p>لم يتم التحكيم علي أي مشاريع بعد</p></td>
-                                        </tr>
-                    <?php
-                } else {
-                    foreach ($categories as $cat) {
-                        ?>
-                                                        <tr>
-                                                            <td>
-                        <?= $cat->name ?>
-                                                            </td>
-                                                            <td>
                         <?php
-                        $cat->schedule->get();
-                        if ($cat->schedule) {
-                            echo anchor(base_url() . "judgeshead/home/categoryscore/" . $cat->id, "عرض نتيجة المجموعة");
+                        if (isset($error)) {
+                            ?>
+                            <tr>
+                                <td colspan="2"><p>لم يتم التحكيم علي أي مشاريع بعد</p></td>
+                            </tr>
+                            <?php
+                        } else {
+                            foreach ($categories as $cat) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?= $cat->name ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $cat->schedule->get();
+                                        if ($cat->schedule) {
+                                            echo anchor(base_url() . "judgeshead/home/categoryscore/" . $cat->id, "عرض نتيجة المجموعة");
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
                         }
                         ?>
-                                                            </td>
-                                                        </tr>
-                        <?php
-                    }
-                }
-                ?>
                     </tbody>
                     <tfoot></tfoot>
-                </table>-->
+                </table>
+<!--                <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                 <script type="text/javascript">
                     jui.jloading("جاري تحميل البيانات");
                     google.load("visualization", "1", {packages: ["corechart"]});
@@ -89,8 +90,8 @@
                         });
                         chart.draw(data, options);
                     }
-                </script>
-                <div id="chart_div" style="width: 95%; height: 700px;"></div>
+                </script>-->
+                <!--<div id="chart_div" style="width: 95%; height: 700px;"></div>-->
             </div>
         </span>
     </section>
