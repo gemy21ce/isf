@@ -16,7 +16,8 @@ class Category extends DataMapper {
         "judge",
         "schedule"
         );
-
+    
+    var $has_one = array("group");
 
     function __construct() {
 
