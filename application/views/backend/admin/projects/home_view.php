@@ -1,17 +1,5 @@
-<article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4c">
-    <section class="active" id="teams">
-        <span class="Content-body">
-            <h2 id="Admin">Teams Projects</h2>
-            <hr/>
-            <div class="contant-contaner">
-                <!--<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />-->
-                <style type="text/css">
-                    table.display td{
-                        text-align: center;
-                    }
-                </style>
-                <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
-                <script language="javascript" type="text/javascript">
+<script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
                     $(function() {
                         $("#tabs").find("a.active").removeClass("active");
                         $("a[tab='#teams']").addClass("active");
@@ -35,23 +23,27 @@
                     });
 
                 </script>
-
-
-                <span class="creat-botton-contaner">
-                    <span class="creat-content-icon"></span>
-<!--                    <span class="creat-botton">
-                        <a href="<?php echo base_url(); ?>admin/projectcontroller/add">Add Project</a>
-                    </span>-->
-                </span>
-                <table cellpadding="0" cellspacing="0" border="0" class="intel-table"  id="tableData">
+<article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4c">
+    <section class="active" id="teams">
+        <span class="Content-body">
+            <h2 id="Admin">Teams Projects</h2>
+            <hr/>
+            <div class="contant-contaner">
+                <!--<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />-->
+                <style type="text/css">
+                    table.display td{
+                        text-align: center;
+                    }
+                </style>
+                
+                <table cellpadding="0" cellspacing="0" border="0" class="intel-table intel-table-zebra intel-sortable"  id="tableData">
                     <thead>
                         <tr>
                             <th width="20%">Project name</th>
-                            <th width="20%">Leader name</th>
-                            <th width="15%">School</th>
-                            <th width="15%">Adult sponsor</th>
-                            <th width="15%">Start date</th>
-                            <th width="15%">End date</th>
+                            <th width="15%">Adult sponsor name</th>
+                            <th width="15%">Adult sponsor gov</th>
+                            <th width="15%">Educational administration</th>
+                            <th width="15%">Category</th>
                             <th width="15%">Edit</th>
                             <th width="15%">Delete</th>
                         </tr>
@@ -64,17 +56,17 @@
                     <tfoot>
                         <tr>
                             <th width="20%">Project name</th>
-                            <th width="20%">Leader Name</th>
-                            <th width="15%">School</th>
-                            <th width="15%">Adult Sponsor</th>
-                            <th width="15%">Start Date</th>
-                            <th width="15%">End Date</th>
+                            <th width="15%">Adult sponsor name</th>
+                            <th width="15%">Adult sponsor gov</th>
+                            <th width="15%">Educational administration</th>
+                            <th width="15%">Category</th>
                             <th width="15%">Edit</th>
                             <th width="15%">Delete</th>
                         </tr>
                     </tfoot>
                 </table>
                 <?= anchor(base_url()."admin/projectcontroller/add", 'Add Project','class="intel-btn intel-btn-action"') ?>
+                <?= anchor(base_url()."admin/projectcontroller/import_form", 'Import Project','class="intel-btn intel-btn-action"') ?>
             </div>
         </span>
     </section>

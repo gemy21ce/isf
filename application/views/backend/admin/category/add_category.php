@@ -8,7 +8,6 @@ function checkInputVal($var) {
     return isset($_POST[$var]) ? $_POST[$var] : false;
 }
 ?>
-<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
 <script type="text/javascript">
     function edit_item(element)
     {
