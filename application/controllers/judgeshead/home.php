@@ -7,7 +7,6 @@ class Home extends AdminGenericController {
     function __construct() {
 
         parent::__construct(true, array("super_judge"));
-        $this->is_logged_in($this->session->userdata('usertype'));
     }
 
     function index() {
