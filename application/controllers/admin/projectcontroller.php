@@ -280,7 +280,7 @@ class ProjectController extends AdminGenericController {
     public function import() {
 
         if ($_FILES["projectFile"]["size"] > 0) {
-//            echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+            echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
             $this->load->model("grade");
             $this->load->model("category");
             $this->load->model("exhibition");
@@ -344,7 +344,7 @@ class ProjectController extends AdminGenericController {
                     }
                     $project->name = $data[89];
 
-                    $projectType = explode(":", $data[90]);
+                    $projectType = explode("(Code:", $data[90]);
                     $projectCode = trim(str_replace(")", "", $projectType[1]));
                     
                     $category = new Category();
@@ -359,8 +359,10 @@ class ProjectController extends AdminGenericController {
                     $project->assumptions = $data[93];
                     $project->plan = $data[94];
                     $project->research_resources = $data[95];
+                    
+                    
                     $exhibition = new Exhibition();
-                    $exhibition->like("name", trim($data[97]));
+                    $exhibition->like("name", substr(trim($data[97]), 0, strlen($data[97])-2));
                     $exhibition->get();
                     if ($exhibition->id) {
                         $project->exhibition_id = $exhibition->id;

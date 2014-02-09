@@ -107,13 +107,13 @@
                         </p>
                     </div>
 
-                <? } else { ?>
+                <?php } else { ?>
                 <div dir="rtl" style="text-align: center">
                         <p>
                             لم يتم التحكيم علي أي مشاريع بعد
                         </p>
                     </div>
-                <? } ?>
+                <?php } ?>
 
                 <?php
 

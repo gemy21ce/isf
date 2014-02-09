@@ -56,8 +56,8 @@ abstract class AdminGenericController extends CI_Controller {
         $data['status'] = $status;
         $data['url'] = $redirecturl;
 
-        $data['main_content'] = 'common/includes/statusPage.php';
-        $this->load->view('common/includes/template', $data);
+        $data['main_content'] = 'common/includes/statusPage';
+        $this->load->view('backend/includes/template', $data);
     }
     
     /**

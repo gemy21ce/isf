@@ -11,7 +11,8 @@ class Grade extends DataMapper {
     var $model = 'grade';
     
     var $has_many = array(
-        "project"
+        "project",
+        "student"
     );
     function __construct() {
 

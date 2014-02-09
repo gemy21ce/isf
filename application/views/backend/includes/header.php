@@ -99,7 +99,7 @@
         <div class="intel-tab" id="tabs" init="true">
             <ul>
                 <li><a href="<?= base_url(); ?>admin/usermanager/home" tab="#admins" class="active">Admin</a></li>
-                <li><a href="<?= base_url(); ?>admin/usermanager/judges" tab="#judges">Judges</a></li>
+                <li><a href="<?= base_url(); ?>judge/managejudge/home" tab="#judges">Judges</a></li>
                 <li><a href="<?= base_url(); ?>admin/projectcontroller/home" tab="#teams">Projects</a></li>
 <!--                <li><a href="<?= base_url(); ?>admin/categorycontroller/home" tab="#category">Category</a></li>-->
                 <!--<li><a href="javascript:void(0);" tab="#tab4">Tasks</a></li>-->

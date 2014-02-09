@@ -29,7 +29,20 @@ class Project extends DataMapper {
             'cascade_delete'=>false),
         "grade"=> array(
             'class' => 'grade',
-            'cascade_delete'=>false)
+            'cascade_delete'=>false),
+        
+        "student_1"=>array(
+            "class"=>"student",
+            "other_field" => "project_1"
+        ),
+        "student_2"=>array(
+            "class"=>"student",
+            "other_field" => "project_2"
+        ),
+        "student_3"=>array(
+            "class"=>"student",
+            "other_field" => "project_3"
+        )
     );
     function __construct() {
 

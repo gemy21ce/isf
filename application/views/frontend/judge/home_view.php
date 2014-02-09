@@ -53,7 +53,7 @@
                                     <a class="proEv" id="proj-<?= $project->id ?>" href="<?= base_url() . "judge/home/evaluateproject/" . $project->id ?>">قيم المشروع</a>
                                 </td>
                             </tr>
-                        <? } ?>
+                        <?php } ?>
                     </tbody>
                     <tfoot></tfoot>
 

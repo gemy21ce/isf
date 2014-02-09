@@ -1,4 +1,5 @@
 <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
+<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
 <script language="javascript" type="text/javascript">
                     $(function() {
                         $("#tabs").find("a.active").removeClass("active");
@@ -12,8 +13,8 @@
                             "bServerSide": true,
                             "sAjaxSource": "<?php echo base_url(); ?>admin/projectcontroller/pages",
                             "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
-                                $('td:eq(7)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[7] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                                $('td:eq(5)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[5] + '">Edit</a>');
+                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[6] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
                                 return nRow;
                             },
                             "fnInitComplete": function(oSettings, json) {

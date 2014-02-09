@@ -13,7 +13,11 @@ class Judge extends DataMapper {
     var $has_one = array(
         "user",
         "category",
-        "subcategory"
+        "subcategory",
+        "category_2" => array(
+                "class"=>"category",
+                "other_field" => "judge_2"
+        )
     );
 
     function __construct() {
