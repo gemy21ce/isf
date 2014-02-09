@@ -14,8 +14,8 @@
                             "bServerSide": true,
                             "sAjaxSource": "<?php echo base_url(); ?>admin/categorycontroller/pages",
                             "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-                                $('td:eq(3)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/edit/' + aData[3] + '">Edit</a>');
-                                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/delete/' + aData[4] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/edit/' + aData[4] + '">Edit</a>');
+                                $('td:eq(5)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/delete/' + aData[5] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
                                 return nRow;
                             },
                             "fnInitComplete": function(oSettings, json) {
@@ -43,6 +43,7 @@
                             <th width="20%">Name</th>
                             <th width="50%">Description</th>
                             <th width="15%">Code</th>
+                            <th width="15%">Group</th>
                             <th width="15%">Edit</th>
                             <th width="15%">Delete</th>
                         </tr>
@@ -57,6 +58,7 @@
                             <th width="20%">Name</th>
                             <th width="50%">Description</th>
                             <th width="15%">Code</th>
+                            <th width="15%">Group</th>
                             <th width="15%">Edit</th>
                             <th width="15%">Delete</th>
                         </tr>

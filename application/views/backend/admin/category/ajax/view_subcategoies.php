@@ -2,7 +2,7 @@
 <label>
     <img id="add_subcategory" onclick="loadAddPage()" src="<?=base_url()?>/assets/backend/image/add_small.png" style="cursor: pointer"/>
 </label>
-<table style="width: 100%" class="display">
+<table style="width: 100%" class="intel-table intel-table-zebra intel-sortable">
     <thead>
         <tr style="width: 100%">
             <th style="width: 30%">

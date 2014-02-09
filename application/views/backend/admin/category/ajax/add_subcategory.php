@@ -21,7 +21,7 @@ function checkInputVal($var) {
                 success: function(data) {
                     if (data == "TRUE") {
                         loadSubCategory();
-                        $.fancybox("<div style='color:green'>subcategory added</div>");
+                        $.fancybox("<div style='color:green'>subcategory saved</div>");
                         setTimeout(function() {
                             $.fancybox.close();
                         }, 3000);

@@ -38,7 +38,7 @@
                                     <a href="<?= base_url() ?>judgeshead/home/showproject/<?= $project->id ?>">عرض المشروع</a>
                                 </td>
                             </tr>
-                        <? } ?>
+                        <?php } ?>
                     </tbody>
                     <tfoot></tfoot>
 

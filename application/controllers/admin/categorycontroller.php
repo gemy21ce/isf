@@ -14,7 +14,7 @@ class CategoryController extends AdminGenericController {
 
     function home() {
         $data['main_content'] = 'backend/admin/category/home_view';
-        $this->load->view('common/includes/template', $data);
+        $this->load->view('backend/includes/template', $data);
     }
 
     function pages() {
@@ -37,17 +37,26 @@ class CategoryController extends AdminGenericController {
             $item_data[] = $item->name;
             $item_data[] = $item->description;
             $item_data[] = $item->code;
+            $item->group->get();
+            if($item->group_id != null) {
+                $item_data[] = $item->group->get()->name;
+            } else {
+                $item_data[] = "No group";
+            }
             $item_data[] = $item->id;
             $item_data[] = $item->id;
-
             $data[] = $item_data;
         }
         return $data;
     }
 
     function add() {
+        $this->load->model("group");
+        $groups = new Group();
+        $groups->get();
+        $data['groups'] = $groups;
         $data['main_content'] = 'backend/admin/category/add_category';
-        $this->load->view('common/includes/template', $data);
+        $this->load->view('backend/includes/template', $data);
     }
 
     function edit($categoryId) {
@@ -58,11 +67,15 @@ class CategoryController extends AdminGenericController {
         $_POST['id'] = $category->id;
         $_POST['name'] = $category->name;
         $_POST['code'] = $category->code;
+        $_POST['group_id'] = $category->group_id;
         $_POST['description'] = $category->description;
-
+        
+        $groups = new Group();
+        $groups->get();
+        $data['groups'] = $groups;
         $data['category'] = $category;
         $data['main_content'] = 'backend/admin/category/add_category';
-        $this->load->view('common/includes/template', $data);
+        $this->load->view('backend/includes/template', $data);
     }
 
     function save() {
@@ -74,8 +87,12 @@ class CategoryController extends AdminGenericController {
 
         if ($this->form_validation->run() == false) {
             $data['errors'] = $this->form_validation->_field_data;
+            
+            $groups = new Group();
+            $groups->get();
+            $data['groups'] = $groups;
             $data['main_content'] = 'backend/admin/category/add_category';
-            $this->load->view('common/includes/template', $data);
+            $this->load->view('backend/includes/template', $data);
         } else {
 
             $id = $this->input->post('id', TRUE);
@@ -88,6 +105,10 @@ class CategoryController extends AdminGenericController {
             $category->name = $this->input->post('name', TRUE);
             $category->description = $this->input->post('description', TRUE);
             $category->code = $this->input->post('code', TRUE);
+            $group_id = $this->input->post('group_id', TRUE);
+            if($group_id != "" && $group_id !="-1") {
+                $category->group_id = $group_id ;
+            }
 
             $category->save();
 

@@ -38,7 +38,7 @@
                                 <a title="<?= $sch->project->name ?>" class="score"><?= $sch->eval_total ?></a>
                                 <a class="project"><?= $sch->project->name ?></a>
                             </div>
-                        <? } ?>
+                        <?php } ?>
                     </div>
                 </div>
 

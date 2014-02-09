@@ -96,7 +96,7 @@
                                                 foreach ($cats as $c) {
                                                     ?>
                                                     <option value="<?= $c->id ?>" <?= $c->group_id == $cat->id?"checked='true'":"" ?>><?= $c->name ?></option>
-                                                <? } ?>
+                                                <?php } ?>
                                             </select>
                                         </td>
                                     </tr>

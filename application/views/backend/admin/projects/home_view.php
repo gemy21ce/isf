@@ -66,7 +66,7 @@
                         </tr>
                     </tfoot>
                 </table>
-                <?= anchor(base_url()."admin/projectcontroller/add", 'Add Project','class="intel-btn intel-btn-action"') ?>
+                <!--<?= anchor(base_url()."admin/projectcontroller/add", 'Add Project','class="intel-btn intel-btn-action"') ?>-->
                 <?= anchor(base_url()."admin/projectcontroller/import_form", 'Import Project','class="intel-btn intel-btn-action"') ?>
             </div>
         </span>

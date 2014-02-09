@@ -8,6 +8,10 @@ function checkInputVal($var) {
     return isset($_POST[$var]) ? $_POST[$var] : false;
 }
 ?>
+<script type="text/javascript" src="<?=  base_url()?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js">
+<script type="text/javascript" src="<?=  base_url()?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<link rel="stylesheet" href="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" />
+            
 <script type="text/javascript">
     function edit_item(element)
     {
@@ -92,6 +96,8 @@ function checkInputVal($var) {
         }
         $(function() {
             loadSubCategory();
+            $("#tabs").find("a.active").removeClass("active");
+            $("a[tab='#category']").addClass("active");
         });
         function loadAddPage(){
                 $.fancybox({
@@ -106,49 +112,70 @@ function checkInputVal($var) {
 <?php } ?>
 
 </script>
-<h1>Category</h1>
+<article class="intel-tab-content">
+    <section id="teams" class="active">
+    <span class="Content-body">
+        <h2>Category information</h2>
+        <hr/>
+        <style>
+            input[type="text"]{
+                width:300px;
+            }
+            textarea{
+                width: 300px;
+                height: 60px;
+            }
+            .error{
+                color: red;
+            }
+        </style>
 
-<fieldset>
-
-    <legend>Category information</legend>
 
     <?php echo validation_errors('<p class="error">'); ?>
 
     <?php
-    echo form_open('admin/categorycontroller/save');
+    echo form_open('admin/categorycontroller/save',array("id"=>"categoryForm","class"=>"intel-form pure-form-stacked" ));
     ?>
 
     <?php if (checkInputVal("id")) { ?>
         <input type="hidden" id="id" name="id" value="<?= $_POST["id"] ?>" />
     <?php } ?>
-    <p>    
+  
         <label>Name<span class="error">*</span>:</label>
         <?php if (isset($errors)) echo "<p class='error' >" . $errors['name']['error'] . "</p>"; ?>
         <input type="text" id="name" name="name" value="<?= checkInput("name") ?>" />
-    </p>
-    <p>
+        
+        <label>Description <span class="error">*</span>:</label>
+        <?php if (isset($errors)) echo "<p class='error' >" . $errors['description']['error'] . "</p>"; ?>
+        <div class="intel-select">
+            <select name="group_id" id="group_id">
+                <option value="-1">Select group</option>
+                <?php foreach($groups as $group) {?>
+                <option value="<?=$group->id?>" <?=  checkInputVal("group_id")?"selected":""?> ><?=$group->name?></option>
+                <?php } ?>
+            </select>
+        </div>
+        
         <label>Code <span class="error">*</span>:</label>
         <?php if (isset($errors)) echo "<p class='error' >" . $errors['code']['error'] . "</p>"; ?>
         <input type="text" id="Code" name="code" value="<?= checkInput("code") ?>" />
-    </p>
-    <p >
+
         <label>Description <span class="error">*</span>:</label>
         <?php if (isset($errors)) echo "<p class='error' >" . $errors['description']['error'] . "</p>"; ?>
         <textarea id="description" name="description" ><?= checkInput("description") ?></textarea>
-    </p>
-    <?php if (isset($category)) { ?>
-        <p id="subCategory">
 
-        </p>
+    <?php if (isset($category)) { ?>
+        <div  id="subCategory">
+
+        </div>
     <?php } ?>
 
     <?php
-    echo form_submit('submit', 'save');
-
     echo form_close();
     ?>
-
-</fieldset>
+        <a style="cursor: pointer" class="intel-btn intel-btn-action" onclick="$('#categoryForm').submit()"> Save </a>
+    </span>
+    </section></article>
 
 
 
