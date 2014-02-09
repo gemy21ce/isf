@@ -55,7 +55,7 @@
                     digits: true
                 }
             },
-            messages:{
+            messages: {
                 eval_q_1: {
                     min: "يجب ألا يقل عن 0",
                     max: "يجب ألا يزيد عن 10",
@@ -125,78 +125,145 @@
             <h2 id="Admin"><?= $project->name ?></h2>
             <hr/>
             <div id="contant-contaner" class="contant-contaner">
-                <div>project data goes here</div>
+                <div>
+                    <table class="intel-table intel-table-zebra intel-sortable">
+                        <tr>
+                            <th>Project Name: </th> 
+                            <td><?= $project->name ?></td>
+                        </tr>
+                        <tr>
+                            <th>Project category: </th> 
+                            <td><?= $project->category->get()->name ?></td>
+                        </tr>
+                        <tr>
+                            <th>Project plan: </th> 
+                            <td><?= $project->plan ?></td>
+                        </tr>
+                        <tr>
+                            <th>Project assumptions: </th> 
+                            <td><?= $project->assumptions ?></td>
+                        </tr>
+                        <tr>
+                            <th>Project description: </th> 
+                            <td><?= $project->description ?></td>
+                        </tr>
+                        <tr>
+                            <th>Project per-researches results: </th> 
+                            <td><?= $project->per_researchs_results ?></td>
+                        </tr>
+                        <tr>
+                            <th>Project research resources: </th> 
+                            <td><?= $project->research_resources ?></td>
+                        </tr>
+                        <tr>
+                            <th>Is continuous project: </th> 
+                            <td><?= $project->continuation_project != 0 ? "Yes" : "No" ?></td>
+                        </tr>
+                        <tr>
+                            <th>Exhibition: </th> 
+                            <td><?= $project->exhibition->get()->name ?></td>
+                        </tr>
+
+
+                        <tr>
+                            <th>Adult sponsor details</th> 
+                            <td>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor English name : <?= $project->adult_sponsor_name ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor Arabic name : <?= $project->adult_sponsor_name_ar ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor phone : <?= $project->adult_sponsor_phone ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor email : <?= $project->adult_sponsor_email ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor governorate : <?= $project->adult_sponsor_gov ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor profession : <?= $project->adult_sponsor_profession ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor specialist : <?= $project->adult_sponsor_specialist ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor work location : <?= $project->adult_sponsor_work_location ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor educational administration : <?= $project->adult_sponsor_educational_administration ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor birthday : <?= $project->adult_sponsor_birthday ?><br/></span>
+                                <span style="float: left;text-align: left;width: 100%;">Adult sponsor gender : <?= $project->adult_sponsor_gender == 1 ? "ذكر" : "انثي" ?><br/></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Number of student: </th> 
+                            <td><?= $project->num_of_students ?></td>
+                        </tr>
+                        <?php
+                        if ($project->student_1_id != null) {
+
+                            $project->student_1->get();
+                            ?>
+                            <tr>
+                                <td>First Student Details</td>
+                                <td>
+                                    <span style="float: left;text-align: left;width: 100%;">Student english name : <?= $project->student_1->name ?><br/></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student arabic name :<?= $project->student_1->name_ar ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student phone : <?= $project->student_1->phone ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student school : <?= $project->student_1->school ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student arabic school : <?= $project->student_1->school_ar ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student grade : <?= $project->student_1->grade->get()->name ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student birthday : <?= $project->student_1->birthday ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student gender : <?= $project->student_1->gender == 1 ? "ذكر" : "انثي" ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student governorate : <?= $project->student_1->gov ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student educational administration : <?= $project->student_1->educational_administration ?></span>
+                                </td>
+                            </tr>     
+                        <?php } ?>
+
+                        <?php
+                        if ($project->student_2_id != null) {
+
+                            $project->student_2->get();
+                            ?>
+                            <tr>
+                                <td>Second Student Details</td>
+                                <td>
+                                    <span style="float: left;text-align: left;width: 100%;">Student english name : <?= $project->student_2->name ?><br/></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student arabic name : <?= $project->student_2->name_ar ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student phone : <?= $project->student_2->phone ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student school : <?= $project->student_2->school ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student arabic school : <?= $project->student_2->school_ar ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student grade : <?= $project->student_2->grade->get()->name ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student birthday : <?= $project->student_2->birthday ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student gender : <?= $project->student_2->gender == 1 ? "ذكر" : "انثي" ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student governorate : <?= $project->student_2->gov ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student educational administration : <?= $project->student_2->educational_administration ?></span>
+                                </td>
+                            </tr>     
+                        <?php } ?>
+                        <?php
+                        if ($project->student_3_id != null) {
+
+                            $project->student_3->get();
+                            ?>
+                            <tr>
+                                <td>Third Student Details</td>
+                                <td>
+                                    <span style="float: left;text-align: left;width: 100%;">Student english name : <?= $project->student_3->name ?><br/></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student arabic name : <?= $project->student_3->name_ar ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student phone : <?= $project->student_3->phone ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student school : <?= $project->student_3->school ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student arabic school : <?= $project->student_3->school_ar ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student grade : <?= $project->student_3->grade->get()->name ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student birthday : <?= $project->student_3->birthday ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student gender : <?= $project->student_3->gender == 1 ? "ذكر" : "انثي" ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student governorate : <?= $project->student_3->gov ?></span>
+                                    <span style="float: left;text-align: left;width: 100%;">Student educational administration : <?= $project->student_3->educational_administration ?></span>
+                                </td>
+                            </tr>     
+                        <?php } ?>
+                    </table>
+                </div>
                 <hr class="intel-tab-divider">
                 <div id="projectEvaluation" style="direction: rtl;width: 48em;">
                     <fieldset>
-                        <form method="post" action="<?= base_url() . "judge/home/evaluation" ?>" class="intel-form pure-form-aligned" >
-                            <input type="hidden" name="projectId" value="<?= $project->id ?>"/>
-                            <legend style="margin-bottom: 15px;">تقييم المشروع</legend>
-                            <div class="pure-control-group scoreDiv">
-                                <label>سؤال البحث (المشكلة)
-                                </label>
-                                <input type="number" max="10.000" min="0" placeholder="0 - 10" step="1" name="eval_q_1" />
-                                <span class="disspan">
-                                    - وصف لاحتياج عملي او مشكلة يجب حلها <br/>
-                                    - تحديد معايير للحل المقترح وكذلك محدداته وقيوده
-                                </span>
-                            </div>
-                            <div class="scoreDiv pure-control-group">
-                                <label>التصميم و المنهجية</label>
-                                <input type="number" max="15.000" min="0" placeholder="0 - 15" step="1" name="eval_q_2" />
-                                <span class="disspan">
-                                    - استكشاف بدائل لحل الصعوبات التي واجهت الباحث<br/>
-                                    - تحديد الحل بشكل متكامل و واضح<br/>
-                                    - تطوير نموذج اولي
-                                </span>
-                            </div>
-                            <div class="pure-control-group scoreDiv">
-                                <label>التنفيذ / البناء و الاختبار</label>
-                                <input type="number" max="20.000" min="0" placeholder="0 - 20" step="1" name="eval_q_3" />
-                                <span class="disspan">
-                                    - النموذج الاولي يتسق مع التصميم المستهدف<br/>
-                                    - تم اختبار النموذج الاولي في ظروف مختلفة ولعدة مرات<br/>
-                                    - يظهر النموذج الاولي مهارة هندسية و اكتمال العمل
-                                </span>
-                            </div>
-                            <div class="pure-control-group scoreDiv">
-                                <label>الابداع</label>
-                                <input type="number" max="20.000" min="0" placeholder="0 - 20" step="1" name="eval_q_4" />
-                                <span class="disspan">
-                                    المشروع يوضح ابداع متميز في واحد او اكثر من المعايير المذكورة أعلاه
-                                </span>
-                            </div>
-                            <div class="pure-control-group scoreDiv">
-                                <label>لوحة العرض</label>
-                                <input type="number" max="10.000" min="0" placeholder="0 - 10" step="1" name="eval_q_5" />
-                                <span class="disspan">
-                                    - ترتيب منطقي و متسلسل للمادة  <br/>
-                                    - وضوح الرسومات و الاشكال البيانية<br/>
-                                    - عرض الوثائق الداعمة للبحث (مرجع)
-                                </span>
-                            </div>
-                            <div class="pure-control-group scoreDiv" style="min-height: 15em;">
-                                <label> المقابلة</label>
-                                <input type="number" max="25.000" min="0" placeholder="0 - 25" step="1" name="eval_q_6" />
-                                <span class="disspan" style="min-height: 0em;">
-                                    - ردود واضحة , موجزة و مدروسة على الأسئلة <br/>
-                                    - فهم "العلوم الأساسية" ذات الصلة بالمشروع<br/>
-                                    - فهم جيد للنتائج وما تم استخلاصه منها حسب القيود المفروضة على البحث والتصميم<br/>
-                                    - درجة الاستقلالية في تنفيذ المشروع<br/>
-                                    - تقدير الأثر العلمي و الاجتماعي و الاقتصادي المحتمل<br/>
-                                    - جودة الأفكار المقترحة للاستمرار في البحث مستقبلا<br/>
-                                    - لمشاريع الفريق , المساهمات و تفهم المشروع من قبل جميع أعضاء الفريق
-                                </span>
-                            </div>
-                            <hr/>
-                            <div style="margin-right: 5em;margin-bottom: 1em;" class="pure-control-group">
-                                <label>اجمالي التقييم</label>
-                                <input type="number" max="100.00" min="0" placeholder="0 - 100" step="1" name="eval_total" />
-                            </div>
-                            <button type="submit" class="intel-btn intel-btn-action">
-                                احفظ التقييم
-                            </button>
-                        </form>
+                        <?php 
+                        $project->category->get();
+                        $project->category->group->get();
+                        if($project->category->group->type == 'engineering'){
+                            $this->load->view('frontend/judge/includes/engineering_evaluation');
+                        }else{
+                            $this->load->view('frontend/judge/includes/scientific_evaluation');
+                        }
+                        ?>
                     </fieldset>
                 </div>
             </div>

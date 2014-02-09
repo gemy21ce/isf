@@ -19,10 +19,16 @@
             rules: {
                 name: {
                     required: true
+                },
+                name_ar:{
+                    required:true
                 }
             },
             messages: {
                 name: {
+                    required: "يجب ادخال اسم المجموعة"
+                },
+                name_ar: {
                     required: "يجب ادخال اسم المجموعة"
                 }
             }
@@ -78,26 +84,22 @@
                                 </tr>
                                 <?php
                             } else {
-                                foreach ($groups as $cat) {
+                                foreach ($groups as $g) {
                                     ?>
                                     <tr>
                                         <td>
-                                            <?= $cat->type == 'engineer'?"هندسية" :"علمية"  ?>
+                                            <?= $g->type == 'engineering'?"هندسية" :"علمية"  ?>
                                         </td>
                                         <td>
-                                            <?= $cat->name ?>
+                                            <?= $g->name_ar ?>
                                         </td>
                                         <td>
                                             <?php
-                                            $cat->category->get();
+                                            $g->category->get();
+                                            foreach ($g->category as $cat){
                                             ?>
-                                            <select multiple="true">
-                                                <?php
-                                                foreach ($cats as $c) {
-                                                    ?>
-                                                    <option value="<?= $c->id ?>" <?= $c->group_id == $cat->id?"checked='true'":"" ?>><?= $c->name ?></option>
-                                                <?php } ?>
-                                            </select>
+                                            <?= $cat->name ?><br/>
+                                            <? } ?>
                                         </td>
                                     </tr>
                                     <?php
@@ -107,9 +109,9 @@
                         </tbody>
                         <tfoot></tfoot>
                     </table>
-                    <div style="direction: rtl">
+<!--                    <div style="direction: rtl">
                         <a class="gener intel-btn intel-btn-action">حفظ قوائم المجموعات</a>
-                    </div>
+                    </div>-->
                     <hr/>
                     <?php
                     echo anchor('', 'انشأ مجموعة جديدة', 'class="gener intel-btn intel-btn-action"');
@@ -120,14 +122,18 @@
                         <fieldset>
                             <div class="pure-control-group">
                                 <label>اسم المجموعة</label>
+                                <input type="text" name="name_ar" placeholder="اسم المجموعة">
+                            </div>
+                            <div class="pure-control-group">
+                                <label>اسم المجموعة بالانجليزية</label>
                                 <input type="text" name="name" placeholder="اسم المجموعة">
                             </div>
                             <div class="pure-control-group">
                                 <label>نوع المجموعة</label>
                                 <div class="intel-select">													
                                     <select name="type">
-                                        <option value="engineer">هندسية</option>
-                                        <option value="science">علمية</option>
+                                        <option value="engineering">هندسية</option>
+                                        <option value="scientific">علمية</option>
                                     </select>
                                 </div>
                             </div>

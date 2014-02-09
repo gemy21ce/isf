@@ -1,4 +1,5 @@
 <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
+<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
 <?php if (!isset($error)) { ?>
     <script type="text/javascript">
         $('#tableData').ready(function() {
@@ -40,9 +41,10 @@
 
             <hr/>
             <div class="contant-contaner">
-                <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
+                <table cellpadding="0" cellspacing="0" border="0" class="intel-table intel-table-zebra intel-sortable" id="tableData">
                     <thead>
                         <tr class="">
+                            <th style="cursor: pointer;" class="">المجموعة</th>
                             <th style="cursor: pointer;" class="">القائمة</th>
                             <th style="cursor: pointer;" class="">عرض الجدول</th>
                         </tr>
@@ -59,6 +61,9 @@
                             foreach ($categories as $cat) {
                                 ?>
                                 <tr>
+                                    <td>
+                                        <?php $cat->group->get(); echo $cat->group->name_ar; ?>
+                                    </td>
                                     <td>
                                         <?= $cat->name ?>
                                     </td>

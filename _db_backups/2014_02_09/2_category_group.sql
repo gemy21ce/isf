@@ -42,7 +42,7 @@ ALTER TABLE  `category` ADD  `category_group_id` INT NOT NULL ,
 ADD INDEX (  `category_group_id` ) ;
 
 
-INSERT INTO  `isef`.`category_group` (
+INSERT INTO  `category_group` (
 `id` ,
 `name` ,
 `name_ar`

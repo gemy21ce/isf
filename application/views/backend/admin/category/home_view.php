@@ -1,30 +1,30 @@
 
-                <link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
-                <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
-                <script language="javascript" type="text/javascript">
-                    $(function() {
-                        $("#tabs").find("a.active").removeClass("active");
-                        $("a[tab='#category']").addClass("active");
-                    });
-                    $('#tableData').ready(function() {
+<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
+<script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+    $(function() {
+        $("#tabs").find("a.active").removeClass("active");
+        $("a[tab='#category']").addClass("active");
+    });
+    $('#tableData').ready(function() {
 
-                        $('#tableData').dataTable({
-                            "aaSorting": [],
-                            "bProcessing": true,
-                            "bServerSide": true,
-                            "sAjaxSource": "<?php echo base_url(); ?>admin/categorycontroller/pages",
-                            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-                                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/edit/' + aData[4] + '">Edit</a>');
-                                $('td:eq(5)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/delete/' + aData[5] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
-                                return nRow;
-                            },
-                            "fnInitComplete": function(oSettings, json) {
+        $('#tableData').dataTable({
+            "aaSorting": [],
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "<?php echo base_url(); ?>admin/categorycontroller/pages",
+            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/edit/' + aData[4] + '">Edit</a>');
+                $('td:eq(5)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/delete/' + aData[5] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                return nRow;
+            },
+            "fnInitComplete": function(oSettings, json) {
 
-                            }
-                        });
-                    });
+            }
+        });
+    });
 
-                </script>
+</script>
 <article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4z">
     <section class="active" id="category">
         <span class="Content-body">
@@ -64,8 +64,8 @@
                         </tr>
                     </tfoot>
                 </table>
-                    <a class="intel-btn intel-btn-action" href="<?php echo base_url(); ?>admin/categorycontroller/add">Add Category</a>
-                    
+                <a class="intel-btn intel-btn-action" href="<?php echo base_url(); ?>admin/categorycontroller/add">Add Category</a>
+
 
             </div>
         </span>

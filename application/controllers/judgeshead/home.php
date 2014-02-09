@@ -96,11 +96,13 @@ class Home extends AdminGenericController {
 
     function savegroup() {
         $name = $this->input->post("name");
+        $name_ar = $this->input->post("name_ar");
         $type = $this->input->post("type");
 
         $group = new Group();
 
         $group->name = $name;
+        $group->name_ar = $name_ar;
         $group->type = $type;
 
         $group->save();
