@@ -107,6 +107,47 @@ class Home extends AdminGenericController {
 
         $group->save();
     }
+    
+    function updategroup(){
+        
+        $id = $this->input->post("id");
+        $name = $this->input->post("name");
+        $name_ar = $this->input->post("name_ar");
+        $type = $this->input->post("type");
+        
+        $group = new Group();
+        
+        $group->where("id",$id)->update("name",$name);
+        $group->where("id",$id)->update("name_ar",$name_ar);
+        $group->where("id",$id)->update("type",$type);
+    }
+    
+    function getGroup(){
+        $id = $this->input->post("id");
+        $group = new Group();
+        $group->get_by_id($id);
+        $group->set_json_content_type();
+        echo $group->to_json(array("id"),true);
+    }
+    
+    function deletegroup(){
+        $id = $this->input->post("id");
+        if($id == 1){
+            show_error("cannot delete default group");
+            die;
+        }
+        echo $id;
+        
+        $group = new Group();
+        $group->get_by_id($id);
+        
+        $cats = $group->category->get();
+        
+        foreach ($cats as $c){
+            $c->update("group_id",1);
+        }
+        $group->delete();
+    }
 
     function categoryscore() {
         $categoryid = $this->uri->segment(4);

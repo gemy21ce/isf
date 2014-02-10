@@ -33,6 +33,43 @@
                 }
             }
         });
+        $(".edit").click(function(event){
+            event.preventDefault();
+            var el = this;
+            var id = $(el).attr("href");
+            $.ajax({
+                    url:"getGroup",
+                    type:"post",
+                    data:{
+                        id:id
+                    },
+                    success:function(res){
+                        console.log(res);
+                    }
+                });
+        });
+        $(".delete").click(function(event){
+            event.preventDefault();
+            var el = this;
+            var id = $(el).attr("href");
+            if(id === "1"){
+                jui.jalert("لا يمكن حذف المجموعة الافتراضية",function(){
+                },"حسنا");
+                return;
+            }
+            jui.jconfirm("هل أنت متأكد من حذف هذة المجموعة؟ جميع القوائم بها ستتحول الي المجموعة الافتراضية",function(){
+                $.ajax({
+                    url:"deletegroup",
+                    type:"post",
+                    data:{
+                        id:id
+                    },
+                    success:function(){
+                        $(el).parent("td").parent("tr").remove();
+                    }
+                });
+            },function(){},"متأكد","الغاء");
+        });
         $("#saveGroup").click(function() {
             if ($("form").valid()) {
                 jui.jloading("جاري حفظ المجموعة");
@@ -73,6 +110,8 @@
                                 <th style="cursor: pointer;" class="">النوع</th>
                                 <th style="cursor: pointer;" class="">الاسم</th>
                                 <th style="cursor: pointer;" class="">القوائم</th>
+                                <th style="cursor: pointer;" class="">تعديل</th>
+                                <th style="cursor: pointer;" class="">حذف</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,6 +139,12 @@
                                             ?>
                                             <?= $cat->name ?><br/>
                                             <? } ?>
+                                        </td>
+                                        <td>
+                                            <a class="edit" href="<?= $g->id ?>">تعديل</a>
+                                        </td>
+                                        <td>
+                                            <a class="delete" href="<?= $g->id ?>">حذف</a>
                                         </td>
                                     </tr>
                                     <?php
