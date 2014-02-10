@@ -13,6 +13,7 @@
         <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">المجموعات</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
@@ -27,12 +28,14 @@
                     <thead>
                         <tr class="">
                             <th style="cursor: pointer;" class="">المحكم</th>
-                            <th style="cursor: pointer;" class="">الفريق</th>
+                            <th style="cursor: pointer;" class="">كود الفريق</th>
+                            <th style="cursor: pointer;" class="">اسم الفريق</th>
                             <th style="cursor: pointer;" class="">رقم المقابلة</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
+                        $category = $group->category->get();
                         $category->schedule->get();
                         foreach ($category->schedule as $sched) { ?>
                             <tr>
@@ -40,6 +43,11 @@
                                     <?php
                                     $sched->judge->get();
                                     echo $sched->judge->name ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    $sched->project->get();
+                                    echo "p-".$sched->project->id ?>
                                 </td>
                                 <td>
                                     <?php

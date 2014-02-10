@@ -94,6 +94,7 @@
         <li><a href="<?= base_url(); ?>judgeshead/home/groups" class="active" tab="#judges">المجموعات</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
@@ -120,7 +121,7 @@
                             if (isset($error)) {
                                 ?>
                                 <tr>
-                                    <td colspan="3"><p>لا يوجد أي مجموعات </p></td>
+                                    <td colspan="5"><p>لا يوجد أي مجموعات </p></td>
                                 </tr>
                                 <?php
                             } else {

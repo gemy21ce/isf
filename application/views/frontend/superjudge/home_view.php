@@ -1,4 +1,5 @@
 <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
+<link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
 <script type="text/javascript">
     $('#tableData').ready(function() {
         $('#tableData').dataTable({
@@ -13,6 +14,7 @@
         <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">المجموعات</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/home/scores" tab="#judges">النتائج</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
@@ -23,10 +25,11 @@
 
             <hr/>
             <div class="contant-contaner">
-                <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
+                <table cellpadding="0" cellspacing="0" border="0" class="intel-table intel-sortable" id="tableData">
                     <thead>
                         <tr class="">
                             <th style="cursor: pointer;" class="">اسم المشروع</th>
+                            <th style="cursor: pointer;" class="">كود المشروع</th>
                             <th style="cursor: pointer;" class="">عرض</th>
                             <!--<th style="cursor: pointer;" class="">تحكيم</th>-->
                         </tr>
@@ -35,6 +38,7 @@
                          <?php foreach ($projects as $project) { ?>
                             <tr>
                                 <td><?= $project->name ?></td>
+                                <td><?= "p-".$project->id ?></td>
                                 <td>
                                     <a href="<?= base_url() ?>judgeshead/home/showproject/<?= $project->id ?>">عرض المشروع</a>
                                 </td>

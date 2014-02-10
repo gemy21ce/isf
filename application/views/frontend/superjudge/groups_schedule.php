@@ -32,6 +32,7 @@
         <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">المجموعات</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
@@ -46,7 +47,6 @@
                     <thead>
                         <tr class="">
                             <th style="cursor: pointer;" class="">المجموعة</th>
-                            <th style="cursor: pointer;" class="">القائمة</th>
                             <th style="cursor: pointer;" class="">عرض الجدول</th>
                         </tr>
                     </thead>
@@ -59,21 +59,18 @@
                             </tr>
                             <?php
                         } else {
-                            foreach ($categories as $cat) {
+                            foreach ($groups as $group) {
                                 ?>
                                 <tr>
                                     <td>
-                                        <?php $cat->group->get(); echo $cat->group->name_ar; ?>
-                                    </td>
-                                    <td>
-                                        <?= $cat->name ?>
+                                        <?= $group->name_ar; ?>
                                     </td>
                                     <td>
                                         <?php
-                                        $cat->schedule->get();
-                                        if ($cat->schedule) {
-                                            echo anchor(base_url() . "judgeshead/home/categoryschedule/" . $cat->id, "عرض جدول المجموعة");
-                                        }
+//                                        $cat->schedule->get();
+//                                        if ($cat->schedule) {
+                                            echo anchor(base_url() . "judgeshead/home/groupschedule/" . $group->id, "عرض جدول المجموعة");
+//                                        }
                                         ?>
                                     </td>
                                 </tr>
