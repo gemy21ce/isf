@@ -2,7 +2,7 @@
 <?php if (!isset($error)) { ?>
     <script type="text/javascript">
         $('#tableData').ready(function() {
-//            $('#tableData').dataTable();
+            //            $('#tableData').dataTable();
         });
     </script>
 <?php } ?>
@@ -20,8 +20,8 @@
                 name: {
                     required: true
                 },
-                name_ar:{
-                    required:true
+                name_ar: {
+                    required: true
                 }
             },
             messages: {
@@ -33,42 +33,62 @@
                 }
             }
         });
-        $(".edit").click(function(event){
+        $(".edit").click(function(event) {
             event.preventDefault();
             var el = this;
             var id = $(el).attr("href");
             $.ajax({
-                    url:"getGroup",
-                    type:"post",
-                    data:{
-                        id:id
-                    },
-                    success:function(res){
-                        console.log(res);
-                    }
-                });
+                url: "getGroup",
+                type: "get",
+                data: {
+                    id: id
+                },
+                success: function(res) {
+                    var group = JSON.parse(res);
+                    $("#editForm input[name='id']").val(group.id);
+                    $("#editForm input[name='name_ar']").val(group.name_ar);
+                    $("#editForm input[name='name']").val(group.name);
+                    $("#editForm select[name='type']").val(group.type);
+                    $("#table").hide();
+                    $("#createGroupForm").show();
+                    $("#saveGroup").unbind("click").click(function() {
+                        if ($("form").valid()) {
+                            jui.jloading("جاري حفظ المجموعة");
+                            $.ajax({
+                                url: '<?= base_url() . "judgeshead/home/updategroup" ?>',
+                                type: "post",
+                                data: $("form").serialize(),
+                                success: function() {
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
         });
-        $(".delete").click(function(event){
+        $(".delete").click(function(event) {
             event.preventDefault();
             var el = this;
             var id = $(el).attr("href");
-            if(id === "1"){
-                jui.jalert("لا يمكن حذف المجموعة الافتراضية",function(){
-                },"حسنا");
+            if (id === "1") {
+                jui.jalert("لا يمكن حذف المجموعة الافتراضية", function() {
+                }, "حسنا");
                 return;
             }
-            jui.jconfirm("هل أنت متأكد من حذف هذة المجموعة؟ جميع القوائم بها ستتحول الي المجموعة الافتراضية",function(){
+            jui.jconfirm("هل أنت متأكد من حذف هذة المجموعة؟ جميع القوائم بها ستتحول الي المجموعة الافتراضية", function() {
                 $.ajax({
-                    url:"deletegroup",
-                    type:"post",
-                    data:{
-                        id:id
+                    url: "deletegroup",
+                    type: "post",
+                    data: {
+                        id: id
                     },
-                    success:function(){
+                    success: function() {
                         $(el).parent("td").parent("tr").remove();
                     }
                 });
-            },function(){},"متأكد","الغاء");
+            }, function() {
+            }, "متأكد", "الغاء");
         });
         $("#saveGroup").click(function() {
             if ($("form").valid()) {
@@ -129,7 +149,7 @@
                                     ?>
                                     <tr>
                                         <td>
-                                            <?= $g->type == 'engineering'?"هندسية" :"علمية"  ?>
+                                            <?= $g->type == 'engineering' ? "هندسية" : "علمية" ?>
                                         </td>
                                         <td>
                                             <?= $g->name_ar ?>
@@ -137,9 +157,9 @@
                                         <td>
                                             <?php
                                             $g->category->get();
-                                            foreach ($g->category as $cat){
-                                            ?>
-                                            <?= $cat->name ?><br/>
+                                            foreach ($g->category as $cat) {
+                                                ?>
+                                                <?= $cat->name ?><br/>
                                             <? } ?>
                                         </td>
                                         <td>
@@ -156,17 +176,18 @@
                         </tbody>
                         <tfoot></tfoot>
                     </table>
-<!--                    <div style="direction: rtl">
-                        <a class="gener intel-btn intel-btn-action">حفظ قوائم المجموعات</a>
-                    </div>-->
+                    <!--                    <div style="direction: rtl">
+                                            <a class="gener intel-btn intel-btn-action">حفظ قوائم المجموعات</a>
+                                        </div>-->
                     <hr/>
                     <?php
                     echo anchor('', 'انشأ مجموعة جديدة', 'class="gener intel-btn intel-btn-action"');
                     ?>
                 </div>
                 <div style="display: none;" id="createGroupForm">
-                    <form class="intel-form pure-form-aligned">
+                    <form id="editForm" class="intel-form pure-form-aligned">
                         <fieldset>
+                            <input type="hidden" name="id" value=""/>
                             <div class="pure-control-group">
                                 <label>اسم المجموعة</label>
                                 <input type="text" name="name_ar" placeholder="اسم المجموعة">

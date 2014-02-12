@@ -5,8 +5,9 @@ include_once dirname(__FILE__) . '/../AdminGenericController.php';
 class Home extends AdminGenericController {
 
     function __construct() {
-
+        
         parent::__construct(true, array("super_judge"));
+        $this->load->model("group");
     }
 
     function index() {
@@ -123,11 +124,12 @@ class Home extends AdminGenericController {
     }
 
     function getGroup() {
-        $id = $this->input->post("id");
+        $id = $this->input->get("id");
         $group = new Group();
         $group->get_by_id($id);
         $group->set_json_content_type();
-        echo $group->to_json(array("id"), true);
+        echo $group->to_json(array("id","name","name_ar","type"), true);
+        die();
     }
 
     function deletegroup() {
