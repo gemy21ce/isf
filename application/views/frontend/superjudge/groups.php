@@ -26,10 +26,10 @@
             },
             messages: {
                 name: {
-                    required: "يجب ادخال اسم المجموعة"
+                    required: "Group name is Required"
                 },
                 name_ar: {
-                    required: "يجب ادخال اسم المجموعة"
+                    required: "Group name is Required"
                 }
             }
         });
@@ -53,7 +53,7 @@
                     $("#createGroupForm").show();
                     $("#saveGroup").unbind("click").click(function() {
                         if ($("form").valid()) {
-                            jui.jloading("جاري حفظ المجموعة");
+                            jui.jloading("Saving Group");
                             $.ajax({
                                 url: '<?= base_url() . "judgeshead/home/updategroup" ?>',
                                 type: "post",
@@ -72,11 +72,11 @@
             var el = this;
             var id = $(el).attr("href");
             if (id === "1") {
-                jui.jalert("لا يمكن حذف المجموعة الافتراضية", function() {
-                }, "حسنا");
+                jui.jalert("You cannot delete Default Group", function() {
+                }, "Ok");
                 return;
             }
-            jui.jconfirm("هل أنت متأكد من حذف هذة المجموعة؟ جميع القوائم بها ستتحول الي المجموعة الافتراضية", function() {
+            jui.jconfirm("Are you sure you want to delete this group? all categories in this group will be moved to Default Group!", function() {
                 $.ajax({
                     url: "deletegroup",
                     type: "post",
@@ -88,11 +88,11 @@
                     }
                 });
             }, function() {
-            }, "متأكد", "الغاء");
+            }, "Ok", "Cancel");
         });
         $("#saveGroup").click(function() {
             if ($("form").valid()) {
-                jui.jloading("جاري حفظ المجموعة");
+                jui.jloading("Saving Group");
                 $.ajax({
                     url: '<?= base_url() . "judgeshead/home/savegroup" ?>',
                     type: "post",
@@ -108,20 +108,20 @@
 </script>
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">المحكمين</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" class="active" tab="#judges">المجموعات</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">Judging Schedule </a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/groups" class="active" tab="#judges">Groups</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">
-            <h2 id="Admin">مجموعات القوائم</h2>
+            <h2 id="Admin">Groups </h2>
 
             <hr/>
             <div class="contant-contaner">
@@ -129,11 +129,11 @@
                     <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
                         <thead>
                             <tr class="">
-                                <th style="cursor: pointer;" class="">النوع</th>
-                                <th style="cursor: pointer;" class="">الاسم</th>
-                                <th style="cursor: pointer;" class="">القوائم</th>
-                                <th style="cursor: pointer;" class="">تعديل</th>
-                                <th style="cursor: pointer;" class="">حذف</th>
+                                <th style="cursor: pointer;" class="">Type</th>
+                                <th style="cursor: pointer;" class="">Name</th>
+                                <th style="cursor: pointer;" class="">Categories</th>
+                                <th style="" class="">Edit</th>
+                                <th style="" class="">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -141,7 +141,7 @@
                             if (isset($error)) {
                                 ?>
                                 <tr>
-                                    <td colspan="5"><p>لا يوجد أي مجموعات </p></td>
+                                    <td colspan="5"><p>No Groups Created</p></td>
                                 </tr>
                                 <?php
                             } else {
@@ -149,7 +149,7 @@
                                     ?>
                                     <tr>
                                         <td>
-                                            <?= $g->type == 'engineering' ? "هندسية" : "علمية" ?>
+                                            <?= $g->type == 'engineering' ? "Engineering" : "Scientific" ?>
                                         </td>
                                         <td>
                                             <?= $g->name_ar ?>
@@ -163,10 +163,10 @@
                                             <? } ?>
                                         </td>
                                         <td>
-                                            <a class="edit" href="<?= $g->id ?>">تعديل</a>
+                                            <a class="edit" href="<?= $g->id ?>">Edit</a>
                                         </td>
                                         <td>
-                                            <a class="delete" href="<?= $g->id ?>">حذف</a>
+                                            <a class="delete" href="<?= $g->id ?>">Delete</a>
                                         </td>
                                     </tr>
                                     <?php
@@ -181,7 +181,7 @@
                                         </div>-->
                     <hr/>
                     <?php
-                    echo anchor('', 'انشأ مجموعة جديدة', 'class="gener intel-btn intel-btn-action"');
+                    echo anchor('', 'Create new Group', 'class="gener intel-btn intel-btn-action"');
                     ?>
                 </div>
                 <div style="display: none;" id="createGroupForm">
@@ -189,24 +189,24 @@
                         <fieldset>
                             <input type="hidden" name="id" value=""/>
                             <div class="pure-control-group">
-                                <label>اسم المجموعة</label>
-                                <input type="text" name="name_ar" placeholder="اسم المجموعة">
+                                <label>Name</label>
+                                <input type="text" name="name" placeholder="Name">
                             </div>
                             <div class="pure-control-group">
-                                <label>اسم المجموعة بالانجليزية</label>
-                                <input type="text" name="name" placeholder="اسم المجموعة">
+                                <label>Arabic name</label>
+                                <input type="text" name="name_ar" placeholder="Name">
                             </div>
                             <div class="pure-control-group">
-                                <label>نوع المجموعة</label>
+                                <label>Type </label>
                                 <div class="intel-select">													
                                     <select name="type">
-                                        <option value="engineering">هندسية</option>
-                                        <option value="scientific">علمية</option>
+                                        <option value="engineering">Engineering</option>
+                                        <option value="scientific">Scientific</option>
                                     </select>
                                 </div>
                             </div>
                             <button type="button" id="saveGroup" class="intel-btn intel-btn-action">
-                                حفظ
+                                Save
                             </button>
                         </fieldset>
                     </form>

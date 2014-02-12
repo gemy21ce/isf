@@ -45,7 +45,7 @@
                 <div class="intel-hdr-box-wrap">
                     <div class="intel-hdr-box-info-left">
                         <div class="intel-hdr-infobar">
-                            <span class="intel-hdr-ww"><?php echo date("M d Y") ?></span>
+                            <span class="intel-hdr-ww"><?php echo date("M d, Y") ?></span>
                             <span class="intel-hdr-user"> 
                                 <?php $user = $this->session->all_userdata(); ?>
                             </span>
@@ -61,7 +61,7 @@
                                 });
                             </script>
                             <span class="intel-hdr-logout"><a href="<?= base_url() ?>home/logout" style="color: white;" >
-                                                             Logout !
+                                                             Log out
                                                         </a></span>
                             <!--                            <a href="javascript:void(0);" class="intel-hdr-help">
                                                             <span class="icon-b_help"> </span>
@@ -81,9 +81,9 @@
                     <a href="<?= base_url() ?>"><img class="intel-hdr-logo" src="<?= base_url() ?>assets/frontend/images/iesf.png"   alt="ISEF Logo"/></a>
                 </div>
                 <div class="social-icon"> <a href="mailto:info@isef-eg.com"><img src="<?= base_url() ?>assets/frontend/images/mail-icon.png" width="24" height="25" /></a>
-                    <a href="http://www.youtube.com/isefeg"><img src="<?= base_url() ?>assets/frontend/images/youtube-icon.png" width="24" height="25" /></a>
-                    <a href="http://twitter.com/isefeg"><img src="<?= base_url() ?>assets/frontend/images/twitter-icon.png" width="24" height="25" /></a>
-                    <a href="http://www.facebook.com/isef.eg"><img src="<?= base_url() ?>assets/frontend/images/facebook-icon.png" width="24" height="25" /></a>
+                    <a target="_blanck" href="http://www.youtube.com/isefeg"><img src="<?= base_url() ?>assets/frontend/images/youtube-icon.png" width="24" height="25" /></a>
+                    <a target="_blanck" href="http://twitter.com/isefeg"><img src="<?= base_url() ?>assets/frontend/images/twitter-icon.png" width="24" height="25" /></a>
+                    <a target="_blanck" href="http://www.facebook.com/isef.eg"><img src="<?= base_url() ?>assets/frontend/images/facebook-icon.png" width="24" height="25" /></a>
                 </div>
             </div>
             <div class="intel-u-1-4 intel-mobile">

@@ -12,7 +12,7 @@
         $(function(){
             $(".gener").click(function(e){
                 e.preventDefault();
-                jui.jloading("جاري انشاء جدول التحكيم");
+                jui.jloading("Generating Schedule");
                 var url = $(this).attr("href");
                 $.ajax({
                     url:url,
@@ -26,28 +26,28 @@
     </script>
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">المحكمين</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges" class="active">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">المجموعات</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" class="active" tab="#judges">Judging Schedule</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">
-            <h2 id="Admin">جداول التحكيم</h2>
+            <h2 id="Admin">Judging Schedule</h2>
 
             <hr/>
             <div class="contant-contaner">
                 <table cellpadding="0" cellspacing="0" border="0" class="intel-table intel-table-zebra intel-sortable" id="tableData">
                     <thead>
                         <tr class="">
-                            <th style="cursor: pointer;" class="">المجموعة</th>
-                            <th style="cursor: pointer;" class="">عرض الجدول</th>
+                            <th style="cursor: pointer;" class="">Group</th>
+                            <th style="cursor: pointer;" class="">Show Schedule</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +55,7 @@
                         if (isset($error)) {
                             ?>
                             <tr>
-                                <td colspan="2"><p>لم يتم تجهيز الجدول بعد</p></td>
+                                <td colspan="2"><p>Schedule is not generated yet!</p></td>
                             </tr>
                             <?php
                         } else {
@@ -63,13 +63,13 @@
                                 ?>
                                 <tr>
                                     <td>
-                                        <?= $group->name_ar; ?>
+                                        <?= $group->name; ?>
                                     </td>
                                     <td>
                                         <?php
 //                                        $cat->schedule->get();
 //                                        if ($cat->schedule) {
-                                            echo anchor(base_url() . "judgeshead/home/groupschedule/" . $group->id, "عرض جدول المجموعة");
+                                            echo anchor(base_url() . "judgeshead/home/groupschedule/" . $group->id, "Show Schedule");
 //                                        }
                                         ?>
                                     </td>
@@ -83,9 +83,9 @@
                 </table>
                 <?php
                 if (isset($error))
-                    echo anchor(base_url() . 'judgeshead/home/generateschedule', 'انشأ جدول التحكيم', 'class="gener intel-btn intel-btn-action"');
+                    echo anchor(base_url() . 'judgeshead/home/generateschedule', 'Generate Schedule', 'class="gener intel-btn intel-btn-action"');
                 else
-                    echo anchor(base_url() . 'judgeshead/home/generateschedule', 'أعد انشاء جدول التحكيم', 'class="gener intel-btn intel-btn-action"');
+                    echo anchor(base_url() . 'judgeshead/home/generateschedule', 'Re-generate Schedule', 'class="gener intel-btn intel-btn-action"');
                 ?>
             </div>
         </span>
