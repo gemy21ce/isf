@@ -46,7 +46,10 @@ class ImportController extends AdminGenericController {
                 $judge->phone = $data[5];
 
                 $judge->user_id = $this->createUser($judge->name, $data[6]);
-
+                
+                if($judge->user_id == -1)
+                    continue;
+                
                 $judge->field = $data[7];
                 $judge->specialist = $data[8];
                 $judge->profession = $data[9];
@@ -70,8 +73,18 @@ class ImportController extends AdminGenericController {
     }
 
     private function createUser($name, $email) {
+        $testUser  = new User();
+        $testUser->where("email",$email);
+        $testUser->get();
+        
+        if($testUser->id){
+            return -1;
+        }
+        
         $user = new User();
 //        $user;
+        
+        
         $user->name = $name;
         $user->email = $email;
         $password = explode("@", $email);
