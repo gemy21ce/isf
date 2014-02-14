@@ -25,11 +25,12 @@
                         foreach ($schedules as $sch) {
                             $sch->judge->get();
                             $sch->project->get();
+                            $sch->project->category->get();
                             ?>
-                            <div class="<?= $sch->project->name ?>" title="P-<?= $sch->project_id ?>">
+                            <div class="<?= $sch->project->name ?>" title="<?= $sch->project->category->code ?>-<?= $sch->project_id ?>">
                                 <a class="judges"><?= $sch->judge->name ?></a>
-                                <a title="P-<?= $sch->project->id ?>" class="score"><?= $sch->eval_total ?></a>
-                                <a class="project">P-<?= $sch->project->id ?></a>
+                                <a title="<?= $sch->judge->name ?>-<?= $sch->project->category->code ?>-<?= $sch->project->id ?>" class="score"><?= $sch->eval_total ?></a>
+                                <a class="project"><?= $sch->project->category->code ?>-<?= $sch->project->id ?></a>
                             </div>
                         <?php } ?>
                     </div>
@@ -37,36 +38,57 @@
                 <div id="chart_div" style="width: 95%; height: 700px;"></div>
                 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                 <script type="text/javascript">
-                    jui.jloading("جاري تحميل البيانات");
+                    var avg = function(array){
+                        var avg = 0;
+                        for(a in array){
+                            avg+=array[a];
+                        }
+                        avg = avg / array.length;
+                        return avg;
+                    };
+                    jui.jloading("Loading Data");
                     google.load("visualization", "1", {packages: ["corechart"]});
                     google.setOnLoadCallback(drawChart);
                     chart = null;
                     function drawChart() {
                         var header = new Array();
-                        header.push('<?= $group->name_ar ?>');
+                        header.push('<?= $group->name ?>');
+                        var judges = new Array();
                         var projects = new Array();
                         $(".judges").each(function() {
-                            if ($.inArray($(this).text(), header) === -1)
+                            if ($.inArray($(this).text(), header) === -1) {
                                 header.push($(this).text());
+                                judges.push($(this).text());
+                            }
                         });
                         $(".project").each(function() {
                             if ($.inArray($(this).text(), projects) === -1) {
                                 projects.push($(this).text());
                             }
                         });
-                        header.push({role: 'annotation'});
+                        header.push({role: 'tooltip'});
+
                         var duelArray = new Array();
                         duelArray.push(header);
-                        for (var i = 0; i < projects.length; i++) {
-                            var p = new Array();
-                            p.push(projects[i]);
 
-                            $("a[title='" + projects[i] + "']").each(function() {
-                                p.push(parseInt($(this).text()));
-                            });
-                            p.push($("div[title='" + projects[i] + "']").attr("class"));
-                            duelArray.push(p);
+                        for (var p in projects) {
+                            var rowArray = new Array();
+                            rowArray.push(projects[p]);
+                            for (var j in judges) {
+                                var el = $(".score[title='" + judges[j] + "-" + projects[p] + "']");
+                                if (el.length > 0) {
+                                    rowArray.push(parseInt($(el).text()));
+                                } else {
+                                    rowArray.push(0);
+                                }
+                            }
+                            rowArray.push(avg(rowArray.slice(1,rowArray.length)));
+                            duelArray.push(rowArray);
                         }
+                        duelArray.sort(function(a,b){
+                            return b[b.length-1]-a[a.length-1];
+                        });
+                        console.log(duelArray);
 
                         var data = google.visualization.arrayToDataTable(duelArray);
 
@@ -74,7 +96,7 @@
 //                            width: '100%',
 //                            height: 600,
 //                            tooltip: {isHtml: true},
-                            legend: 'none',
+                            legend: {position: 'top', maxLines: 6},
                             bar: {groupWidth: '50%'}//,
 //                            isStacked: true
                         };
@@ -84,17 +106,17 @@
                         });
                         chart.setAction({
                             id: 'id', // An id is mandatory for all actions.
-                            text: "انقر علي العمود لتسجل نجاح المشروع", // The text displayed in the tooltip.
+                            text: "Click to add to winners", // The text displayed in the tooltip.
                             action: function() {
                             }
                         });
                         google.visualization.events.addListener(chart, "select", function() {
                             var selection = chart.getSelection();
                             if (selection.length > 0) {
-                                var id = data.getFormattedValue(selection[0].row, 0).substr(2);
-                                jui.jconfirm("اضافة : \"" + $("div[title='" + data.getFormattedValue(selection[0].row, 0) + "']").attr("class") + " \" الي ناجحي المجموعة؟",
+                                var id = data.getFormattedValue(selection[0].row, 0).substr(3);
+                                jui.jconfirm("Add \"" + $("div[title='" + data.getFormattedValue(selection[0].row, 0) + "']").attr("class") + " \" to winners",
                                         function() {
-                                            jui.jloading("جاري حفظ المشروع");
+                                            jui.jloading("Saving project");
                                             $.ajax({
                                                 url: "<?= base_url() ?>judgeshead/home/projectwinning",
                                                 type: "post",
@@ -105,7 +127,7 @@
                                                     jui.jHide();
                                                 }
                                             });
-                                        }, null, "أضف", "الغاء");
+                                        }, null, "Add", "Cancel");
                             }
                         });
                         chart.draw(data, options);

@@ -162,9 +162,19 @@ class Home extends AdminGenericController {
             show_404();
             die;
         }
-
+        
+        //get projects in the group
+        
         $schedule = new Schedule();
-        $data['schedules'] = $schedule->query("select schedule.* from schedule,category where schedule.category_id = category.id and category.group_id = " . $group->id);
+        
+        $innerQuery = "select p.id from project as p,category as c where p.category_id = c.id and c.group_id = ".$loadedGroup->id;
+        
+//        $project = new Project();
+//        $p = $project->query("select count(p.id) as count from project as p,category as c where p.category_id = c.id and c.group_id = ".$loadedGroup->id);
+//
+//        $data["pcount"] = $p->count;
+        
+        $data['schedules'] = $schedule->query("select s.* from schedule as s where s.project_id in (".$innerQuery.")");
 
         $data['group'] = $loadedGroup;
 
