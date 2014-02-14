@@ -16,7 +16,9 @@ class ImportController extends AdminGenericController {
 
     public function do_import() {
         if ($_FILES["judgeFile"]["size"] > 0) {
-
+            
+            setlocale(LC_ALL, 'ar_AE.utf8');
+            
             $file = $_FILES["judgeFile"]["tmp_name"];
             $newFile = "./csv_uploads/csv_" . time() . ".csv";
             copy($file, $newFile);
