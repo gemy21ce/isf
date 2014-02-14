@@ -477,10 +477,10 @@ var JUI = function (options) {
                 $('#' + jloading_overlayId).hide();
                 //set the action on cancel.
                 $('#' + jcancelId).show().click(function () {
+                    if (failer) failer();
                     $('#' + jdelete_popupId).hide(function () {
                         $('#' + joverlayId).hide();
                         $("#" + jcancelId).hide();
-                        if (failer) failer();
                         failer = null;
                         success = null;
                         $("#" + jconfirmedId).html('OK');
@@ -490,10 +490,10 @@ var JUI = function (options) {
                 });
                 //set the action on confrim.
                 $('#' + jconfirmedId).click(function () {
+                    if (success) success();
                     $('#' + jdelete_popupId).hide(function () {
                         $('#' + joverlayId).hide();
                         $("#" + jcancelId).hide();
-                        if (success) success();
                         success = null;
                         failer = null;
                         $("#" + jconfirmedId).html('OK');

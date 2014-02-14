@@ -5,7 +5,7 @@ include_once dirname(__FILE__) . '/../AdminGenericController.php';
 class Home extends AdminGenericController {
 
     function __construct() {
-        
+
         parent::__construct(true, array("super_judge"));
         $this->load->model("group");
     }
@@ -128,7 +128,7 @@ class Home extends AdminGenericController {
         $group = new Group();
         $group->get_by_id($id);
         $group->set_json_content_type();
-        echo $group->to_json(array("id","name","name_ar","type"), true);
+        echo $group->to_json(array("id", "name", "name_ar", "type"), true);
         die();
     }
 
@@ -162,19 +162,19 @@ class Home extends AdminGenericController {
             show_404();
             die;
         }
-        
+
         //get projects in the group
-        
+
         $schedule = new Schedule();
-        
-        $innerQuery = "select p.id from project as p,category as c where p.category_id = c.id and c.group_id = ".$loadedGroup->id;
-        
+
+        $innerQuery = "select p.id from project as p,category as c where p.category_id = c.id and c.group_id = " . $loadedGroup->id;
+
 //        $project = new Project();
 //        $p = $project->query("select count(p.id) as count from project as p,category as c where p.category_id = c.id and c.group_id = ".$loadedGroup->id);
 //
 //        $data["pcount"] = $p->count;
-        
-        $data['schedules'] = $schedule->query("select s.* from schedule as s where s.project_id in (".$innerQuery.")");
+
+        $data['schedules'] = $schedule->query("select s.* from schedule as s where s.project_id in (" . $innerQuery . ")");
 
         $data['group'] = $loadedGroup;
 
@@ -182,6 +182,27 @@ class Home extends AdminGenericController {
         $this->load->view('frontend/includes/template', $data);
     }
 
+    function assignProjectToJudge(){
+        $project = $this->input->get("project");
+        $judge = $this->input->get("judge");
+        
+        $schedule = new Schedule();
+        $schedule->where("project_id = ". $project . " and judge_id = ". $judge);
+        $times = $schedule->count();
+        if($times == 0){
+            $proj = new Project();
+            $proj->get_by_id($project);
+            $proj->category->get();
+            $sched = new Schedule();
+            $sched->project_id = $project;
+            $sched->judge_id = $judge;
+            $sched->category_id = $proj->category_id;
+            $sched->save();
+        }else{
+            echo 'exist';
+        }
+    }
+    
     function judges() {
         $data['main_content'] = 'frontend/superjudge/judges';
 
@@ -200,6 +221,12 @@ class Home extends AdminGenericController {
         $group = new Group();
 
         $data['group'] = $group->get_by_id($id);
+
+        $project = new Project();
+        $data['projects'] = $project->get();
+
+        $judge = new Judge();
+        $data['judges'] = $judge->get();
 
         $data['main_content'] = 'frontend/superjudge/groupschedule';
         $this->load->view("frontend/includes/template", $data);
@@ -345,4 +372,5 @@ class Home extends AdminGenericController {
     }
 
 }
+
 ?>

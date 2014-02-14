@@ -41,7 +41,7 @@
                 $("#tableData").children("tbody").children("tr").each(function() {
                     $(this).children("td").last().hide();
                 });
-                $("#tableData").css("width","99%");
+                $("#tableData").css("width", "99%");
                 //
                 window.print();
                 //table
@@ -56,6 +56,30 @@
             });
         };
         createPrint();
+        $("#assign").click(function() {
+            showAssign();
+        });
+        var showAssign = function() {
+            jui.jconfirm($("#assiging").html(), function() {
+                
+                var project = $("select#project:visible option:selected").val();
+                var judge = $("select#judge:visible option:selected").val();
+                jui.jloading("Saving New Interview");
+                $.ajax({
+                    url: '<?= base_url() . "judgeshead/home/assignProjectToJudge" ?>',
+                    data: {
+                        project: project,
+                        judge: judge
+                    },
+                    success: function(res) {
+                        if (res === "exist") {
+                            jui.jalert("Interview already exists!");
+                        } else
+                            window.location.reload();
+                    }
+                });
+            }, null, "Assign", "Cancel");
+        };
     });
 </script>
 <div class="intel-tab" id="tabs" init="true">
@@ -74,8 +98,23 @@
     <section class="active" id="teams">
         <span class="Content-body">
             <h2 id="Admin">Judging Schedule</h2>
-
             <hr/>
+            <div style="display: none;" id="assiging">
+                <p id="ass">
+                    <label> Assign </label>
+                    <select id="judge">
+                        <?php foreach ($judges as $j) { ?>
+                            <option value="<?= $j->id ?>"><?= $j->name ?></option>
+                        <? } ?>
+                    </select>
+                    <label> For </label>
+                    <select id="project">
+                        <?php foreach ($projects as $p) { ?>
+                            <option value="<?= $p->id ?>"><?= $p->name ?></option>
+                        <? } ?>
+                    </select>
+                </p>
+            </div>
             <div class="contant-contaner">
                 <table cellpadding="0" cellspacing="0" border="0" class="intel-table intel-table-zebra intel-sortable" id="tableData">
                     <thead>
@@ -125,6 +164,7 @@
                     <tfoot></tfoot>
 
                 </table>
+                <button class="" id="assign">Assign judge to Project</button>
             </div>
         </span>
     </section>
