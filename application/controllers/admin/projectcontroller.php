@@ -280,7 +280,8 @@ class ProjectController extends AdminGenericController {
     public function import() {
 
         if ($_FILES["projectFile"]["size"] > 0) {
-            echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+            setlocale(LC_ALL, 'ar_AE.utf8');
+            //echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
             $this->load->model("grade");
             $this->load->model("category");
             $this->load->model("exhibition");
