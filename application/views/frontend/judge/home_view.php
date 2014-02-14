@@ -53,6 +53,7 @@
                 <table cellpadding="0" cellspacing="0" border="0" class="intel-table" id="tableData">
                     <thead>
                         <tr class="">
+                            <th style="cursor: pointer;" class="">Projects Code</th>
                             <th style="cursor: pointer;" class="">Projects Name</th>
                             <th style="cursor: pointer;" class="">Show</th>
                             <th style="cursor: pointer;" class="">Evaluate</th>
@@ -61,6 +62,7 @@
                     <tbody>
                         <?php foreach ($projects as $project) { ?>
                             <tr>
+                                <td><?php $project->category->get(); echo $project->category->code . ' - ' . $project->id; ?></td>
                                 <td><?= $project->name ?></td>
                                 <td>
                                     <a href="<?= base_url() ?>judge/home/showproject/<?= $project->id ?>">Show Project</a>

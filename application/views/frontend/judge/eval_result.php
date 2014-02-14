@@ -1,13 +1,32 @@
 <script type="text/javascript">
     $(function() {
         $("table.intel-table").css("marginLeft", Math.max(0, (($("#contant-contaner").width() - $("table.intel-table").outerWidth()) / 2)));
+        var createPrint = function() {
+            var printbtn = document.createElement("button");
+            printbtn.setAttribute("class", "intel-btn intel-btn-cancel");
+            printbtn.setAttribute("style", "float:right");
+            printbtn.innerHTML = "Print This Page";
+            $("#contant-contaner").append(printbtn);
+            $(printbtn).click(function() {
+                $("body").children().hide();
+                $("article").show();
+                $(this).hide();
+                var marginTop = $("article").css("margin-top");
+                $("article").css("margin-top", "2em");
+                window.print();
+                $("body").children().show();
+                $("article").css("margin-top", marginTop);
+                $(this).show();
+            });
+        };
+        createPrint();
     });
 </script>
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judge/home" tab="#admins">المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judge/home/schedule" tab="#sched">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judge/home/evalresults" class="active" tab="#results">نتائج التحكيم</a></li>
+        <li><a href="<?= base_url(); ?>judge/home" tab="#admins">Projects</a></li>
+        <li><a href="<?= base_url(); ?>judge/home/schedule" tab="#sched">Evaluation Schedule</a></li>
+        <li><a href="<?= base_url(); ?>judge/home/evalresults" class="active" tab="#results">Evaluation Results</a></li>
         <!--<li><a href="javascript:void(0);" tab="#tab5">More...</a></li>-->
     </ul>
     <hr class="intel-tab-divider">
@@ -15,29 +34,29 @@
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">
-            <h2 id="Admin">نتائج التحكيم</h2>
+            <h2 id="Admin">Evaluation Results</h2>
             <hr/>
 
             <div id="contant-contaner" class="contant-contaner">
-                <div style="direction: rtl;">
+                <div>
                     <p>
-                        <span>اسم المحكم:</span>
+                        <span>Judge Name: </span>
                         <?= $judge->name ?>
                         <br/>
                         <span>
-                            القائمة:
+                            Category:
                         </span>
                         <?php
                         $judge->category->get();
-                        echo "<span dir='ltr' style='direction:ltr;'>" . $judge->category->name . "</span>";
+                        echo "<span dir='ltr' style=''>" . $judge->category->name . "</span>";
                         ?>
                         <br/>
                         <span>
-                            القائمة الفرعية:
+                            Sub-category:
                         </span>
                         <?php
                         $judge->subcategory->get();
-                        echo "<span dir='ltr' style='direction:ltr;'>" . $judge->subcategory->name . "</span>";
+                        echo "<span dir='ltr' style=''>" . $judge->subcategory->name . "</span>";
                         ?>
                     </p>
                 </div>
@@ -46,11 +65,11 @@
                     ?>
                     <table class="intel-table" style="width: 50%">
                         <thead>
-                        <td>رقم المقابلة</td>
-                        <td>النتيجة</td>
-                        <td>النتيجة المعيارية</td>
-                        <td>رقم المشروع</td>
-                        <td>اسم المشروع</td>
+                        <td>Interview #</td>
+                        <td>Score</td>
+                        <td>Z-Score</td>
+                        <td>Project Code</td>
+                        <td>Project Name</td>
                         </thead>
                         <tbody>
                             <?php
@@ -66,7 +85,11 @@
                                     <td><?= $ev->slotnumber ?></td>
                                     <td><?= $ev->eval_total ?></td>
                                     <td><?= number_format(zscore($ev->eval_total, $scores), 2) ?></td>
-                                    <td><?= $ev->project_id ?></td>
+                                    <td><?php
+                                        $ev->project->get();
+                                        $ev->project->category->get();
+                                        echo $ev->project->category->code . ' - ' . $ev->project_id
+                                        ?></td>
                                     <td>
                                         <?php
                                         $ev->project->get();
@@ -78,29 +101,29 @@
                         </tbody>
                     </table>
                     <div>
-                        <p style="direction: rtl;">
+                        <p style="">
                             <span>
-                                <label>عدد المشاريع التي تم التحكيم عليها:</label>
+                                <label>Total Number of Scores:</label>
                                 <?= count($scores) ?>
                             </span>
                             <br/>
                             <span>
-                                <label>النتيجة المتوسطة:</label>
+                                <label>Mean Score:</label>
                                 <?= number_format(mean($scores), 2) ?>
                             </span>
                             <br/>
                             <span>
-                                <label>أعلي نتيجة:</label>
+                                <label>High Score :</label>
                                 <?= max($scores) ?>
                             </span>
                             <br/>
                             <span>
-                                <label>أقل نتيجة:</label>
+                                <label>Low Score:</label>
                                 <?= min($scores) ?>
                             </span>
                             <br/>
                             <span>
-                                <label>الرقم الأوسط للنتائج:
+                                <label>Median Score :
                                 </label>
                                 <?= calculate_median($scores) ?>
                             </span>
@@ -108,9 +131,9 @@
                     </div>
 
                 <?php } else { ?>
-                <div dir="rtl" style="text-align: center">
+                    <div dir="rtl" style="text-align: center">
                         <p>
-                            لم يتم التحكيم علي أي مشاريع بعد
+                            You did not evaluate any project yet.
                         </p>
                     </div>
                 <?php } ?>
