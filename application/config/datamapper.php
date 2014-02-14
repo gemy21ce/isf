@@ -29,7 +29,7 @@ $config['db_params'] = '';
 // Uncomment to enable the production cache
 // $config['production_cache'] = APPPATH.'cache';
 
-$config['extensions_path'] = dirname(__FILE__).'./../third_party/datamapper/extensions';
+$config['extensions_path'] = dirname(__FILE__).'/../third_party/datamapper/extensions';
 $config['extensions'] = array('json');
 
 /* End of file datamapper.php */

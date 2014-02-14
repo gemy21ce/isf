@@ -107,7 +107,7 @@
                      Login
                 </button>
             </form>
-            <div class="login-fotter-logo"><a href="http://www.intel.com/content/www/xr/en/homepage.html"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="http://www.misrelkheir.org/"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
+            <div class="login-fotter-logo"><a target="_blanck" href="http://www.intel.eg/"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a target="_blanck" href="http://www.misrelkheir.org/"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>
         </div>
     </body>
 </html>
