@@ -56,8 +56,8 @@
                         }
                     },
                     messages:{
-                        password: "يجب ألايقل طول الكلمة عن 6 أحرف",
-                        email:  "البريد الاليكتروني غير صحيح"
+                        password: "Min lengh of chars 6",
+                        email:  "Incorrect email format"
                     }
                 });
             });
@@ -74,14 +74,14 @@
         <div class="login-form" id="login-form">
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
             <form action="<?php echo base_url(); ?>home/login" method="post" class="intel-form pure-form-stacked">
-                <label for="email">البريد الاليكتروني</label>
-                <input id="email" name="email" type="email" placeholder="البريد الاليكتروني"/>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Email"/>
 
-                <label for="password">كلمة المرور</label>
-                <input id="password" name="password" type="password" placeholder="كلمة المرور"/>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Password"/>
                 <?php if (isset($errormessage)) { ?>
                 <div id="errorDiv" class="intel-checkbox">
-                        <a style="color:red;font-size: 12px;line-height: 0em;">خطأ في اسم البريد الاليكتروني أو كلمة السر</a>
+                        <a style="color:red;font-size: 12px;line-height: 0em;">Wrong email or password</a>
                     </div>
                 <style>
                     input#password, input#email{
@@ -98,13 +98,13 @@
                 </script>
                 <?php } ?>
                 <div class="intel-checkbox">
-                    <a href="<?= base_url() ?>home/forgetpassword">نسيت كلمة المرور</a> </div>
+                    <a href="<?= base_url() ?>home/forgetpassword">Forget your password?</a> </div>
                 <!--                <div class="intel-checkbox">
                                 <input type="checkbox" id="Check_Box_1Key"/>
                                     <label  for="Check_Box_1Key">Remember Me</label>
                                 </div>-->
                 <button type="submit" class="intel-btn intel-btn-action">
-                    تسجيل الدخول
+                     Login
                 </button>
             </form>
             <div class="login-fotter-logo"><a href="http://www.intel.com/content/www/xr/en/homepage.html"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="http://www.misrelkheir.org/"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>

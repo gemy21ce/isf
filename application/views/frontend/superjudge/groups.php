@@ -103,6 +103,10 @@
                 });
             }
         });
+        $("#cancel").click(function() {
+            $("#table").show();
+            $("#createGroupForm").hide();
+        });
 
     });
 </script>
@@ -152,7 +156,7 @@
                                             <?= $g->type == 'engineering' ? "Engineering" : "Scientific" ?>
                                         </td>
                                         <td>
-                                            <?= $g->name_ar ?>
+                                            <?= $g->name ?>
                                         </td>
                                         <td>
                                             <?php
@@ -207,6 +211,9 @@
                             </div>
                             <button type="button" id="saveGroup" class="intel-btn intel-btn-action">
                                 Save
+                            </button>
+                            <button type="button" id="cancel" class="intel-btn intel-btn-action">
+                                Cancel
                             </button>
                         </fieldset>
                     </form>

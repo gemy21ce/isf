@@ -52,7 +52,7 @@
                         }
                     },
                     messages:{
-                        email:  "البريد الاليكتروني غير صحيح"
+                        email:  "Invalid email format"
                     }
                 });
             });
@@ -75,13 +75,13 @@
         <div class="login-form" style="height: 300px;" id="login-form">
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
             <form action="<?php echo base_url(); ?>home/sendpassword" method="post" class="intel-form pure-form-stacked">
-                <label for="email">البريد الاليكتروني</label>
-                <input id="email" name="email" type="email" placeholder="البريد الاليكتروني"/>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Email"/>
 
                 <div id="errorDiv" style="text-align: center;" class="intel-checkbox">
                     <?php if (isset($errormessage)) { ?>
 
-                        <a style="color:red;font-size: 12px;line-height: 0em;">البريد الاليكتروني غير مسجل</a>
+                        <a style="color:red;font-size: 12px;line-height: 0em;">This email is not registered</a>
 
                         <style>
                             input#email{
@@ -106,7 +106,7 @@
                                     <label  for="Check_Box_1Key">Remember Me</label>
                                 </div>-->
                 <button type="submit" class="intel-btn intel-btn-action">
-                    ارسال
+                    Send
                 </button>
             </form>
             <div class="login-fotter-logo"><a href="http://www.intel.com/content/www/xr/en/homepage.html"><img src="<?php echo base_url(); ?>assets/frontend/images/intel.jpg" width="87" height="82" /></a><a href="http://www.misrelkheir.org/"><img src="<?php echo base_url(); ?>assets/frontend/images/misr-el-kheir.jpg" width="87" height="82" /></a></div>

@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Login - Intel ISEF Egypt </title>
+        <title>Reset Password - Intel ISEF Egypt </title>
         <link href="<?php echo base_url(); ?>assets/frontend/images/isef_favicon_32.ico" rel="icon" type="image/x-icon"/>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/pure-min.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/site.css" />
@@ -55,8 +55,8 @@
                         }
                     },
                     messages:{
-                        password: "يجب ألايقل طول الكلمة عن 6 أحرف",
-                        password2:  "من فضلك أكد كلمة المرور جيدا"
+                        password: "Min lengh of chars 6",
+                        email:  "Incorrect email format"
                     }
                 });
             });
@@ -74,12 +74,12 @@
             <div class="login-logo"><img src="<?php echo base_url(); ?>assets/frontend/images/iesf.png" width="100" height="117" /></div>
             <form action="<?php echo base_url(); ?>home/changepassword" method="post" class="intel-form pure-form-stacked">
                 <input value="<?= $id ?>" name="id" type="hidden"/>
-                <label for="password">كلمة المرور</label>
-                <input id="password" name="password" value="" type="password" placeholder="كلمة المرور"/>
+                <label for="password">Password</label>
+                <input id="password" name="password" value="" type="password" placeholder="Password"/>
 
 
-                <label for="password">تأكيد كلمة المرور</label>
-                <input id="password2" name="password2" value="" type="password" placeholder="تأكيد كلمة المرور"/>
+                <label for="password">Confirm Password</label>
+                <input id="password2" name="password2" value="" type="password" placeholder="Confirm Password"/>
                 <div class="intel-checkbox">
                 </div>
                 <!--                <div class="intel-checkbox">
@@ -87,7 +87,7 @@
                                     <label  for="Check_Box_1Key">Remember Me</label>
                                 </div>-->
                 <button type="submit" class="intel-btn intel-btn-action">
-                    حفظ 
+                    Save 
                 </button>
             </form>
             <div style="margin-top: 40px;" class="login-fotter-logo">

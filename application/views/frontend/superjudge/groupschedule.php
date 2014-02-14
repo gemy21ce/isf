@@ -18,7 +18,44 @@
             }, function() {
             }, "Ok", "Cancel");
         });
-        var table = $('#tableData').dataTable();
+        table = $('#tableData').dataTable();
+        $(window).bind('resize', function() {
+            table.fnAdjustColumnSizing();
+        });
+    });
+    $(function() {
+        var createPrint = function() {
+            var printbtn = document.createElement("button");
+            printbtn.setAttribute("class", "intel-btn intel-btn-cancel");
+            printbtn.setAttribute("style", "float:right");
+            printbtn.innerHTML = "Print This Page";
+            $(".contant-contaner").append(printbtn);
+            $(printbtn).click(function() {
+                $("body").children().hide();
+                $("article").show();
+                $(this).hide();
+                var marginTop = $("article").css("margin-top");
+                $("article").css("margin-top", "2em");
+                //table
+                $("#tableData").children("thead").children("tr").children("th").last().hide();
+                $("#tableData").children("tbody").children("tr").each(function() {
+                    $(this).children("td").last().hide();
+                });
+                $("#tableData").css("width","99%");
+                //
+                window.print();
+                //table
+                $("#tableData").children("thead").children("tr").children("th").last().show();
+                $("#tableData").children("tbody").children("tr").each(function() {
+                    $(this).children("td").last().show();
+                });
+                table.fnAdjustColumnSizing();
+                $("body").children().show();
+                $("article").css("margin-top", marginTop);
+                $(this).show();
+            });
+        };
+        createPrint();
     });
 </script>
 <div class="intel-tab" id="tabs" init="true">

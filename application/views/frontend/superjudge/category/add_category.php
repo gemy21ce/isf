@@ -13,21 +13,21 @@ function checkInputVal($var) {
 <link rel="stylesheet" href="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" />
 
 <script type="text/javascript">
-    function edit_item(element)
-    {
-        $.fancybox({
+            function edit_item(element)
+            {
+                $.fancybox({
             href: "<?php echo base_url(); ?>judgeshead/categories/edit_subcategory?cat_id=" + $(element).attr("cat_id") + "&id=" + $(element).attr("item_id"),
-            type: "ajax",
-            scrolling: "no",
-            onClosed: function() {
-                loadSubCategory();
+                    type: "ajax",
+                    scrolling: "no",
+                    onClosed: function() {
+                        loadSubCategory();
+                    }
+                });
             }
-        });
-    }
 
     function delete_item(element)
     {
-        $.fancybox('<div id="popupMessage">هل أنت متأكدة من ازالة ' + $(element).html() + '</div>',
+        $.fancybox('<div id="popupMessage">Are you sure you want to delete ' + $(element).html() + 'subCategory</div>',
                 {
                     'autoDimensions': true,
                     'transitionIn': 'none',
@@ -35,7 +35,7 @@ function checkInputVal($var) {
                     'onComplete': function() {
                         var deleteButton = $('<button/>',
                                 {
-                                    text: 'حذف',
+                                    text: 'Delete',
                                     click: function() {
                                         $.fancybox.close();
                                         $.ajax({
@@ -47,7 +47,7 @@ function checkInputVal($var) {
                                             success: function($ret) {
                                                 if ($ret === "TRUE") {
                                                     loadSubCategory();
-                                                    $.fancybox('تم حذف القائمة',
+                                                    $.fancybox('subcategory Delete successfully',
                                                             {
                                                                 'autoDimensions': true,
                                                                 'transitionIn': 'none',
@@ -62,7 +62,7 @@ function checkInputVal($var) {
                                                     );
                                                 } else {
 //                        alert("thank you.");
-                                                    $.fancybox('لم يتم حذف القائمة برجاء المحاولة مرة أخري',
+                                                    $.fancybox('Sorry can\'t delete this subcategory at the moment, please try again later',
                                                             {
                                                                 'autoDimensions': true,
                                                                 'transitionIn': 'none',
@@ -96,8 +96,6 @@ function checkInputVal($var) {
         }
         $(function() {
             loadSubCategory();
-            $("#tabs").find("a.active").removeClass("active");
-            $("a[tab='#category']").addClass("active");
         });
         function loadAddPage() {
             $.fancybox({
@@ -114,13 +112,13 @@ function checkInputVal($var) {
 </script>
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">المحكمين</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">المجموعات</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" class="active" tab="#judges">القوائم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">Judging Schedule </a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/categories/home" class="active" tab="#judges">Categories</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
@@ -162,9 +160,9 @@ function checkInputVal($var) {
                 <?php if (isset($errors)) echo "<p class='error' >" . $errors['description']['error'] . "</p>"; ?>
                 <div class="intel-select">
                     <select name="group_id" id="group_id">
-                        <option value="-1">اختر المجموعة</option>
+                        <option value="-1" >Select group</option>
                         <?php foreach ($groups as $group) { ?>
-                            <option value="<?= $group->id ?>" <?= checkInputVal("group_id") ? "selected" : "" ?> ><?= $group->name ?></option>
+                        <option value="<?= $group->id ?>" <?= (isset($category) && $group->id == $category->group_id) ? "selected" : "" ?> ><?= $group->name ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -173,7 +171,7 @@ function checkInputVal($var) {
                 <?php if (isset($errors)) echo "<p class='error' >" . $errors['code']['error'] . "</p>"; ?>
                 <input type="text" id="Code" name="code" value="<?= checkInput("code") ?>" />
 
-                <label>الوصف <span class="error">*</span>:</label>
+                <label>Description <span class="error">*</span>:</label>
                 <?php if (isset($errors)) echo "<p class='error' >" . $errors['description']['error'] . "</p>"; ?>
                 <textarea id="description" name="description" ><?= checkInput("description") ?></textarea>
 
@@ -186,7 +184,7 @@ function checkInputVal($var) {
                 <?php
                 echo form_close();
                 ?>
-                <a style="cursor: pointer" class="intel-btn intel-btn-action" onclick="$('#categoryForm').submit();"> حفظ </a>
+                <a style="cursor: pointer" class="intel-btn intel-btn-action" onclick="$('#categoryForm').submit();"> Save </a>
             </div>
         </span>
     </section>

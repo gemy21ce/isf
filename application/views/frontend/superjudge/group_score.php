@@ -2,20 +2,20 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <div class="intel-tab" id="tabs" init="true">
     <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">المحكمين</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">المجموعات</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges" class="active">النتائج</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">Judging Schedule</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/scores" class="active" tab="#judges">Scores</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
     </ul>
     <hr class="intel-tab-divider">
 </div>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">
-            <h2 id="Admin" style="direction: rtl;">نتائج المجموعة - <?= $group->name_ar ?></h2>
+            <h2 id="Admin" style="">Group <?= $group->name ?> Results</h2>
 
             <hr/>
             <div class="contant-contaner">
@@ -54,7 +54,7 @@
                                 projects.push($(this).text());
                             }
                         });
-                        header.push({role: {trigger: 'selection'}});
+                        header.push({role: 'annotation'});
                         var duelArray = new Array();
                         duelArray.push(header);
                         for (var i = 0; i < projects.length; i++) {

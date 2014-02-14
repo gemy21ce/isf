@@ -1,4 +1,4 @@
-<label>القائمة الفرعية</label>
+<label>Sub-category</label>
 <label>
     <img id="add_subcategory" onclick="loadAddPage()" src="<?=base_url()?>/assets/backend/image/add_small.png" style="cursor: pointer"/>
 </label>
@@ -6,16 +6,16 @@
     <thead>
         <tr style="width: 100%">
             <th style="width: 30%">
-                الاسم
+                Name
             </th>
             <th style="width: 50%">
-                الوصف
+                Description
             </th>
             <th style="width: 10%">
-                الرمز
+                Code
             </th>
             <th style="width: 10%">
-                أدر
+                Manage
             </th>
         </tr>
     </thead>

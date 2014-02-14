@@ -21,7 +21,7 @@ function checkInputVal($var) {
                 success: function(data) {
                     if (data === "TRUE") {
                         loadSubCategory();
-                        $.fancybox("<div style='color:green'>تم حفظ القائمة الفرعية</div>");
+                        $.fancybox("<div style='color:green'>subcategory saved</div>");
                         setTimeout(function() {
                             $.fancybox.close();
                         }, 3000);
@@ -32,18 +32,18 @@ function checkInputVal($var) {
                 },
                 error: function(){
                     $.fancybox.hideActivity();
-                        $("#subCategory_error").html("حدثت مشكلة برجاء المحاولة مرة أخري");
+                        $("#subCategory_error").html("Server side error, please try again later");
                 }
             });
             return false;
         });
     });
 </script>
-<h1>القوائم الفرعية</h1>
+<h1>Sub-category</h1>
 
 <fieldset>
 
-    <legend>معلومات القوائم الفرعية</legend>
+    <legend>Sub-category information</legend>
 
     <?php
     echo form_open('judgeshead/categories/save_subcategory', array("id" => "subcategory_form"));
