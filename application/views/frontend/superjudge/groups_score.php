@@ -37,7 +37,7 @@
                                 ?>
                                 <tr>
                                     <td>
-                                        <?= $group->name_ar ?>
+                                        <?= $group->name ?>
                                     </td>
                                     <td>
                                         <?php

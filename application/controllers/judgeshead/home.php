@@ -42,10 +42,10 @@ class Home extends AdminGenericController {
     function scores() {
         $data['main_content'] = 'frontend/superjudge/groups_score';
 
-        $schedule = new Schedule();
+        $evals = new Evaluation();
 
-        $schedule->where("eval_total > 0");
-        if ($schedule->count() > 0) {
+        $evals->where("eval_total > 0");
+        if ($evals->count() > 0) {
 
             $groups = new Group();
 
@@ -145,7 +145,7 @@ class Home extends AdminGenericController {
 
         //get projects in the group
 
-        $schedule = new Schedule();
+        $schedule = new Evaluation();
 
         $innerQuery = "select p.id from project as p,category as c where p.category_id = c.id and c.group_id = " . $loadedGroup->id;
 
@@ -154,7 +154,7 @@ class Home extends AdminGenericController {
 //
 //        $data["pcount"] = $p->count;
 
-        $data['schedules'] = $schedule->query("select s.* from schedule as s where s.project_id in (" . $innerQuery . ")");
+        $data['schedules'] = $schedule->query("select s.* from project_evaluation as s where s.project_id in (" . $innerQuery . ")");
 
         $data['group'] = $loadedGroup;
 

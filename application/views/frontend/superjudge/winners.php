@@ -87,7 +87,7 @@
                                     <td>
                                         <?php
                                         $p->category->group->get();
-                                        echo $p->category->group->name_ar;
+                                        echo $p->category->group->name;
                                         ?>
                                     </td>
                                     <td>

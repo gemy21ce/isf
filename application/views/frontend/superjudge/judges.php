@@ -62,7 +62,7 @@
                                 </td>
                                 <td>
                                     <?php $judge->category->get(); $judge->category->group->get() ?>
-                                    <?= $judge->category->group->name_ar ?>
+                                    <?= $judge->category->group->name ?>
                                 </td>
                                 <td>
                                     <?php // $judge->category->get(); ?>

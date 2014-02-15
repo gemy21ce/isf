@@ -65,7 +65,7 @@
                     ?>
                     <table class="intel-table" style="width: 50%">
                         <thead>
-                        <td>Interview #</td>
+                        <!--<td>Interview #</td>-->
                         <td>Score</td>
                         <td>Z-Score</td>
                         <td>Project Code</td>
@@ -82,7 +82,7 @@
                             foreach ($evals as $ev) {
                                 ?>
                                 <tr>
-                                    <td><?= $ev->slotnumber ?></td>
+                                    
                                     <td><?= $ev->eval_total ?></td>
                                     <td><?= number_format(zscore($ev->eval_total, $scores), 2) ?></td>
                                     <td><?php
