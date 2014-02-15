@@ -37,6 +37,7 @@ class ProjectController extends AdminGenericController {
             $item_data[] = $item->adult_sponsor_educational_administration;
             $item_data[] = $item->adult_sponsor_gov;
             $item_data[] = $item->category->get()->name;
+            $item_data[] = $item->fair->get()->name;
             
             $item_data[] = $item->id;
             $item_data[] = $item->id;
@@ -231,6 +232,11 @@ class ProjectController extends AdminGenericController {
     }
 
     public function import_form() {
+        
+        $this->load->model("fair");
+        $fairs  = new Fair();
+        $fairs->get();
+        $data['fairs'] = $fairs;
         $data['main_content'] = 'backend/admin/projects/import';
         $this->load->view('backend/includes/template', $data);
     }
@@ -282,6 +288,9 @@ class ProjectController extends AdminGenericController {
         if ($_FILES["projectFile"]["size"] > 0) {
             setlocale(LC_ALL, 'ar_AE.utf8');
             //echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+            
+            $fair_id = $this->input->post('fair_id', TRUE);
+            
             $this->load->model("grade");
             $this->load->model("category");
             $this->load->model("exhibition");
@@ -370,6 +379,7 @@ class ProjectController extends AdminGenericController {
                     }
                     $time = strtotime($data[98]);
                     $project->submission_date = date('Y-m-d', $time);
+                    $project->fair_id = $fair_id;
 //                    var_dump($project);
 //                    die();
                     $project->save();

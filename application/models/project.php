@@ -41,7 +41,8 @@ class Project extends DataMapper {
         "student_3"=>array(
             "class"=>"student",
             "other_field" => "project_3"
-        )
+        ),
+        "fair"
     );
     function __construct() {
 

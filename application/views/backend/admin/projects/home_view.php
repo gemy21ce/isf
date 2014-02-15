@@ -13,7 +13,7 @@
                             "bServerSide": true,
                             "sAjaxSource": "<?php echo base_url(); ?>admin/projectcontroller/pages",
                             "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-                                $('td:eq(5)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[5] + '">Edit</a>');
+//                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
                                 $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[6] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
                                 return nRow;
                             },
@@ -45,7 +45,8 @@
                             <th width="15%">Adult sponsor gov</th>
                             <th width="15%">Educational administration</th>
                             <th width="15%">Category</th>
-                            <th width="15%">Edit</th>
+                            <th width="15%">Fair</th>
+                            <!--<th width="15%">Edit</th> -->
                             <th width="15%">Delete</th>
                         </tr>
                     </thead>
@@ -61,7 +62,8 @@
                             <th width="15%">Adult sponsor gov</th>
                             <th width="15%">Educational administration</th>
                             <th width="15%">Category</th>
-                            <th width="15%">Edit</th>
+                            <th width="15%">Fair</th>
+                            <!--<th width="15%">Edit</th>-->
                             <th width="15%">Delete</th>
                         </tr>
                     </tfoot>
