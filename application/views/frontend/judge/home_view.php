@@ -1,22 +1,19 @@
 <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
 <script type="text/javascript">
-    var projects = [];
-    var evaled = [];
+//    var projects = [];
+//    var evaled = [];
     $('#tableData').ready(function() {
         $("#projects").find("span").each(function() {
-            projects.push($(this).text());
             var el = $(".proEv#proj-" + $(this).text())
             el.removeClass("proEv");
-            el.addClass("evaluated");
+            el.addClass("evaluate");
         });
         $(".proEv").removeAttr("href").text("You cannot evaluate")
                 .css("text-decoration","blink").css("color","#53565a");
         $("#evaled").find("span").each(function() {
-            projects.push($(this).text());
-            $(".evaluated#proj-" + $(this).text()).removeClass("evaluated");
-        });
-        $(".evaluated").removeAttr("href").text("already evaluated")
+            $(".evaluate#proj-" + $(this).text()).removeAttr("href").text("already evaluated")
                 .css("text-decoration","blink").css("color","#53565a");
+        });
         $('#tableData').dataTable({});
     });
 </script>

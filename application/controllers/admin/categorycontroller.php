@@ -113,7 +113,9 @@ class CategoryController extends AdminGenericController {
             $category->save();
 
 //            die($category->get_sql());
-            return $this->showGoodStatusPage("New category '" . $this->input->post('name', TRUE) . "' save successfully", base_url() . "admin/categorycontroller/home");
+//            return $this->showGoodStatusPage("قائم جديدة '" . $this->input->post('name', TRUE) . "' تم حفظها بنجاح", base_url() . "judgeshead/categories/home");
+            redirect(base_url().'admin/categorycontroller/home');
+            die;
         }
     }
     
@@ -128,8 +130,6 @@ class CategoryController extends AdminGenericController {
             $subcategory->delete();
         }
         $category->delete();
-        
-        $this->showGoodStatusPage("Category delete Successfully", base_url().'admin/categorycontroller/home');
         
     }
 

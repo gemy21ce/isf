@@ -8,14 +8,29 @@
     });
     $('#tableData').ready(function() {
 
-        $('#tableData').dataTable({
+        var table = $('#tableData').dataTable({
             "aaSorting": [],
             "bProcessing": true,
             "bServerSide": true,
             "sAjaxSource": "<?php echo base_url(); ?>admin/categorycontroller/pages",
             "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/edit/' + aData[4] + '">Edit</a>');
-                $('td:eq(5)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/delete/' + aData[5] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                $('td:eq(4)', nRow).html('<a href="<?php echo base_url(); ?>admin/categorycontroller/edit/' + aData[4] + '">edit</a>');
+                $('td:eq(5)', nRow).html('<a class="delete" href="<?php echo base_url(); ?>admin/categorycontroller/delete/' + aData[5] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                $("td:eq(5)", nRow).click(function(event) {
+                    event.preventDefault();
+                    var el = this;
+                    var url = $(el).children("a").attr("href");
+                    jui.jconfirm("Are you sure you want to delete this Category?", function() {
+                        $.ajax({
+                            url: url,
+                            type: "post",
+                            success: function() {
+                                table.fnDeleteRow(table.fnGetPosition(el)[0]);
+                            }
+                        });
+                    }, function() {
+                    }, "Ok", "Cancel");
+                });
                 return nRow;
             },
             "fnInitComplete": function(oSettings, json) {
@@ -28,7 +43,7 @@
 <article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4z">
     <section class="active" id="category">
         <span class="Content-body">
-            <h2 id="Admin">Category</h2>
+            <h2 id="Admin">Categories</h2>
             <hr/>
             <div class="contant-contaner">
                 <style type="text/css">

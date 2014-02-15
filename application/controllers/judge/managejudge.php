@@ -151,6 +151,27 @@ class ManageJudge extends AdminGenericController {
         return $this->showBadStatusPage("Error in data");
     }
     
+    function regenerateJudgesPassword(){
+        
+        $user = new User();
+        
+        $user->where("role_id",3);
+        $judges = $user->get();
+        $newJudges = array();
+        foreach ($judges as $judge) {
+            $j = new Judge();
+            $j->planPassword = substr(sha1($judge->email. date("Md")),0,8);
+            $judge->where("id",$judge->id)->update("password",  sha1($j->planPassword));
+            $j->name = $judge->name;
+            $j->email = $judge->email;
+            array_push($newJudges, $j);
+        }
+        $data['newJudges'] = $newJudges;
+        
+        $data['main_content'] = 'backend/user/generated_passwords';
+        $this->load->view('backend/includes/template', $data);
+    }
+    
     public function edit($judgeId){
         $judge = new Judge();
         $judge->where("id",$judgeId);

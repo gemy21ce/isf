@@ -8,8 +8,8 @@ function checkInputVal($var) {
     return isset($_POST[$var]) ? $_POST[$var] : false;
 }
 ?>
-<script type="text/javascript" src="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js">
-    < script type = "text/javascript" src = "<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js" ></script>
+<script type="text/javascript" src="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js"></script>
+<script type = "text/javascript" src = "<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js" ></script>
 <link rel="stylesheet" href="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" />
 
 <script type="text/javascript">
@@ -91,7 +91,7 @@ function checkInputVal($var) {
 
         function loadSubCategory()
         {
-            var id =<?= checkInput("id") ?>;
+            var id ='<?= checkInput("id") ?>';
             $("#subCategory").load("<?= base_url() ?>admin/categorycontroller/load_subcategories?id=" + id);
         }
         $(function() {
@@ -108,7 +108,7 @@ function checkInputVal($var) {
         }
 
 <?php } else { ?>
-        var id =<?= checkInput("id") ?>;
+        var id ='<?= checkInput("id") ?>';
 <?php } ?>
 
 </script>
@@ -152,7 +152,7 @@ function checkInputVal($var) {
                     <select name="group_id" id="group_id">
                         <option value="-1">Select group</option>
                         <?php foreach ($groups as $group) { ?>
-                            <option value="<?= $group->id ?>" <?= checkInputVal("group_id") ? "selected" : "" ?> ><?= $group->name ?></option>
+                        <option value="<?= $group->id ?>" <?= (isset($category) && $group->id == $category->group_id) ? "selected" : "" ?> ><?= $group->name ?></option>
                         <?php } ?>
                     </select>
                 </div>
