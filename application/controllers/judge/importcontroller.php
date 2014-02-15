@@ -73,7 +73,7 @@ class ImportController extends AdminGenericController {
                 $judge->save();
             } while ($data = fgetcsv($handle, 50000, ",", '"'));
             
-            return $this->showGoodStatusPage("Judge imported successfully", base_url() . "judge/managejudge/home");
+            redirect(base_url() . "judge/managejudge/home");
         } else {
             return $this->showBadStatusPage("no file to import");
         }

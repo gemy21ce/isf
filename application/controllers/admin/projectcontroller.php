@@ -388,7 +388,7 @@ class ProjectController extends AdminGenericController {
             //
             //redirect
 
-            return $this->showGoodStatusPage("Projects imported successfully", base_url() . "admin/projectcontroller/home");
+            redirect(base_url() . "admin/projectcontroller/home");
         } else {
             return $this->showBadStatusPage("no file to import");
         }

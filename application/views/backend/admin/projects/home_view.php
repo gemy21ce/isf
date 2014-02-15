@@ -1,29 +1,29 @@
 <script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
 <link type="text/css"  rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/js/jquery/table/table.css" />
 <script language="javascript" type="text/javascript">
-                    $(function() {
-                        $("#tabs").find("a.active").removeClass("active");
-                        $("a[tab='#teams']").addClass("active");
-                    });
-                    $('#tableData').ready(function() {
+    $(function() {
+        $("#tabs").find("a.active").removeClass("active");
+        $("a[tab='#teams']").addClass("active");
+    });
+    $('#tableData').ready(function() {
 
-                        $('#tableData').dataTable({
-                            "aaSorting": [],
-                            "bProcessing": true,
-                            "bServerSide": true,
-                            "sAjaxSource": "<?php echo base_url(); ?>admin/projectcontroller/pages",
-                            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+        $('#tableData').dataTable({
+            "aaSorting": [],
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "<?php echo base_url(); ?>admin/projectcontroller/pages",
+            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
 //                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
-                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[6] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
-                                return nRow;
-                            },
-                            "fnInitComplete": function(oSettings, json) {
+                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[6] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                return nRow;
+            },
+            "fnInitComplete": function(oSettings, json) {
 
-                            },"aoColumnDefs": [{ 'bSortable': false, "aTargets" : [ "sorting_disabled" ] }]
-                        });
-                    });
+            }, "aoColumnDefs": [{'bSortable': false, "aTargets": ["sorting_disabled"]}]
+        });
+    });
 
-                </script>
+</script>
 <article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4c">
     <section class="active" id="teams">
         <span class="Content-body">
@@ -36,7 +36,7 @@
                         text-align: center;
                     }
                 </style>
-                
+
                 <table cellpadding="0" cellspacing="0" border="0" class="intel-table intel-table-zebra intel-sortable"  id="tableData">
                     <thead>
                         <tr>
@@ -68,8 +68,12 @@
                         </tr>
                     </tfoot>
                 </table>
-                <!--<?= anchor(base_url()."admin/projectcontroller/add", 'Add Project','class="intel-btn intel-btn-action"') ?>-->
-                <?= anchor(base_url()."admin/projectcontroller/import_form", 'Import Project','class="intel-btn intel-btn-action"') ?>
+                <div style="clear: both;">
+                    <hr/>
+
+                    <!--<?= anchor(base_url() . "admin/projectcontroller/add", 'Add Project', 'class="intel-btn intel-btn-action"') ?>-->
+                    <?= anchor(base_url() . "admin/projectcontroller/import_form", 'Import Project', 'class="intel-btn intel-btn-action"') ?>
+                </div>
             </div>
         </span>
     </section>

@@ -1,4 +1,9 @@
-
+<script type="text/javascript">
+    $(function(){
+        $("a.active").removeClass("active");
+        $("a[tab='#teams']").addClass("active");
+    });
+</script>
 <article class="intel-tab-content">
     <section id="teams" class="active">
         <span class="Content-body">
@@ -20,8 +25,8 @@
             </div>
             <label></label>
             <?php
-            echo form_submit('submit', 'save');
-
+            echo form_submit('submit', 'save','class="intel-btn intel-btn-action"  style="color:white"');
+            echo anchor('admin/projectcontroller/home','Cancel','class="intel-btn intel-btn-action"');
             echo form_close();
             ?>
 
