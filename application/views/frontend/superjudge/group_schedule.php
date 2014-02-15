@@ -29,11 +29,11 @@
             printbtn.setAttribute("class", "intel-btn intel-btn-cancel");
             printbtn.setAttribute("style", "float:right");
             printbtn.innerHTML = "Print This Page";
-            $(".contant-contaner").append(printbtn);
+            $(".contant-contaner").children("div").last().append(printbtn);
             $(printbtn).click(function() {
                 $("body").children().hide();
                 $("article").show();
-                $(this).hide();
+                $("button").hide();
                 var marginTop = $("article").css("margin-top");
                 $("article").css("margin-top", "2em");
                 //table
@@ -52,12 +52,15 @@
                 table.fnAdjustColumnSizing();
                 $("body").children().show();
                 $("article").css("margin-top", marginTop);
-                $(this).show();
+                $("button").show();
             });
         };
         createPrint();
         $("#assign").click(function() {
             showAssign();
+        });
+        $("#back").click(function() {
+            window.location.href="<?= base_url() ?>judgeshead/schedules/schedule";
         });
         var showAssign = function() {
             jui.jconfirm($("#assiging").html(), function() {
@@ -66,7 +69,7 @@
                 var judge = $("select#judge:visible option:selected").val();
                 jui.jloading("Saving New Interview");
                 $.ajax({
-                    url: '<?= base_url() . "judgeshead/home/assignProjectToJudge" ?>',
+                    url: '<?= base_url() . "judgeshead/schedules/assignProjectToJudge" ?>',
                     data: {
                         project: project,
                         judge: judge
@@ -86,7 +89,7 @@
     <ul style="margin-top: 10px;">
         <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" class="active" tab="#judges">Judging Schedule</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/schedules/schedule" class="active" tab="#judges">Judging Schedule</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
@@ -164,7 +167,12 @@
                     <tfoot></tfoot>
 
                 </table>
-                <button class="" id="assign">Assign judge to Project</button>
+                <div style="clear: both;">
+                    <hr/>
+                    <button class="" id="back">Back</button>
+                    <button class="" id="assign">Assign judge to Project</button>
+                </div>
+                
             </div>
         </span>
     </section>

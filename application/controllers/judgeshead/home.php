@@ -39,26 +39,6 @@ class Home extends AdminGenericController {
         $this->load->view('frontend/includes/template', $data);
     }
 
-    function schedule() {
-        $data['main_content'] = 'frontend/superjudge/groups_schedule';
-
-        $schedule = new Schedule();
-
-        $schedule->get();
-        if ($schedule->count() > 0) {
-
-            $groups = new Group();
-
-            $groups->order_by("id", "asc");
-
-            $data['groups'] = $groups->get();
-        } else {
-            $data['error'] = "no data";
-        }
-
-        $this->load->view('frontend/includes/template', $data);
-    }
-
     function scores() {
         $data['main_content'] = 'frontend/superjudge/groups_score';
 
@@ -182,27 +162,6 @@ class Home extends AdminGenericController {
         $this->load->view('frontend/includes/template', $data);
     }
 
-    function assignProjectToJudge(){
-        $project = $this->input->get("project");
-        $judge = $this->input->get("judge");
-        
-        $schedule = new Schedule();
-        $schedule->where("project_id = ". $project . " and judge_id = ". $judge);
-        $times = $schedule->count();
-        if($times == 0){
-            $proj = new Project();
-            $proj->get_by_id($project);
-            $proj->category->get();
-            $sched = new Schedule();
-            $sched->project_id = $project;
-            $sched->judge_id = $judge;
-            $sched->category_id = $proj->category_id;
-            $sched->save();
-        }else{
-            echo 'exist';
-        }
-    }
-    
     function judges() {
         $data['main_content'] = 'frontend/superjudge/judges';
 
@@ -214,56 +173,6 @@ class Home extends AdminGenericController {
 
         $this->load->view('frontend/includes/template', $data);
     }
-
-    function groupschedule() {
-        $id = $this->uri->segment(4);
-
-        $group = new Group();
-
-        $data['group'] = $group->get_by_id($id);
-
-        $project = new Project();
-        $data['projects'] = $project->get();
-
-        $judge = new Judge();
-        $data['judges'] = $judge->get();
-
-        $data['main_content'] = 'frontend/superjudge/groupschedule';
-        $this->load->view("frontend/includes/template", $data);
-    }
-
-    /* function judgesdata(){
-      $aColumns = array("id", "name", "category->name", "subcategory->name");
-      $searchBy = array();
-      $model = new Judge();
-      $orderCal = "id";
-
-      return $this->prepareTable($aColumns, $searchBy, $model, $orderCal);
-      } */
-
-//    function judges(){
-//        $data['main_content'] = 'frontend/superjudge/judges';
-//        
-//        $judges = new Judge();
-//        $judges->order_by("id","asc");
-//        $page = $this->uri->segment(4);
-//
-//        if(!isset($page)){
-//            $page = 0;
-//        }
-//        $count = $judges->count();
-//        if(25*($page + 1) < $count){
-//            $data['next'] = $page+1;
-//        }
-//        if($page != 0){
-//            $data['prev'] = $page -1;
-//        }
-//        $judges = $judges->get(25, 25 * $page);
-//        
-//        $data['judges'] = $judges;
-//        
-//        $this->load->view('frontend/includes/template', $data);
-//    }
 
     function projects() {
         $data['main_content'] = 'frontend/superjudge/projects';
@@ -331,44 +240,6 @@ class Home extends AdminGenericController {
             $data[] = $item_data;
         }
         return $data;
-    }
-
-    function generateschedule() {
-
-//        $this->load->model('schedule');
-        $group = new Group();
-
-        $groups = $group->get();
-
-        $sched = new Schedule();
-        $sched->truncate();
-
-        foreach ($groups as $g) {
-            //get list of judges and 
-            $Djudges = new Judge();
-            $judges = $Djudges->query("select judge.* from judge,category where judge.category_id = category.id and category.group_id = " . $g->id);
-            $Dprojects = new Project();
-            $projects = $Dprojects->query("select project.* from project,category where project.category_id = category.id and category.group_id = " . $g->id);
-
-            //loop over all judges in the cat.
-            $ii = 1;
-            foreach ($projects as $project) {
-                //loop over all teams in the cat.
-                $i = $ii;
-                foreach ($judges as $judge) {
-                    //construct an object of schedule.
-                    $schedule = new Schedule();
-                    $project->category->get();
-                    $schedule->category_id = $project->category->id;
-                    $schedule->judge_id = $judge->id;
-                    $schedule->project_id = $project->id;
-                    $schedule->slotnumber = $i;
-                    $schedule->save();
-                    $i = ($i ) + 1;
-                }
-                $ii = $ii + 1;
-            }
-        }
     }
 
 }

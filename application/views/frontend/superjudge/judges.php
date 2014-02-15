@@ -30,7 +30,7 @@
     <ul style="margin-top: 10px;">
         <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins">Projects</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/judges" class="active" tab="#judges">Judges</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">Judging Schedule</a></li>
+        <li><a href="<?= base_url(); ?>judgeshead/schedules/schedule" tab="#judges">Judging Schedule</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/home/home/scores" tab="#judges">Results</a></li>

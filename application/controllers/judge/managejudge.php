@@ -58,9 +58,9 @@ class ManageJudge extends AdminGenericController {
             $user->where("id", $judge->user_id);
             $user->get();
             $user->delete();
-            return $this->showGoodStatusPage("Judge $judge->name delete successfully", base_url() . "judge/managejudge/home");
+//            return $this->showGoodStatusPage("Judge $judge->name delete successfully", base_url() . "judge/managejudge/home");
         }
-        return $this->showBadStatusPage("no judge to delete");
+//        return $this->showBadStatusPage("no judge to delete");
     }
 
     public function add($errors = NULL) {

@@ -13,17 +13,21 @@ function checkInputVal($var) {
 <link rel="stylesheet" href="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" />
 
 <script type="text/javascript">
-            function edit_item(element)
-            {
-                $.fancybox({
-                    href: "<?php echo base_url(); ?>admin/categorycontroller/edit_subcategory?cat_id=" + $(element).attr("cat_id") + "&id=" + $(element).attr("item_id"),
-                    type: "ajax",
-                    scrolling: "no",
-                    onClosed: function() {
-                        loadSubCategory();
-                    }
-                });
+    $(function() {
+        $("#tabs").find("a.active").removeClass("active");
+        $("a[tab='#category']").addClass("active");
+    });
+    function edit_item(element)
+    {
+        $.fancybox({
+            href: "<?php echo base_url(); ?>admin/categorycontroller/edit_subcategory?cat_id=" + $(element).attr("cat_id") + "&id=" + $(element).attr("item_id"),
+            type: "ajax",
+            scrolling: "no",
+            onClosed: function() {
+                loadSubCategory();
             }
+        });
+    }
 
     function delete_item(element)
     {
@@ -91,7 +95,7 @@ function checkInputVal($var) {
 
         function loadSubCategory()
         {
-            var id ='<?= checkInput("id") ?>';
+            var id = '<?= checkInput("id") ?>';
             $("#subCategory").load("<?= base_url() ?>admin/categorycontroller/load_subcategories?id=" + id);
         }
         $(function() {
@@ -108,7 +112,7 @@ function checkInputVal($var) {
         }
 
 <?php } else { ?>
-        var id ='<?= checkInput("id") ?>';
+        var id = '<?= checkInput("id") ?>';
 <?php } ?>
 
 </script>
@@ -152,7 +156,7 @@ function checkInputVal($var) {
                     <select name="group_id" id="group_id">
                         <option value="-1">Select group</option>
                         <?php foreach ($groups as $group) { ?>
-                        <option value="<?= $group->id ?>" <?= (isset($category) && $group->id == $category->group_id) ? "selected" : "" ?> ><?= $group->name ?></option>
+                            <option value="<?= $group->id ?>" <?= (isset($category) && $group->id == $category->group_id) ? "selected" : "" ?> ><?= $group->name ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -174,7 +178,12 @@ function checkInputVal($var) {
                 <?php
                 echo form_close();
                 ?>
-                <a style="cursor: pointer" class="intel-btn intel-btn-action" onclick="$('#categoryForm').submit();"> Save </a>
+                <div style="clear: both;">
+                    <hr/>
+                    <a style="cursor: pointer" class="intel-btn intel-btn-action" onclick="$('#categoryForm').submit();"> Save </a>
+                    <a href="<?= base_url().'admin/categorycontroller/home' ?>" class="intel-btn intel-btn-action" > Cancel </a>
+                </div>
+                
             </div>
         </span>
     </section>
