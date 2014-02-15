@@ -57,40 +57,40 @@
             },
             messages: {
                 eval_q_1: {
-                    min: "يجب ألا يقل عن 0",
-                    max: "يجب ألا يزيد عن 10",
-                    digits: "هذا الحقل يتطلب أرقام فقط"
+                    min: "min evaluation is 0",
+                    max: "max evaluation is 10",
+                    digits: "only digits accepted here"
                 },
                 eval_q_2: {
-                    min: "يجب ألا يقل عن 0",
-                    max: "يجب ألا يزيد عن 15",
-                    digits: "هذا الحقل يتطلب أرقام فقط"
+                    min: "min evaluation is 0",
+                    max: "max evaluation is 15",
+                    digits: "only digits accepted here"
                 },
                 eval_q_3: {
-                    min: "يجب ألا يقل عن 0",
-                    max: "يجب ألا يزيد عن 20",
-                    digits: "هذا الحقل يتطلب أرقام فقط"
+                    min: "min evaluation is 0",
+                    max: "max evaluation is 20",
+                    digits: "only digits accepted here"
                 },
                 eval_q_4: {
-                    min: "يجب ألا يقل عن 0",
-                    max: "يجب ألا يزيد عن 20",
-                    digits: "هذا الحقل يتطلب أرقام فقط"
+                    min: "min evaluation is 0",
+                    max: "max evaluation is 20",
+                    digits: "only digits accepted here"
                 },
                 eval_q_5: {
-                    min: "يجب ألا يقل عن 0",
-                    max: "يجب ألا يزيد عن 10",
-                    digits: "هذا الحقل يتطلب أرقام فقط"
+                    min: "min evaluation is 0",
+                    max: "max evaluation is 10",
+                    digits: "only digits accepted here"
                 },
                 eval_q_6: {
-                    min: "يجب ألا يقل عن 0",
-                    max: "يجب ألا يزيد عن 25",
-                    digits: "هذا الحقل يتطلب أرقام فقط"
+                    min: "min evaluation is 0",
+                    max: "max evaluation is 25",
+                    digits: "only digits accepted here"
                 },
                 eval_total: {
-                    required: "يجب ادخال الدرجة الكلية",
-                    min: "يجب ألا يقل عن 0",
-                    max: "يجب ألا يزيد عن 100",
-                    digits: "هذا الحقل يتطلب أرقام فقط"
+                    required: "must edit the total evaluation",
+                    min: "min evaluation is 0",
+                    max: "max evaluation is 100",
+                    digits: "only digits accepted here"
                 }
             }
         });

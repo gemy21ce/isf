@@ -110,18 +110,13 @@ function checkInputVal($var) {
 <?php } ?>
 
 </script>
-<div class="intel-tab" id="tabs" init="true">
-    <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/schedules/schedule" tab="#judges">Judging Schedule </a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" class="active" tab="#judges">Categories</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
-    </ul>
-    <hr class="intel-tab-divider">
-</div>
+<?= $this->load->view("frontend/superjudge/includes/menu") ?>
+<script type="text/javascript">
+    $(function(){
+        $("a.active").removeClass("active");
+        $("a[tab='#categories']").addClass('active');
+    });
+</script>
 <article class="intel-tab-content">
     <section id="teams" class="active">
         <span class="Content-body">
@@ -185,6 +180,7 @@ function checkInputVal($var) {
                 echo form_close();
                 ?>
                 <a style="cursor: pointer" class="intel-btn intel-btn-action" onclick="$('#categoryForm').submit();"> Save </a>
+                <a  class="intel-btn intel-btn-action" href="<?=  base_url().'judgeshead/categories/home' ?>" > Back </a>
             </div>
         </span>
     </section>
