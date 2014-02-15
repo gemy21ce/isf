@@ -17,7 +17,7 @@ class ManageJudge extends AdminGenericController {
     public function pages() {
 
         $aColumns = array("id", "name", "phone", "user", "mobile", "gov", "category_2", "category");
-        $searchBy = array("user" => "email");
+        $searchBy = array("user" => "email", "category"=>"name" , "category_2"=>"name");
         $model = new Judge();
         $orderCal = "id";
 
@@ -66,14 +66,19 @@ class ManageJudge extends AdminGenericController {
     public function add($errors = NULL) {
         
         if($errors!=null) {
-            var_dump ($errors);
-            die();
+//            var_dump ($errors);
+//            die();
         }
         $this->load->model("category");
         $categories = new Category();
         $categories->get();
-
+        
+        $this->load->model("fair");
+        $fairs = new Fair();
+        $fairs->get();
+        
         $data['categories'] = $categories;
+        $data['fairs'] = $fairs;
         $data['errors'] = $errors;
         $data['main_content'] = 'backend/judge/manage_judge/judges_form';
         $this->load->view('backend/includes/template', $data);
@@ -101,6 +106,7 @@ class ManageJudge extends AdminGenericController {
         $this->form_validation->set_rules('mobile', 'mobile', 'trim|required|numeric');
         $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
         $this->form_validation->set_rules('category_id', 'category', 'trim|required|is_natural_no_zero');
+        $this->form_validation->set_rules('fair_id', 'fair', 'trim|required|is_natural_no_zero');
         
 
         if ($this->form_validation->run() == FALSE) {
@@ -120,6 +126,7 @@ class ManageJudge extends AdminGenericController {
             $judge->phone = $this->input->post('phone', TRUE);
             $judge->mobile = $this->input->post('mobile', TRUE);
             $judge->qualifications = $this->input->post('qualifications', TRUE);
+            $judge->fair_id = $this->input->post('fair_id', TRUE);
 
             if (!isset($id) || $id == "") {
                 
@@ -191,6 +198,7 @@ class ManageJudge extends AdminGenericController {
             $_POST["mobile"] = $judge->mobile;
             $_POST["category_id"] = $judge->category_id;
             $_POST["category_2_id"] = $judge->category_2_id;
+            $_POST["fair_id"] = $judge->fair_id;
             
             $_POST["email"] = $judge->user->get()->email;
             $_POST["category_2_id"] = $judge->category_2_id;

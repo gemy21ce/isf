@@ -65,6 +65,17 @@ function checkInputVal($var) {
             <?php if (isset($errors)) echo "<div class='error' >" . $errors['gov']['error'] . "</div>"; ?>
             <input type="text" id="name" name="gov" value="<?= checkInput("gov") ?>" />
             
+            <label>Fair <span class="error">*</span>:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['category_id']['error'] . "</div>"; ?>
+            <div class="intel-select">
+                <select id="fair_id" name="fair_id">
+                    <option value="-1">Select Fair</option>
+                    <?php foreach($fairs as $fair) {?>
+                    <option value="<?=$fair->id?>" <?=  checkInputVal("fair_id")?$_POST['fair_id']==$fair->id?"selected":"":""?>><?=$fair->name?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            
             
             <label>Judge's mobile <span class="error">*</span>:</label>
             <?php if (isset($errors)) echo "<div class='error' >" . $errors['mobile']['error'] . "</div>"; ?>

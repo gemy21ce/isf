@@ -103,7 +103,7 @@ abstract class AdminGenericController extends CI_Controller {
      * @param String $orderDir
      * @return array
      */
-    protected function prepareTable($aColumns, $searchBy, $model, $orderCal, $orderDir="DESC")
+    protected function prepareTable($aColumns, $searchBy, $model, $orderCal="id", $orderDir="DESC")
     {        
         $start = $this->input->get('iDisplayStart');
         $lenght = $this->input->get('iDisplayLength');
@@ -149,14 +149,16 @@ abstract class AdminGenericController extends CI_Controller {
             $model->or_where($sWhere);
         }
 
-        if (isset($searchBy[$orderCal])) {
-            $model->order_by_related($orderCal, $searchBy[$orderCal], $orderDir);
-        } else {
-            $model->order_by($orderCal, $orderDir);
-        }
-
         $allItemModel = $model->get_clone();
         $counts = $allItemModel->count(); 
+        
+        if($orderCal!="") {
+            if (isset($searchBy[$orderCal])) {
+                $model->order_by_related($orderCal, $searchBy[$orderCal], $orderDir);
+            } else {            
+                $model->order_by($orderCal, $orderDir);
+            }
+        }
         $model->limit($lenght, $start);
 
         try {

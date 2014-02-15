@@ -35,7 +35,7 @@
             },
             "fnInitComplete": function(oSettings, json) {
 
-            }
+            },"aoColumnDefs": [{ 'bSortable': false, "aTargets" : [ "sorting_disabled" ] }]
         });
     });
 
@@ -59,8 +59,8 @@
                             <th width="50%">Description</th>
                             <th width="15%">Code</th>
                             <th width="15%">Group</th>
-                            <th width="15%">Edit</th>
-                            <th width="15%">Delete</th>
+                            <th width="15%" class="sorting_disabled">Edit</th>
+                            <th width="15%" class="sorting_disabled">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,8 +74,8 @@
                             <th width="50%">Description</th>
                             <th width="15%">Code</th>
                             <th width="15%">Group</th>
-                            <th width="15%">Edit</th>
-                            <th width="15%">Delete</th>
+                            <th width="15%" class="sorting_disabled">Edit</th>
+                            <th width="15%" class="sorting_disabled">Delete</th>
                         </tr>
                     </tfoot>
                 </table>
