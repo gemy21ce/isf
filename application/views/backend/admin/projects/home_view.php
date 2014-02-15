@@ -13,8 +13,8 @@
                             "bServerSide": true,
                             "sAjaxSource": "<?php echo base_url(); ?>admin/projectcontroller/pages",
                             "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-//                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
-                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[6] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
+                                $('td:eq(7)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[7] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
                                 return nRow;
                             },
                             "fnInitComplete": function(oSettings, json) {
@@ -46,7 +46,7 @@
                             <th width="15%">Educational administration</th>
                             <th width="15%">Category</th>
                             <th width="15%">Fair</th>
-                            <!--<th width="15%">Edit</th> -->
+                            <th width="15%">Edit</th> 
                             <th width="15%" class="sorting_disabled">Delete</th>
                         </tr>
                     </thead>
@@ -63,12 +63,12 @@
                             <th width="15%">Educational administration</th>
                             <th width="15%">Category</th>
                             <th width="15%">Fair</th>
-                            <!--<th width="15%">Edit</th>-->
+                            <th width="15%">Edit</th>
                             <th width="15%" class="sorting_disabled">Delete</th>
                         </tr>
                     </tfoot>
                 </table>
-                <!--<?= anchor(base_url()."admin/projectcontroller/add", 'Add Project','class="intel-btn intel-btn-action"') ?>-->
+                <?= anchor(base_url()."admin/projectcontroller/add", 'Add Project','class="intel-btn intel-btn-action"') ?>
                 <?= anchor(base_url()."admin/projectcontroller/import_form", 'Import Project','class="intel-btn intel-btn-action"') ?>
             </div>
         </span>

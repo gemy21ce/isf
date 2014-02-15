@@ -8,7 +8,9 @@ function checkInputVal($var) {
     return isset($_POST[$var]) ? $_POST[$var] : false;
 }
 ?>
-
+<script type="text/javascript" src="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js"></script>
+<script type = "text/javascript" src = "<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js" ></script>
+<link rel="stylesheet" href="<?= base_url() ?>assets/backend/js/jquery/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" />
 <script type="text/javascript">
     $(function(){
         $("#tabs").find("a.active").removeClass("active");
@@ -25,12 +27,24 @@ function checkInputVal($var) {
             buttonImageOnly: true,
             dateFormat:"yy/mm/dd"
         });
+        
+        
+        $( "#adult_sponsor_birthday" ).datepicker({
+            showOn: "button",
+            buttonImage: "<?= base_url(); ?>assets/backend/image/calendar.gif",
+            buttonImageOnly: true,
+            dateFormat:"yy/mm/dd"
+        });
         $( "#end_date" ).datepicker({
             showOn: "button",
             buttonImage: "<?= base_url(); ?>assets/backend/image/calendar.gif",
             buttonImageOnly: true,
             dateFormat:"yy/mm/dd"
         });
+         <?php if (checkInputVal("id")) { ?>
+            $("#studentsDetails").load("<?= base_url(); ?>admin/projectcontroller/load_project_students/<?= $_POST["id"] ?>");    
+        <?php } ?>
+        
     });
 </script>
 
@@ -63,46 +77,26 @@ function checkInputVal($var) {
         <?php if (checkInputVal("id")) { ?>
             <input type="hidden" id="id" name="id" value="<?= $_POST["id"] ?>" />
         <?php } ?>
-           
+            
+            <h3>Project details</h3>
+            <hr/>
             <label>Project name<span class="error">*</span>:</label>
             <?php if (isset($errors)) echo "<div class='error' >" . $errors['name']['error'] . "</div>"; ?>
             <input type="text" id="name" name="name" value="<?= checkInput("name") ?>" />
         
-            
-            <label>Number of students <span class="error">*</span>:</label>
-            <?php if (isset($erhome_viewrors)) echo "<div >" . $errors['num_of_students']['error'] . "</div>"; ?>
+            <label>Fair <span class="error">*</span>:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['fair_id']['error'] . "</div>"; ?>
             <div class="intel-select">
-                <select  id="num_of_students" name="num_of_students">
-                    <?php for($i=1; $i<4 ; $i++) {?>
-                    <option value="<?=$i?>" <?=  checkInputVal("num_of_students")?$_POST['num_of_students']==$i?"selected":"":""?>><?=$i?></option>
+                <select id="fair_id" name="fair_id">
+                    <option value="-1">Select Fair</option>
+                    <?php foreach($fairs as $fair) {?>
+                    <option value="<?=$fair->id?>" <?=  checkInputVal("fair_id")?$_POST['fair_id']==$fair->id?"selected":"":""?>><?=$fair->name ?></option>
                     <?php } ?>
                 </select>
             </div>
-        
-            
-            <label>Team leader name<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['team_leader_name']['error'] . "</div>"; ?>
-            <input type="text" id="team_leader_name" name="team_leader_name" value="<?= checkInput("team_leader_name") ?>" />
-           
-        
-            <label>Team leader email<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['team_leader_email']['error'] . "</div>"; ?>
-            <input type="text" id="team_leader_email" name="team_leader_email" value="<?= checkInput("team_leader_email") ?>" />
-            
-            
-            <label>Grade<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['grade_id']['error'] . "</div>"; ?>
-            <div class="intel-select">
-                <select id="grade_id" name="grade_id">
-                    <?php foreach($grades as $grade) {?>
-                    <option value="<?=$grade->id?>" <?=  checkInputVal("grade_id")?$_POST['grade_id']==$grade->id?"selected":"":""?>><?=$grade->name?></option>
-                        <?php } ?>
-                </select>
-            </div>
-           
             
             <label>Exhibition<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['grade_id']['error'] . "</div>"; ?>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['exhibition_id']['error'] . "</div>"; ?>
             <div class="intel-select">
                 <select id="exhibition_id" name="exhibition_id">
                     <?php foreach($exhibitions as $exhibition) {?>
@@ -111,11 +105,6 @@ function checkInputVal($var) {
                 </select>
             </div>
             
-            
-            <label>Phone<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['phone']['error'] . "</div>"; ?>
-            <input type="text" id="phone" name="phone" value="<?= checkInput("phone") ?>" />
-        
 
             <label>Category <span class="error">*</span>:</label>
             <?php if (isset($errors)) echo "<div class='error' >" . $errors['category_id']['error'] . "</div>"; ?>
@@ -131,57 +120,26 @@ function checkInputVal($var) {
             <?php if (isset($errors)) echo "<div class='error' >" . $errors['sub_category_id']['error'] . "</div>"; ?>
             <div id="sub_category_div" class="intel-select">
                 <select id="sub_category_id" name="sub_category_id">
-                    <?php foreach($subcategories as $subcategory) {?>
-                    <option value="<?=$subcategory->id?>" <?=  checkInputVal("sub_category_id")?$_POST['sub_category_id']==$category->id?"selected":"":""?>><?=$subcategory->name?></option>
+                    <?php 
+                    if(checkInputVal('sub_category_id') == "" || checkInputVal('sub_category_id') == null)
+                    {
+                        $_POST['sub_category_id'] = -1;
+                    }
+                    foreach($subcategories as $subcategory) {?>
+                        <option 
+                            value="<?=$subcategory->id?>" 
+                            <?=  checkInputVal("sub_category_id")!=false?  
+                                (($_POST['sub_category_id'] == $subcategory->id) 
+                                    || 
+                            ($_POST['sub_category_id']== -1 && $subcategory->name =="Other")) 
+                            ?"selected":"":""?>><?=$subcategory->name ?></option>
                     <?php } ?>
                 </select>
             </div>
-
-
-            <label>Second team member name :</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['team_member_1_name']['error'] . "</div>"; ?>
-            <input type="text" id="team_member_1_name" name="team_member_1_name" value="<?= checkInput("team_member_1_name") ?>" />
-
-
-            <label>Third team member name :</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['team_member_2_name']['error'] . "</div>"; ?>
-            <input type="text" id="team_member_2_name" name="team_member_2_name" value="<?= checkInput("team_member_2_name") ?>" />
-
-            
-            
-            <label>School<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['school']['error'] . "</div>"; ?>
-            <input type="text" id="school" name="school" value="<?= checkInput("school") ?>" />
         
-            
-            <label>School Phone<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['school_phone']['error'] . "</div>"; ?>
-            <input type="text" id="school_phone" name="school_phone" value="<?= checkInput("school_phone") ?>" />
-        
-            
-            <label>School Address<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['school_address']['error'] . "</div>"; ?>
-            <input type="text" id="school_address" name="school_address" value="<?= checkInput("school_address") ?>" />
-        
-            
-            <label>Adult sponsor name<span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_name']['error'] . "</div>"; ?>
-            <input type="text" id="adult_sponsor_name" name="adult_sponsor_name" value="<?= checkInput("adult_sponsor_name") ?>" />
-        
-            
-            <label>Adult sponsor phone:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_phone']['error'] . "</div>"; ?>
-            <input type="text" id="adult_sponsor_phone" name="adult_sponsor_phone" value="<?= checkInput("adult_sponsor_phone") ?>" />
-        
-            
-            <label>Adult sponsor email:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_email']['error'] . "</div>"; ?>
-            <input type="text" id="adult_sponsor_email" name="adult_sponsor_email" value="<?= checkInput("adult_sponsor_email") ?>" />
-        
-            
             <label>Continuation project:</label>
             <?php if (isset($errors)) echo "<div class='error' >" . $errors['continuation_project']['error'] . "</div>"; ?>
-            <input type="checkbox" id="continuation_project" name="continuation_project" value="1" <?= checkInputVal("adult_sponsor_email")?'checked="true"':"" ?> />
+            <input type="checkbox" id="continuation_project" name="continuation_project" value="1" <?= (checkInputVal("adult_sponsor_email"))?($_POST['adult_sponsor_email']==1)?'checked="true"':"":"" ?> />
         
             
             <label>Start date<span class="error">*</span>:</label>
@@ -218,11 +176,76 @@ function checkInputVal($var) {
             <?php if (isset($errors)) echo "<div class='error' >" . $errors['research_resources']['error'] . "</div>"; ?>
             <textarea id="research_resources" name="research_resources" ><?= checkInput("research_resources") ?></textarea>
             
+            <h3>Students details</h3>
+            <hr/>
+            <div id="studentsDetails">
+                
+            </div>
+            
+            <h3>Adult sponsor details</h3>
+            <hr/>
+            
+            
+            <label>Adult sponsor arabic name<span class="error">*</span>:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_name_ar']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_name_ar" name="adult_sponsor_name_ar" value="<?= checkInput("adult_sponsor_name_ar") ?>" />
+            
+            <label>Adult sponsor name<span class="error">*</span>:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_name']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_name" name="adult_sponsor_name" value="<?= checkInput("adult_sponsor_name") ?>" />
+        
+            
+            <label>Adult sponsor phone:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_phone']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_phone" name="adult_sponsor_phone" value="<?= checkInput("adult_sponsor_phone") ?>" />
+        
+            
+            <label>Adult sponsor email:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_email']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_email" name="adult_sponsor_email" value="<?= checkInput("adult_sponsor_email") ?>" />
+        
+            
+            <label>Adult sponsor governorate:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_gov']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_gov" name="adult_sponsor_gov" value="<?= checkInput("adult_sponsor_gov") ?>" />
+        
+            <label>Adult sponsor profession:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_profession']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_profession" name="adult_sponsor_profession" value="<?= checkInput("adult_sponsor_profession") ?>" />
+        
+            <label>Adult sponsor specialist:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_specialist']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_specialist" name="adult_sponsor_specialist" value="<?= checkInput("adult_sponsor_specialist") ?>" />
+        
+            <label>Adult sponsor work location:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_work_location']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_work_location" name="adult_sponsor_work_location" value="<?= checkInput("adult_sponsor_work_location") ?>" />
+        
+            <label>Adult sponsor educational administration:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_educational_administration']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_educational_administration" name="adult_sponsor_educational_administration" value="<?= checkInput("adult_sponsor_educational_administration") ?>" />
+        
+            <label>Adult sponsor birthday:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_birthday']['error'] . "</div>"; ?>
+            <input type="text" id="adult_sponsor_birthday" name="adult_sponsor_birthday" value="<?= checkInput("adult_sponsor_birthday") ?>" />
+            
+            <label>Adult sponsor gender <span class="error">*</span>:</label>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['adult_sponsor_gender']['error'] . "</div>"; ?>
+            <div class="intel-select">
+                <select id="adult_sponsor_gender" name="adult_sponsor_gender">
+                    <?php for($i = 1 ; $i < 3 ; $i++) {?>
+                    <option value="<?=$i?>" <?=  checkInputVal("adult_sponsor_gender")?$_POST['adult_sponsor_gender']==$i?"selected":"":""?>><?=$i==1?"Male":"Female"?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            
+            
+            
             
         <?php
         echo form_close();
         ?>
-            <a href="javascript:void(0);" onclick="$('#project_form').submit();" class="intel-btn intel-btn-action"><?=checkInputVal("id")?"Update":"Add"?> Project</a>
+    <a href="javascript:void(0);" onclick="$('#project_form').submit();" class="intel-btn intel-btn-action"><?=checkInputVal("id")?"Update":"Add"?> Project</a>
 
 
     </span>
