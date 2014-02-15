@@ -38,6 +38,7 @@ class ManageJudge extends AdminGenericController {
             $item_data[] = $item->category->get()->name;
             $item_data[] = $item->category_2->get()->name;
             $item_data[] = $item->user->last_login;
+            $item_data[] = $item->fair->get()->name;
 
             $item_data[] = $item->id;
             $item_data[] = $item->id;

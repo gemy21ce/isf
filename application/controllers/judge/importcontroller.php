@@ -10,6 +10,11 @@ class ImportController extends AdminGenericController {
     }
 
     public function import_form() {
+        
+        $this->load->model("fair");
+        $fairs  = new Fair();
+        $fairs->get();
+        $data['fairs'] = $fairs;
         $data['main_content'] = 'backend/judge/import/import_form';
         $this->load->view('backend/includes/template', $data);
     }
@@ -18,6 +23,8 @@ class ImportController extends AdminGenericController {
         if ($_FILES["judgeFile"]["size"] > 0) {
             
             setlocale(LC_ALL, 'ar_AE.utf8');
+            
+            $fair_id = $this->input->post('fair_id', TRUE);
             
             $file = $_FILES["judgeFile"]["tmp_name"];
             $newFile = "./csv_uploads/csv_" . time() . ".csv";
@@ -60,7 +67,7 @@ class ImportController extends AdminGenericController {
 
                 $judge->category_id = $this->getCategory($data[12]);
                 $judge->category_2_id = $this->getCategory($data[13]);
-                
+                $judge->fair_id = $fair_id;
 //                var_dump($judge);
 //                die();
                 $judge->save();

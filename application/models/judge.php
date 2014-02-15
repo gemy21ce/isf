@@ -12,6 +12,7 @@ class Judge extends DataMapper {
     
     var $has_one = array(
         "user",
+        "fair",
         "category",
         "subcategory",
         "category_2" => array(
