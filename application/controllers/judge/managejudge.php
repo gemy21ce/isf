@@ -17,7 +17,7 @@ class ManageJudge extends AdminGenericController {
     public function pages() {
 
         $aColumns = array("id", "name", "phone", "user", "mobile", "gov", "category_2", "category");
-        $searchBy = array("user" => "email");
+        $searchBy = array("user" => "email", "category"=>"name" , "category_2"=>"name");
         $model = new Judge();
         $orderCal = "id";
 
