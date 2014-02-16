@@ -27,18 +27,13 @@
         createPrint();
     });
 </script>
-<div class="intel-tab" id="tabs" init="true">
-    <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" class="active">Projects</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">Judging Schedule</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/home/scores" tab="#judges">Results</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
-    </ul>
-    <hr class="intel-tab-divider">
-</div>
+<?= $this->load->view("frontend/superjudge/includes/menu") ?>
+<script type="text/javascript">
+    $(function(){
+        $("a.active").removeClass("active");
+        $("a[tab='#projects']").addClass('active');
+    });
+</script>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">

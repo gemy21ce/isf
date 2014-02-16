@@ -8,7 +8,7 @@ class Judge extends DataMapper {
 
     var $model = 'judge';
 
-    var $has_many = array("schedule");
+    var $has_many = array("evaluation","schedule");
     
     var $has_one = array(
         "user",

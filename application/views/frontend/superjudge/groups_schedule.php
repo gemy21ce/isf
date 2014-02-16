@@ -7,35 +7,42 @@
         });
     </script>
 <?php } ?>
-    
-    <script type="text/javascript">
-        $(function(){
-            $(".gener").click(function(e){
-                e.preventDefault();
+
+<script type="text/javascript">
+    $(function() {
+        $(".gener").click(function(e) {
+            e.preventDefault();
+            var url = $(this).attr("href");
+            jui.jconfirm('<div>\n\
+                    <label>select Fair</label>\n\
+                    <div class="intel-select">\n\
+                    <select  id="fair_id" name="fair_id">\n\
+                    <option value="1" >الاسكندرية</option><option value="2" >الاقصر</option>\n\
+                    </select></div><br/>\n\
+                    Are you sure you want to generate new Schedule?<br/>\n\
+                    This may cause remove all updates on the old schedule!', function() {
                 jui.jloading("Generating Schedule");
-                var url = $(this).attr("href");
                 $.ajax({
-                    url:url,
-                    success:function(){
+                    url: url,
+                    data:{
+                        fair:$("#fair_id").val()
+                    },
+                    success: function() {
                         window.location.reload();
                     }
                 });
-                return false;
             });
+            return false;
         });
-    </script>
-<div class="intel-tab" id="tabs" init="true">
-    <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" class="active" tab="#judges">Judging Schedule</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
-    </ul>
-    <hr class="intel-tab-divider">
-</div>
+    });
+</script>
+<?= $this->load->view("frontend/superjudge/includes/menu") ?>
+<script type="text/javascript">
+    $(function(){
+        $("a.active").removeClass("active");
+        $("a[tab='#schedule']").addClass('active');
+    });
+</script>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">
@@ -69,7 +76,7 @@
                                         <?php
 //                                        $cat->schedule->get();
 //                                        if ($cat->schedule) {
-                                            echo anchor(base_url() . "judgeshead/home/groupschedule/" . $group->id, "Show Schedule");
+                                        echo anchor(base_url() . "judgeshead/schedules/groupschedule/" . $group->id, "Show Schedule");
 //                                        }
                                         ?>
                                     </td>
@@ -83,9 +90,9 @@
                 </table>
                 <?php
                 if (isset($error))
-                    echo anchor(base_url() . 'judgeshead/home/generateschedule', 'Generate Schedule', 'class="gener intel-btn intel-btn-action"');
+                    echo anchor(base_url() . 'judgeshead/schedules/generateschedule', 'Generate Schedule', 'id="genereateSchedule" class="gener intel-btn intel-btn-action"');
                 else
-                    echo anchor(base_url() . 'judgeshead/home/generateschedule', 'Re-generate Schedule', 'class="gener intel-btn intel-btn-action"');
+                    echo anchor(base_url() . 'judgeshead/schedules/generateschedule', 'Re-generate Schedule', 'id="genereateSchedule" class="gener intel-btn intel-btn-action"');
                 ?>
             </div>
         </span>

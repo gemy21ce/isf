@@ -79,8 +79,10 @@
                         </tr>
                     </tfoot>
                 </table>
-                <a class="intel-btn intel-btn-action" href="<?php echo base_url(); ?>admin/categorycontroller/add">Add Category</a>
-
+                <div style="clear: both;">
+                    <hr/>
+                    <a class="intel-btn intel-btn-action" href="<?php echo base_url(); ?>admin/categorycontroller/add">Add Category</a>
+                </div>
 
             </div>
         </span>

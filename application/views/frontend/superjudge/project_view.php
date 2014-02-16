@@ -1,15 +1,10 @@
-<div class="intel-tab" id="tabs" init="true">
-    <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" class="active">المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">المحكمين</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">المجموعات</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">القوائم</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">النتائج</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">النهائي</a></li>
-    </ul>
-    <hr class="intel-tab-divider">
-</div>
+<?= $this->load->view("frontend/superjudge/includes/menu") ?>
+<script type="text/javascript">
+    $(function(){
+        $("a.active").removeClass("active");
+        $("a[tab='#projects']").addClass('active');
+    });
+</script>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">

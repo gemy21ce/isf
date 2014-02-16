@@ -38,7 +38,7 @@
             var el = this;
             var id = $(el).attr("href");
             $.ajax({
-                url: "getGroup",
+                url: "<?= base_url() ?>judgeshead/groups/getGroup",
                 type: "get",
                 data: {
                     id: id
@@ -55,7 +55,7 @@
                         if ($("form").valid()) {
                             jui.jloading("Saving Group");
                             $.ajax({
-                                url: '<?= base_url() . "judgeshead/home/updategroup" ?>',
+                                url: '<?= base_url() . "judgeshead/groups/updategroup" ?>',
                                 type: "post",
                                 data: $("form").serialize(),
                                 success: function() {
@@ -78,7 +78,7 @@
             }
             jui.jconfirm("Are you sure you want to delete this group? all categories in this group will be moved to Default Group!", function() {
                 $.ajax({
-                    url: "deletegroup",
+                    url: "<?= base_url() ?>judgeshead/groups/deletegroup",
                     type: "post",
                     data: {
                         id: id
@@ -94,7 +94,7 @@
             if ($("form").valid()) {
                 jui.jloading("Saving Group");
                 $.ajax({
-                    url: '<?= base_url() . "judgeshead/home/savegroup" ?>',
+                    url: '<?= base_url() . "judgeshead/groups/savegroup" ?>',
                     type: "post",
                     data: $("form").serialize(),
                     success: function() {
@@ -110,18 +110,13 @@
 
     });
 </script>
-<div class="intel-tab" id="tabs" init="true">
-    <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">Judging Schedule </a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" class="active" tab="#judges">Groups</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#judges">Categories</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
-    </ul>
-    <hr class="intel-tab-divider">
-</div>
+<?= $this->load->view("frontend/superjudge/includes/menu") ?>
+<script type="text/javascript">
+    $(function() {
+        $("a.active").removeClass("active");
+        $("a[tab='#groups']").addClass('active');
+    });
+</script>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">

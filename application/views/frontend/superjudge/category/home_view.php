@@ -37,18 +37,13 @@
     });
 
 </script>
-<div class="intel-tab" id="tabs" init="true">
-    <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judgeshead/home" tab="#admins" >Projects</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/schedule" tab="#judges">Judging Schedule </a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/groups" tab="#judges">Groups</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/categories/home" class="active" tab="#judges">Categories</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#judges">Scores</a></li>
-        <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#judges">Finals</a></li>
-    </ul>
-    <hr class="intel-tab-divider">
-</div>
+<?= $this->load->view("frontend/superjudge/includes/menu") ?>
+<script type="text/javascript">
+    $(function() {
+        $("a.active").removeClass("active");
+        $("a[tab='#categories']").addClass('active');
+    });
+</script>
 <article class="intel-tab-content" id="tabCnt183903f0-a9a1-bba8-f6e1-669583d98b4z">
     <section class="active" id="category">
         <span class="Content-body">
@@ -88,8 +83,10 @@
                         </tr>
                     </tfoot>
                 </table>
-                <a class="intel-btn intel-btn-action" href="<?php echo base_url(); ?>judgeshead/categories/add">Add New Category</a>
-
+                <div style="clear: both;">
+                    <hr/>
+                    <a class="intel-btn intel-btn-action" href="<?php echo base_url(); ?>judgeshead/categories/add">Add New Category</a>
+                </div>
 
             </div>
         </span>
