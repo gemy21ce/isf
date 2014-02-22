@@ -66,7 +66,7 @@ function checkInputVal($var) {
             <input type="text" id="name" name="gov" value="<?= checkInput("gov") ?>" />
             
             <label>Fair <span class="error">*</span>:</label>
-            <?php if (isset($errors)) echo "<div class='error' >" . $errors['category_id']['error'] . "</div>"; ?>
+            <?php if (isset($errors)) echo "<div class='error' >" . $errors['fair_id']['error'] . "</div>"; ?>
             <div class="intel-select">
                 <select id="fair_id" name="fair_id">
                     <option value="-1">Select Fair</option>
