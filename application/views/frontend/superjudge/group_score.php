@@ -1,8 +1,6 @@
-<script src="<?php echo base_url(); ?>assets/backend/js/jquery/table/jquery.dataTables.min.js" language="javascript" type="text/javascript"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <?= $this->load->view("frontend/superjudge/includes/menu") ?>
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         $("a.active").removeClass("active");
         $("a[tab='#scores']").addClass('active');
     });
@@ -22,21 +20,23 @@
                             $sch->project->get();
                             $sch->project->category->get();
                             ?>
-                            <div class="<?= $sch->project->name ?>" title="<?= $sch->project->category->code ?>-<?= $sch->project_id ?>">
+                            <div class="<?= $sch->project->name ?>" title="<?= $sch->project->code ?>">
                                 <a class="judges"><?= $sch->judge->name ?></a>
-                                <a title="<?= $sch->judge->name ?>-<?= $sch->project->category->code ?>-<?= $sch->project->id ?>" class="score"><?= $sch->eval_total ?></a>
-                                <a class="project"><?= $sch->project->category->code ?>-<?= $sch->project->id ?></a>
+                                <a title="<?= $sch->judge->name ?>-<?= $sch->project->code ?>" class="score"><?= $sch->eval_total ?></a>
+                                <a class="project"><?= $sch->project->code ?></a>
                             </div>
                         <?php } ?>
                     </div>
                 </div>
-                <div id="chart_div" style="width: 95%; height: 700px;"></div>
+                <div style="width: 99%;overflow-x: scroll;">
+                    <div id="chart_div" style="width: 300%; height: 700px;"></div>
+                </div>
                 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                 <script type="text/javascript">
-                    var avg = function(array){
+                    var avg = function(array) {
                         var avg = 0;
-                        for(a in array){
-                            avg+=array[a];
+                        for (a in array) {
+                            avg += array[a];
                         }
                         avg = avg / array.length;
                         return avg;
@@ -77,18 +77,18 @@
                                     rowArray.push(0);
                                 }
                             }
-                            rowArray.push(avg(rowArray.slice(1,rowArray.length)));
+                            rowArray.push(avg(rowArray.slice(1, rowArray.length)));
                             duelArray.push(rowArray);
                         }
-                        duelArray.sort(function(a,b){
-                            return b[b.length-1]-a[a.length-1];
+                        duelArray.sort(function(a, b) {
+                            return b[b.length - 1] - a[a.length - 1];
                         });
                         console.log(duelArray);
 
                         var data = google.visualization.arrayToDataTable(duelArray);
 
                         var options = {
-//                            width: '100%',
+                            width: '300%',
 //                            height: 600,
 //                            tooltip: {isHtml: true},
                             legend: {position: 'top', maxLines: 6},
@@ -108,15 +108,15 @@
                         google.visualization.events.addListener(chart, "select", function() {
                             var selection = chart.getSelection();
                             if (selection.length > 0) {
-                                var id = data.getFormattedValue(selection[0].row, 0).substr(3);
+                                var code = data.getFormattedValue(selection[0].row, 0);
                                 jui.jconfirm("Add \"" + $("div[title='" + data.getFormattedValue(selection[0].row, 0) + "']").attr("class") + " \" to winners",
                                         function() {
                                             jui.jloading("Saving project");
                                             $.ajax({
-                                                url: "<?= base_url() ?>judgeshead/home/projectwinning",
+                                                url: "<?= base_url() ?>judgeshead/scores/projectwinning",
                                                 type: "post",
                                                 data: {
-                                                    id: id
+                                                    code: code
                                                 },
                                                 success: function() {
                                                     jui.jHide();

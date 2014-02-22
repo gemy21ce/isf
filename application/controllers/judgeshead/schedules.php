@@ -73,6 +73,7 @@ class Schedules extends AdminGenericController {
         $data['group'] = $group->get_by_id($id);
 
         $project = new Project();
+        $project->order_by("code");
         $data['projects'] = $project->get();
 
         $judge = new Judge();

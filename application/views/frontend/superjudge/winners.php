@@ -15,11 +15,13 @@
                 $("article").css("margin-top", "2em");
                 $(".printable").show();
                 //
-                window.print();
-                $(".printable").hide();
-                $("body").children().show();
-                $("article").css("margin-top", marginTop);
-                $(this).show();
+                window.setTimeout(function() {
+                    window.print();
+                    $(".printable").hide();
+                    $("body").children().show();
+                    $("article").css("margin-top", marginTop);
+                    $(this).show();
+                }, 100);
             });
         };
         createPrint();
@@ -27,7 +29,7 @@
 </script>
 <?= $this->load->view("frontend/superjudge/includes/menu") ?>
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         $("a.active").removeClass("active");
         $("a[tab='#finals']").addClass('active');
     });
@@ -68,7 +70,7 @@
                                 ?>
                                 <tr>
                                     <td>
-                                        P-<?= $p->id ?>
+                                        <?= $p->code ?>
                                     </td>
                                     <td>
                                         <?= $p->name ?>
@@ -89,7 +91,7 @@
 
                                     </td>
                                 </tr>
-                            <?php
+                                <?php
                             }
                         }
                         ?>

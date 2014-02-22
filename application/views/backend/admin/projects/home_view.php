@@ -12,11 +12,11 @@
             "bProcessing": true,
             "bServerSide": true,
             "sAjaxSource": "<?php echo base_url(); ?>admin/projectcontroller/pages",
-            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-//                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
-                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[6] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
-                return nRow;
-            },
+//            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+////                                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/edit/' + aData[6] + '">Edit</a>');
+//                $('td:eq(6)', nRow).html('<a href="<?php echo base_url(); ?>admin/projectcontroller/delete/' + aData[6] + '"><img src="<?= base_url() ?>assets/backend/image/delete_small.png"/></a>');
+//                return nRow;
+//            },
             "fnInitComplete": function(oSettings, json) {
 
             }, "aoColumnDefs": [{'bSortable': false, "aTargets": ["sorting_disabled"]}]
@@ -47,7 +47,7 @@
                             <th width="15%">Category</th>
                             <th width="15%">Fair</th>
                             <!--<th width="15%">Edit</th> -->
-                            <th width="15%" class="sorting_disabled">Delete</th>
+<!--                            <th width="15%" class="sorting_disabled">Delete</th>-->
                         </tr>
                     </thead>
                     <tbody>
@@ -64,7 +64,7 @@
                             <th width="15%">Category</th>
                             <th width="15%">Fair</th>
                             <!--<th width="15%">Edit</th>-->
-                            <th width="15%" class="sorting_disabled">Delete</th>
+                            <!--<th width="15%" class="sorting_disabled">Delete</th>-->
                         </tr>
                     </tfoot>
                 </table>

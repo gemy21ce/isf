@@ -110,19 +110,17 @@
         min-height: 5em;
     }
 </style>
-<div class="intel-tab" id="tabs" init="true">
-    <ul style="margin-top: 10px;">
-        <li><a href="<?= base_url(); ?>judge/home" tab="#admins" class="active">المشاريع</a></li>
-        <li><a href="<?= base_url(); ?>judge/home/schedule" tab="#sched">جدول التحكيم</a></li>
-        <li><a href="<?= base_url(); ?>judge/home/evalresults" tab="#results">نتائج التحكيم</a></li>
-        <!--<li><a href="javascript:void(0);" tab="#tab5">More...</a></li>-->
-    </ul>
-    <hr class="intel-tab-divider">
-</div>
+<?= $this->load->view("frontend/judge/includes/menu") ?>
+<script type="text/javascript">
+    $(function() {
+        $("a.active").removeClass("active");
+        $("a[tab='#projects']").addClass('active');
+    });
+</script>
 <article class="intel-tab-content">
     <section class="active" id="teams">
         <span class="Content-body">
-            <h2 id="Admin"><?= $project->name ?></h2>
+            <h2 id="Admin"><?= $project->name ?> (<?= $project->code ?>)</h2>
             <hr/>
             <div id="contant-contaner" class="contant-contaner">
                 <div>

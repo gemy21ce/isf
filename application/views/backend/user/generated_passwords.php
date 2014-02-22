@@ -24,10 +24,12 @@
                                 $(this).hide();
                                 var marginTop = $("article").css("margin-top");
                                 $("article").css("margin-top", "2em");
-                                window.print();
-                                $("body").children().show();
-                                $("article").css("margin-top", marginTop);
-                                $(this).show();
+                                window.setTimeout(function() {
+                                    window.print();
+                                    $("body").children().show();
+                                    $("article").css("margin-top", marginTop);
+                                    $("button").show();
+                                }, 100);
                             });
                         };
                         createPrint();

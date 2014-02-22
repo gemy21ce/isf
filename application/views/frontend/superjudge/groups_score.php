@@ -1,8 +1,20 @@
 <?= $this->load->view("frontend/superjudge/includes/menu") ?>
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         $("a.active").removeClass("active");
         $("a[tab='#scores']").addClass('active');
+
+        $("#announceResults").click(function() {
+            var announce = ($(this).is(":checked") ? 1 : 0);
+            $.ajax({
+                url: '<?= base_url() . 'judgeshead/scores/announce_results' ?>',
+                data: {
+                    announce: announce
+                },
+                type: 'POST'
+            });
+        });
+
     });
 </script>
 <article class="intel-tab-content">
@@ -16,7 +28,9 @@
                     <thead>
                         <tr class="">
                             <th style="cursor: pointer;" class="">Group</th>
-                            <th style="cursor: pointer;" class="">Show Results</th>
+                            <th style="cursor: pointer;" class="">Show Results Chart</th>
+                            <th style="width:10%">Show Results</th>
+                            <th style="width:10%">Export Group Results</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,11 +50,16 @@
                                     </td>
                                     <td>
                                         <?php
-//                                        $group->schedule->get();
-//                                        if ($cat->schedule) {
-                                            echo anchor(base_url() . "judgeshead/home/groupscore/" . $group->id, "Show Group Results");
-//                                        }
+                                        echo anchor(base_url() . "judgeshead/scores/groupscore/" . $group->id, "Show Results Chart");
                                         ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        echo anchor(base_url() . "judgeshead/scores/groupresult/" . $group->id, "Show Results");
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url() . "judgeshead/scores/exportGroupResults?group=" . $group->id ?>">Export </a>
                                     </td>
                                 </tr>
                                 <?php
@@ -50,6 +69,20 @@
                     </tbody>
                     <tfoot></tfoot>
                 </table>
+                <?php if (!isset($error)) { ?>
+                    <hr />
+                    <div class="intel-indent intel-u-fixed-mobile">
+                        <label for="announceResults">Announce Results To Judges:</label>
+                        <div class="intel-switch">
+                            <input type="checkbox" name="announceResults" id="announceResults" <?= $config->announce_results == 1 ? 'checked' : '' ?>>
+                            <label for="announceResults">
+                                <span>OK</span>
+                                <span> </span>
+                                <span>NO</span>
+                            </label>
+                        </div>			
+                    </div>		
+                <?php } ?>
             </div>
         </span>
     </section>

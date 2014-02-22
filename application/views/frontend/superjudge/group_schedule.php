@@ -43,16 +43,17 @@
                 });
                 $("#tableData").css("width", "99%");
                 //
-                window.print();
-                //table
-                $("#tableData").children("thead").children("tr").children("th").last().show();
-                $("#tableData").children("tbody").children("tr").each(function() {
-                    $(this).children("td").last().show();
-                });
-                table.fnAdjustColumnSizing();
-                $("body").children().show();
-                $("article").css("margin-top", marginTop);
-                $("button").show();
+                window.setTimeout(function() {
+                    window.print();
+                    $("#tableData").children("thead").children("tr").children("th").last().show();
+                    $("#tableData").children("tbody").children("tr").each(function() {
+                        $(this).children("td").last().show();
+                    });
+                    table.fnAdjustColumnSizing();
+                    $("body").children().show();
+                    $("article").css("margin-top", marginTop);
+                    $("button").show();
+                }, 100);
             });
         };
         createPrint();
@@ -60,11 +61,11 @@
             showAssign();
         });
         $("#back").click(function() {
-            window.location.href="<?= base_url() ?>judgeshead/schedules/schedule";
+            window.location.href = "<?= base_url() ?>judgeshead/schedules/schedule";
         });
         var showAssign = function() {
             jui.jconfirm($("#assiging").html(), function() {
-                
+
                 var project = $("select#project:visible option:selected").val();
                 var judge = $("select#judge:visible option:selected").val();
                 jui.jloading("Saving New Interview");
@@ -104,7 +105,7 @@
                     <label> For </label>
                     <select id="project">
                         <?php foreach ($projects as $p) { ?>
-                            <option value="<?= $p->id ?>"><?= $p->name ?></option>
+                            <option value="<?= $p->id ?>"><?= $p->code ?></option>
                         <? } ?>
                     </select>
                 </p>
@@ -122,38 +123,42 @@
                     </thead>
                     <tbody>
                         <?php
-                        $category = $group->category->get();
-                        $category->schedule->get();
-                        foreach ($category->schedule as $sched) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <?php
-                                    $sched->judge->get();
-                                    echo $sched->judge->name
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                    $sched->project->get();
-                                    $sched->project->category->get();
-                                    echo $sched->project->category->code . "-" . $sched->project->id
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                    $sched->project->get();
-                                    echo $sched->project->name
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php echo $sched->slotnumber ?>
-                                </td>
-                                <td>
-                                    <a class="delete" href="<?= base_url() ?>judgeshead/schedules/removeinterview/<?= $sched->id ?>">remove</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                        $categories = $group->category->get();
+                        foreach ($categories as $category) {
+                            $category->schedule->get();
+                            foreach ($category->schedule as $sched) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?php
+                                        $sched->judge->get();
+                                        echo $sched->judge->name
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $sched->project->get();
+                                        $sched->project->category->get();
+                                        echo $sched->project->code;
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $sched->project->get();
+                                        echo $sched->project->name
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $sched->slotnumber ?>
+                                    </td>
+                                    <td>
+                                        <a class="delete" href="<?= base_url() ?>judgeshead/schedules/removeinterview/<?= $sched->id ?>">remove</a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
                     </tbody>
                     <tfoot></tfoot>
 
@@ -163,7 +168,7 @@
                     <button class="" id="back">Back</button>
                     <button class="" id="assign">Assign judge to Project</button>
                 </div>
-                
+
             </div>
         </span>
     </section>

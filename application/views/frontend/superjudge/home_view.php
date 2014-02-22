@@ -18,10 +18,12 @@
                 $(this).hide();
                 var marginTop = $("article").css("margin-top");
                 $("article").css("margin-top", "2em");
-                window.print();
-                $("body").children().show();
-                $("article").css("margin-top", marginTop);
-                $(this).show();
+                window.setTimeout(function() {
+                    window.print();
+                    $("body").children().show();
+                    $("article").css("margin-top", marginTop);
+                    $("button").show();
+                }, 100);
             });
         };
         createPrint();
@@ -58,7 +60,7 @@
                                 <td><?php $project->category->get(); $project->category->group->get(); echo $project->category->group->name; ?></td>
                                 <td><?= $project->category->name ?></td>
                                 <td><?= $project->name ?></td>
-                                <td><?= $project->category->code. " - ".$project->id ?></td>
+                                <td><?= $project->code ?></td>
                                 <td>
                                     <a href="<?= base_url() ?>judgeshead/home/showproject/<?= $project->id ?>">Show Project</a>
                                 </td>

@@ -9,7 +9,7 @@ class Home extends AdminGenericController {
         parent::__construct(true, array("super_judge"));
         $this->load->model("group");
     }
-
+    
     function index() {
 
         $model = new Project();
@@ -36,57 +36,6 @@ class Home extends AdminGenericController {
         $data["project"] = $model;
 
         $data['main_content'] = 'frontend/superjudge/project_view';
-        $this->load->view('frontend/includes/template', $data);
-    }
-
-    function scores() {
-        $data['main_content'] = 'frontend/superjudge/groups_score';
-
-        $evals = new Evaluation();
-
-        $evals->where("eval_total > 0");
-        if ($evals->count() > 0) {
-
-            $groups = new Group();
-
-            $groups->order_by("id", "asc");
-
-            $data['groups'] = $groups->get();
-        } else {
-            $data['error'] = "no data";
-        }
-
-        $this->load->view('frontend/includes/template', $data);
-    }
-
-    function groupscore() {
-        $id = $this->uri->segment(4);
-
-        $group = new Group();
-
-        $loadedGroup = $group->get_by_id($id);
-
-        if (!$loadedGroup->id) {
-            show_404();
-            die;
-        }
-
-        //get projects in the group
-
-        $schedule = new Evaluation();
-
-        $innerQuery = "select p.id from project as p,category as c where p.category_id = c.id and c.group_id = " . $loadedGroup->id;
-
-//        $project = new Project();
-//        $p = $project->query("select count(p.id) as count from project as p,category as c where p.category_id = c.id and c.group_id = ".$loadedGroup->id);
-//
-//        $data["pcount"] = $p->count;
-
-        $data['schedules'] = $schedule->query("select s.* from project_evaluation as s where s.project_id in (" . $innerQuery . ")");
-
-        $data['group'] = $loadedGroup;
-
-        $data['main_content'] = 'frontend/superjudge/group_score';
         $this->load->view('frontend/includes/template', $data);
     }
 
@@ -123,29 +72,6 @@ class Home extends AdminGenericController {
         $data['projects'] = $projects->get(25, 25 * $page);
         ;
 
-        $this->load->view('frontend/includes/template', $data);
-    }
-
-    function projectwinning() {
-        $id = $this->input->post("id");
-        $project = new Project();
-
-        $project->where("id", $id)->update("winner", 1);
-    }
-
-    function finalwinners() {
-
-        $project = new Project();
-
-        $project->where("winner", 1);
-
-        if ($project->count() > 0) {
-            $project->where("winner", 1);
-            $data["winners"] = $project->get();
-        } else {
-            $data['error'] = "no data";
-        }
-        $data['main_content'] = 'frontend/superjudge/winners';
         $this->load->view('frontend/includes/template', $data);
     }
 

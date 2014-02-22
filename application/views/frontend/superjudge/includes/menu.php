@@ -4,6 +4,7 @@
         <?php if ($user['usertype'] == 'super_judge') { ?>
             <li><a href="<?= base_url(); ?>judgeshead/home" tab="#projects" >Projects</a></li>
             <li><a href="<?= base_url(); ?>judgeshead/home/judges" tab="#judges">Judges</a></li>
+            <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#categories">Categories</a></li>
         <?php } ?>
         <?php if ($user['usertype'] == 'super_admin' || $user['usertype'] == 'admin') { ?>
             <li><a href="<?= base_url(); ?>admin/usermanager/home" tab="#admins" class="active">Admin</a></li>
@@ -13,10 +14,10 @@
         <?php } ?>
         <li><a href="<?= base_url(); ?>judgeshead/schedules/schedule" tab="#schedule">Judging Schedule</a></li>
         <li><a href="<?= base_url(); ?>judgeshead/groups" tab="#groups">Groups</a></li>
-        <?php if ($user['usertype'] == 'super_judge') { ?>
-            <li><a href="<?= base_url(); ?>judgeshead/categories/home" tab="#categories">Categories</a></li>
-            <li><a href="<?= base_url(); ?>judgeshead/home/scores" tab="#scores">Scores</a></li>
-            <li><a href="<?= base_url(); ?>judgeshead/home/finalwinners" tab="#finals">Finals</a></li>
+        
+        <?php if ($user['usertype'] == 'super_judge' || $user['usertype'] == 'super_admin' || $user['usertype'] == 'admin') { ?>
+            <li><a href="<?= base_url(); ?>judgeshead/scores" tab="#scores">Scores</a></li>
+            <li><a href="<?= base_url(); ?>judgeshead/scores/finalwinners" tab="#finals">Finals</a></li>
         <?php } ?>
     </ul>
     <hr class="intel-tab-divider">

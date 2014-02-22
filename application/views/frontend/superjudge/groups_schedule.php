@@ -17,15 +17,15 @@
                     <label>select Fair</label>\n\
                     <div class="intel-select">\n\
                     <select  id="fair_id" name="fair_id">\n\
-                    <option value="1" >الاسكندرية</option><option value="2" >الاقصر</option>\n\
+                    <option value="1" >الاقصر</option><option value="2" >القاهرة</option>\n\
                     </select></div><br/>\n\
                     Are you sure you want to generate new Schedule?<br/>\n\
                     This may cause remove all updates on the old schedule!', function() {
                 jui.jloading("Generating Schedule");
                 $.ajax({
                     url: url,
-                    data:{
-                        fair:$("#fair_id").val()
+                    data: {
+                        fair: $("#fair_id").val()
                     },
                     success: function() {
                         window.location.reload();
@@ -38,7 +38,7 @@
 </script>
 <?= $this->load->view("frontend/superjudge/includes/menu") ?>
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         $("a.active").removeClass("active");
         $("a[tab='#schedule']").addClass('active');
     });
@@ -74,10 +74,10 @@
                                     </td>
                                     <td>
                                         <?php
-//                                        $cat->schedule->get();
-//                                        if ($cat->schedule) {
-                                        echo anchor(base_url() . "judgeshead/schedules/groupschedule/" . $group->id, "Show Schedule");
-//                                        }
+                                        $categories = $group->category->get();
+                                        if ($categories->count() > 0) {
+                                            echo anchor(base_url() . "judgeshead/schedules/groupschedule/" . $group->id, "Show Schedule");
+                                        }
                                         ?>
                                     </td>
                                 </tr>
