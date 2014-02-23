@@ -105,7 +105,7 @@ class ImportController extends AdminGenericController {
 
     private function getCategory($data) {
 
-        $projectType = explode("(Code:", $data);
+        $projectType = explode("(", $data);
         $projectCode = trim(str_replace(")", "", $projectType[1]));
 
         $category = new Category();

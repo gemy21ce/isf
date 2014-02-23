@@ -38,7 +38,7 @@
                         if (isset($error)) {
                             ?>
                             <tr>
-                                <td colspan="2"><p>No Evaluation Done Yet!</p></td>
+                                <td colspan="4"><p>No Evaluation Done Yet!</p></td>
                             </tr>
                             <?php
                         } else {
