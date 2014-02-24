@@ -42,9 +42,11 @@
                     $(this).children("td").last().hide();
                 });
                 $("#tableData").css("width", "99%");
+                $(".Footer").addClass('forcedHidden');
                 //
                 window.setTimeout(function() {
                     window.print();
+                    $(".Footer").removeClass('forcedHidden');
                     $("#tableData").children("thead").children("tr").children("th").last().show();
                     $("#tableData").children("tbody").children("tr").each(function() {
                         $(this).children("td").last().show();
@@ -62,6 +64,18 @@
         });
         $("#back").click(function() {
             window.location.href = "<?= base_url() ?>judgeshead/schedules/schedule";
+        });
+        $("#deleteAll").click(function() {
+            $("input[type='checkbox']:checked").each(function (){
+                var el = this;
+                $.ajax({
+                    url: '<?= base_url() ?>judgeshead/schedules/removeinterview/'+$(el).val(),
+                    type: "post",
+                    success: function() {
+                        table.fnDeleteRow(table.fnGetPosition($(el).parent("td")[0])[0]);
+                    }
+                });
+            });
         });
         var showAssign = function() {
             jui.jconfirm($("#assiging").html(), function() {
@@ -114,7 +128,9 @@
                 <table cellpadding="0" cellspacing="0" border="0" class="intel-table intel-table-zebra intel-sortable" id="tableData">
                     <thead>
                         <tr class="">
+                            <!--<th style="cursor: pointer;" class=""></th>-->
                             <th style="cursor: pointer;" class="">Judge</th>
+                            <th style="cursor: pointer;" class="">Judge Category</th>
                             <th style="cursor: pointer;" class="">Project Code</th>
                             <th style="cursor: pointer;" class="">Project Name</th>
                             <th style="cursor: pointer;" class="">Slot/Interview Number</th>
@@ -129,10 +145,20 @@
                             foreach ($category->schedule as $sched) {
                                 ?>
                                 <tr>
+<!--                                    <td>
+                                        <input type="checkbox" name="id" value="<?= $sched->id ?>"/>
+                                    </td>-->
                                     <td>
                                         <?php
                                         $sched->judge->get();
                                         echo $sched->judge->name
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $sched->judge->get();
+                                        $sched->judge->category->get();
+                                        echo $sched->judge->category->code
                                         ?>
                                     </td>
                                     <td>
@@ -165,6 +191,7 @@
                 </table>
                 <div style="clear: both;">
                     <hr/>
+                    <!--<button class="" id="deleteAll">delete selected</button>-->
                     <button class="" id="back">Back</button>
                     <button class="" id="assign">Assign judge to Project</button>
                 </div>

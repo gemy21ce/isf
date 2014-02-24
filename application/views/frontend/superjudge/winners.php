@@ -14,9 +14,11 @@
                 var marginTop = $("article").css("margin-top");
                 $("article").css("margin-top", "2em");
                 $(".printable").show();
+                $(".Footer").addClass('forcedHidden');
                 //
                 window.setTimeout(function() {
                     window.print();
+                    $(".Footer").removeClass('forcedHidden');
                     $(".printable").hide();
                     $("body").children().show();
                     $("article").css("margin-top", marginTop);

@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="<?= base_url() ?>assets/frontend/images/isef_favicon_32.ico" rel="icon" type="image/x-icon">
+        <link href="<?= base_url() ?>assets/frontend/images/isef_favicon_32.ico" rel="icon" type="image/x-icon"/>
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <title>Judging Area - Intel ISEF Egypt</title>
         <script scr="<?= base_url() ?>assets/ajax.submit.js" ></script>
@@ -39,7 +39,11 @@
         <script src="<?= base_url() ?>assets/frontend/js/master.js"></script>
         <script src="<?= base_url() ?>assets/frontend/js/master.js"></script>
         <script src="<?= base_url() ?>assets/ajax.submit.js"></script>
-
+        <style>
+                .forcedHidden{
+                    display: none!important;
+                }
+            </style>
     </head>
     <body>
         <header class="pure-g-r intel-hdr">							

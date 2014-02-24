@@ -16,9 +16,11 @@
                 $("button").hide();
                 var marginTop = $("article").css("margin-top");
                 $("article").css("margin-top", "2em");
+                $(".Footer").addClass('forcedHidden');
                 //
                 window.setTimeout(function() {
                     window.print();
+                    $(".Footer").removeClass('forcedHidden');
                     $("body").children().show();
                     $("article").css("margin-top", marginTop);
                     $("button").show();
